@@ -8,18 +8,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/windowManager/kde.nix
-    ./modules/clitools/fish.nix
-    ./modules/clitools/zsh.nix
-    ./modules/clitools/git.nix
     ./modules/clitools/neovim.nix
-    ./modules/clitools/utils.nix
-    ./modules/clitools/kitty.nix
-    ./modules/clitools/starship.nix
     ./modules/gUIapps/bottles.nix
     ./modules/gUIapps/games/steam.nix
-    ./modules/gUIapps/office/office.nix
-    ./modules/gUIapps/keepass.nix
     ./private/user/user.nix
     ./private/fuckNvidia.nix
     #./modules/windowManager/hyprland/hyprland.nix
@@ -63,22 +54,13 @@
     };
   };
 
-
-  clitools = {
-    fish.enable = true;
-    zsh.enable = false;
-    #neovim.enable = true;
-    kitty.enable = true;
-    utils.enable = true;
-    starship.enable = true;
+{
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;  # SDDM as the display manager
+    desktopManager.lxqt.enable = true;  # Enable LXQt desktop environment
   };
-#   gui = {
-#     windowManager.kde.enable = true;
-#     displayManager.sddm.enable = true;
-#     bottles.enable = true;
-#     keepass.enable = true;
-#     games.bottlegames.enable = true;
-#   };
+}
 
 
 
@@ -108,23 +90,6 @@
   # services.xserver.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
-
-    wget
-    brave
-
-    gparted
-    btrfs-progs
-
-    git
-    python3
-
-
-    kate
-    polkit
-
-    discord
-    teams-for-linux
-
   ];
 
 
@@ -132,40 +97,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
