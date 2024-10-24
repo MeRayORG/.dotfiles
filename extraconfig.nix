@@ -1,3 +1,28 @@
+    myNixOS = {
+    users.meray.enable = true;
+    programs = {
+
+    };
+    power-management.enable = true;
+    sops.enable = false;
+    #autologin.user = "yurii";
+
+    #hyprland.enable = true;
+
+    home-users = {
+      "yurii" = {
+        userConfig = ./home.nix;
+        userSettings = {
+          extraGroups = ["networkmanager" "wheel" "libvirtd" "docker" "adbusers" "openrazer"];
+        };
+      };
+    };
+
+    impermanence.enable = true;
+    impermanence.nukeRoot.enable = true;
+  };  
+  
+  
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
