@@ -54,13 +54,17 @@
     };
   };
 
-{
+  environment.systemPackages = [ pkgs.keepassxc pkgs.git ];
+
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;  # SDDM as the display manager
-    desktopManager.lxqt.enable = true;  # Enable LXQt desktop environment
+    desktopManager.plasma6.enable = true;  # Enable LXQt desktop environment
+    libinput.enable = true;
+    videoDrivers = [ "modesetting" ];
+    dpi = 144;
   };
-}
+
 
 
 
@@ -86,17 +90,14 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  environment.systemPackages = with pkgs; [
-  ];
-
-
-
-
   # Install firefox.
   programs.firefox.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
