@@ -6,7 +6,7 @@
     ./private/user/user.nix
   ];
 
-    environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
 
     wget
     brave

@@ -11,9 +11,23 @@
     };
     
     hyperland.url = "github:hyprwm/Hyprland";
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.05"
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix.url = "github:danth/stylix";
+
+    ags.url = "github:Aylur/ags";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = {... }@inputs :
   let
     # super simple boilerplate-reducing
     # lib with a bunch of functions
@@ -24,31 +38,13 @@
         # ===================== NixOS Configurations ===================== #
 
         raytop = mkSystem ./hosts/raytop/configurations/normal.nix;
-        work = mkSystem ./hosts/work/configuration.nix;
-        vps = mkSystem ./hosts/vps/configuration.nix;
-        liveiso = mkSystem ./hosts/liveiso/configuration.nix;
+        # work = mkSystem ./hosts/work/configuration.nix;
+        # vps = mkSystem ./hosts/vps/configuration.nix;
+        # liveiso = mkSystem ./hosts/liveiso/configuration.nix;
       };
 
-      homeManagerModules.default = ./homeManagerModules;
+      # homeManagerModules.default = ./homeManagerModules;
       nixosModules.default = ./nixosModules;
     };
-      {
-      nixosConfigurations = {
-        "raynix" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./configuration.nix
-
-          ];
-        };
-        gaming = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./gaming.nix
-          ];
-        };
-
-      };
-  };
   
 }
