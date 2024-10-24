@@ -123,11 +123,51 @@
     kate
     polkit
 
-    discord
+    betterdiscordctl
     teams-for-linux
+
+
+    rclone
+    kitty
+    tree
+    eza
+    unrar
+
+    ## create options like: mapESCtoCAPS.enable = true
+    # https://github.com/rvaiya/keyd
+    keyd
+    ###
+
+    prismlauncher
+
+    ## Office
+    #mkif env = hyperland or Sway
+    #onlyoffice-bin
+    #else
+    onlyoffice-bin_latest
+
+    gimp
+    inkscape
+    ###
+
+    bottles
+
+    keepassxc
 
   ];
 
+
+  ## Hyprland
+  # programs.hyprland.enable = true;
+  #   services = {
+  #     displayManager.sddm = {
+  #       enable = true;
+  #       wayland = {
+  #         enable = true;
+  #         compositor = "weston";
+  #       };
+  #     };
+  #   };
 
 
 
