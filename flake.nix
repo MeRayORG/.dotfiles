@@ -13,7 +13,7 @@
     hyperland.url = "github:hyprwm/Hyprland";
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05"
+      url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -37,7 +37,7 @@
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        raytop = mkSystem ./hosts/raytop/configurations/normal.nix;
+        raynix = mkSystem ./hosts/raytop/configurations/normal.nix;
         # work = mkSystem ./hosts/work/configuration.nix;
         # vps = mkSystem ./hosts/vps/configuration.nix;
         # liveiso = mkSystem ./hosts/liveiso/configuration.nix;

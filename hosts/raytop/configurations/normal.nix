@@ -3,8 +3,22 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./private/user/user.nix
   ];
+
+  myNixOS = {
+    users.meray.enable = true;
+    programs = {
+      neovim.enable = true;
+      zsh.enable = false;
+      starship.enable = true;
+      git.enable = true;
+      fish.enable = true;
+      windisk.enable = true;
+    };
+    desktops.kdeenable = true;
+  };
+
+
 
   environment.systemPackages = with pkgs; [
 
@@ -61,14 +75,12 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-  }
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  };
 
   networking = {
     hostName = "raynix"; # Define your hostname.
     networkmanager.enable = true; # Enable networking
-  }
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -112,7 +124,7 @@
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  }
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
