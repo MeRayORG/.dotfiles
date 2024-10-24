@@ -1,8 +1,9 @@
-# KDE conf
-
-{config, pkgs, ...}:
-
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   services = {
 
     xserver = {

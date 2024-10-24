@@ -1,9 +1,6 @@
-{ config, lib, pkgs, ... }: with lib;
-
+{ config, lib, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    fish
-  ];
+  environment.systemPackages = [ pkgs.fish ];
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 }

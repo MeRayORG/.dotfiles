@@ -2,12 +2,13 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ../hardware-configuration.nix
   ];
 
   myNixOS = {
-    users.meray.enable = true;
-    programs = {
+    myUsers.meray.enable = true;
+    
+    myPrograms = {
       neovim.enable = true;
       zsh.enable = false;
       starship.enable = true;
@@ -15,7 +16,7 @@
       fish.enable = true;
       windisk.enable = true;
     };
-    desktops.kdeenable = true;
+    desktops.kde.enable = true;
   };
 
 
