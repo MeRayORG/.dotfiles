@@ -1,5 +1,5 @@
 {
-  description = "Ryan's NixOS Flake";
+  description = "NixOS Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";

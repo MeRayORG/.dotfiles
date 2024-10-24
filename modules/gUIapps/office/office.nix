@@ -3,9 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
     #mkif env = hyperland or Sway
-    onlyoffice-bin
+    #onlyoffice-bin
     #else
-    #onlyoffice-bin_latest
+    onlyoffice-bin_latest
 
     gimp
     inkscape

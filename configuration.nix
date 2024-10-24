@@ -18,6 +18,7 @@
     ./modules/clitools/starship.nix
     ./modules/gUIapps/bottles.nix
     ./modules/gUIapps/games/steam.nix
+    ./modules/gUIapps/games/minecraft/prism.nix
     ./modules/gUIapps/office/office.nix
     ./modules/gUIapps/keepass.nix
     ./private/user/user.nix
