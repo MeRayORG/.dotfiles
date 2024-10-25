@@ -15,6 +15,7 @@
       git.enable = true;
       fish.enable = true;
       windisk.enable = true;
+      discord.enable = true;
     };
     desktops.kde.enable = true;
   };
@@ -35,6 +36,8 @@
 
     kate
     polkit
+
+    
 
     betterdiscordctl
     teams-for-linux
