@@ -91,6 +91,18 @@ in rec {
     in (extendModule ((extension name) // {path = f;})))
     modules;
 
+  # takeModulesFromDirAddEnable = dirname: dir:
+  #   myLib.extendModules
+  #   (name: {
+  #     extraOptions = {
+  #       myNixOS.${dirname}.${name}.enable = lib.mkEnableOption "enable my ${name} ${dirname}";
+  #     };
+
+  #     configExtension = config: (lib.mkIf cfg.desktops.${name}.enable config);
+  #   })
+  #   (myLib.filesIn dir);
+
+
   # ============================ Shell ============================= #
   forAllSystems = pkgs:
     inputs.nixpkgs.lib.genAttrs [
