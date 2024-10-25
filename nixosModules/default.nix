@@ -47,6 +47,8 @@
     })
     (myLib.filesIn ./programs);
 
+  # myPrograms = takeModulesFromDirAddEnable myPrograms ./Programs;
+
 
 in {
   imports =

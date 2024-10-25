@@ -10,7 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    hyperland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
