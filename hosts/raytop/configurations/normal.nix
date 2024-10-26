@@ -17,6 +17,8 @@
       windisk.enable = true;
     };
     desktops.kde.enable = true;
+    desktops.hyprland.enable = true;
+
   };
 
 

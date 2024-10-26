@@ -1,9 +1,10 @@
 {
   inputs,
+  pkgs,
   ...
-}: let
-	pkgs = inputs.nixpkgs;
+}: let 
+  pkgs.overlays = [inputs.hyprpanel.overlay];
 in {
-  pkgs.overlay = inputs.hyprpanel.overlay;
+  
   environment.systemPackages = [pkgs.hyprpanel pkgs.cowsay];
 }
