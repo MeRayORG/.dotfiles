@@ -3,6 +3,7 @@
 {
   imports = [
     ../hardware-configuration.nix
+    ../nvidia.nix
   ];
 
   myNixOS = {
@@ -39,10 +40,9 @@
     kate
     polkit
 
-    
-
-    betterdiscordctl
     teams-for-linux
+
+    vscodium
 
 
     rclone
@@ -69,7 +69,12 @@
     ###
 
     bottles
+    steam
 
+    libGL
+
+
+    quickemu
     keepassxc
 
   ];

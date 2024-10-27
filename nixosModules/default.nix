@@ -60,20 +60,10 @@ in {
     ++ desktops;
 
   options.myNixOS = {
-    desktop = lib.mkOption {
-      default = "none";
-      type = lib.types.enum [
-        "none"
-        "kde"
-        "hyprland"
-      ];
-    };
+    
   };
   
   config = {
-    warnings = [
-      (lib.mkIf (cfg.desktop == "none") "No desktop configured")
-    ];
     nix.settings.experimental-features = ["nix-command" "flakes"];
     programs.nix-ld.enable = true;
     nixpkgs.config.allowUnfree = true;
