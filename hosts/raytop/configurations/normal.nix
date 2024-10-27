@@ -3,6 +3,7 @@
 {
   imports = [
     ../hardware-configuration.nix
+    ../nvidia.nix
   ];
 
   myNixOS = {
@@ -15,6 +16,7 @@
       git.enable = true;
       fish.enable = true;
       windisk.enable = true;
+      #discord.enable = true;
     };
     desktops.kde.enable = true;
   };
@@ -36,8 +38,9 @@
     kate
     polkit
 
-    betterdiscordctl
     teams-for-linux
+
+    vscodium
 
 
     rclone
@@ -64,7 +67,16 @@
     ###
 
     bottles
+    steam
 
+
+    libGL
+    nix-ld
+    #nix-alien
+    steam-run
+
+
+    quickemu
     keepassxc
 
   ];
