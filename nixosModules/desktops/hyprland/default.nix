@@ -6,5 +6,8 @@
   pkgs.overlays = [inputs.hyprpanel.overlay];
 in {
   
-  environment.systemPackages = [pkgs.hyprpanel pkgs.cowsay];
+  environment.systemPackages = [
+    pkgs.hyprpanel
+    #pkgs.cowsay
+  ];
 }
