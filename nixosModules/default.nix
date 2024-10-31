@@ -47,6 +47,18 @@
     })
     (myLib.filesIn ./programs);
 
+  # Taking all shells in ./shell and adding program.enables to them
+  shell =
+    myLib.extendModules
+    (name: {
+      extraOptions = {
+        myNixOS.shell.${name}.enable = lib.mkEnableOption "enable ${name} shell";
+      };
+
+      configExtension = config: (lib.mkIf cfg.shell.${name}.enable config);
+    })
+    (myLib.filesIn ./shell);
+
   # myPrograms = takeModulesFromDirAddEnable myPrograms ./Programs;
 
 

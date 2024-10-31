@@ -11,15 +11,15 @@
     
     myPrograms = {
       neovim.enable = true;
-      zsh.enable = false;
       starship.enable = true;
       git.enable = true;
-      fish.enable = true;
       windisk.enable = true;
       discord.enable = true;
+      asianLangSupport.enable = true;
     };
     desktops.kde.enable = true;
     desktops.hyprland.enable = true;
+    shell.nush.enable = true;
 
   };
 
@@ -72,10 +72,17 @@
     steam
 
     libGL
+    steam-run
 
 
     quickemu
     keepassxc
+
+    # 7zip Support
+    p7zip
+
+    libguestfs-with-appliance
+
 
   ];
 
