@@ -11,8 +11,8 @@ in {
     extraGroups = [ "networkmanager" "wheel" ];
     #packages = with pkgs; [    ];
   } // (builtins.hasAttr "home" inputs) {
-    home.username = "meray";
-    home.homeDirectory = "/home/meray";
+    home-manager.nixosModules.home-manager.home-manager.username = "meray";
+    home-manager.nixosModules.home-manager.home-manager.homeDirectory = "/home/meray";
 
   };
 }

@@ -30,8 +30,7 @@ in {
 
 
     
-  } 
-  // mkIf (shellsAvailable && config.shells.bash.enable)  {
+  } // mkIf (shellsAvailable && config.shells.bash.enable)  {
     enableBashIntegration = true;
   } // mkIf (shellsAvailable && config.shells.nush.enable)  {
     enableNushellIntegration = true;
@@ -39,8 +38,7 @@ in {
     enableZshIntegration = true;
   } // mkIf (shellsAvailable && config.shells.fish.enable)  {
     enableFishIntegration = true;
-  }
-  ;
+  };
 
   
 }
