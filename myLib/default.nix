@@ -35,6 +35,29 @@ in rec {
       ];
     };
 
+  mkSysHome = system: config:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs outputs myLib system;
+      };
+      modules = [
+        config
+        outputs.nixosModules.default
+
+        (inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor system;
+          extraSpecialArgs = {
+            inherit inputs myLib outputs;
+          };
+          modules = [
+            config
+            outputs.homeManagerModules.default
+          ];
+        })
+      ];
+    };
+
+
   # =========================== Helpers ============================ #
 
   filesIn = dir: (map (fname: dir + "/${fname}")

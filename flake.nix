@@ -42,7 +42,7 @@
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        raynix = mkSystem ./hosts/raytop/configurations/normal.nix;
+        raynix = mkSysHome "x86_64-linux" ./hosts/raytop/configurations/normal.nix;
         # work = mkSystem ./hosts/work/configuration.nix;
         # vps = mkSystem ./hosts/vps/configuration.nix;
         # liveiso = mkSystem ./hosts/liveiso/configuration.nix;
