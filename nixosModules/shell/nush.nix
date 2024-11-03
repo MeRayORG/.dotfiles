@@ -2,7 +2,7 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [ pkgs.nush ];
-  users.defaultUserShell = pkgs.nush;
-  programs.nush.enable = true;
+  environment.systemPackages = [ pkgs.nushell ];
+  users.defaultUserShell = pkgs.nushell;
+  #programs.nushell.enable = true;
 }

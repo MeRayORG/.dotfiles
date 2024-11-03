@@ -7,7 +7,7 @@
 in {
   nixpkgs.overlays = [hyprpanel.overlay];
   environment.systemPackages = [
-    pkgs.hyprpanel
+    #pkgs.hyprpanel
     pkgs.cowsay
   ];
 }
