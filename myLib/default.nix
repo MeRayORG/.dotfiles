@@ -36,27 +36,16 @@ in rec {
     };
 
   mkSysHome = system: config:
-    inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs outputs myLib system;
-      };
-      modules = [
-        config
-        outputs.nixosModules.default
+  inputs.nixpkgs.lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs outputs myLib system; };
+    modules = [
+      inputs.home-manager.nixosModules.home-manager
 
-        (inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor system;
-          extraSpecialArgs = {
-            inherit inputs myLib outputs;
-          };
-          modules = [
-            config
-            outputs.homeManagerModules.default
-          ];
-        })
-      ];
-    };
-
+      config
+      outputs.nixosModules.default
+    ];
+  };
 
   # =========================== Helpers ============================ #
 

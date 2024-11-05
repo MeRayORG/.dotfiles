@@ -1,13 +1,15 @@
 {
+  config,
+  pkgs,
   inputs,
+  myLib,
+  lib,
   ...
-}: let
-  inherit (inputs) home;
-in {
-  home-manager.nixosModules.home-manager = {
-    home-manager.stateVersion = "24.05";
-    programs.home-manager.enable = true;
+}: {
+  options.myNixOS = {
+    users.hmUser = lib.mkOption {
+      default = throw "set HomeUser";
+      type = lib.types.str;
+    };
   };
-
-
 }
