@@ -8,6 +8,7 @@
 
   myNixOS = {
     myUsers.meray.enable = true;
+    users.hmUser = "meray";
     
     myPrograms = {
       neovim.enable = true;

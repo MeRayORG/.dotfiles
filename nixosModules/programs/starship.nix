@@ -2,6 +2,7 @@
 {
   config,
   lib,
+  myLib,
   pkgs,
   inputs,
   ...
@@ -10,10 +11,16 @@
   inherit (lib) mkIf;
 
   shellsAvailable = hasAttr "shells" config;
+
+  myLib.mkHm = homeSettings: {
+    home-manager.users."${config.myNixOS.users.hmUser}" = ({ pkgs, ... }: homeSettings);
+  };
   
 in {
   environment.systemPackages = [ pkgs.starship ];
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraMono" ]; }) ];
+
+} // myLib.mkHm {
 
   programs.starship = {
     enable = true;
