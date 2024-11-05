@@ -49,8 +49,6 @@
     rclone
     kitty
     tree
-    eza
-    unrar
 
     ## create options like: mapESCtoCAPS.enable = true
     # https://github.com/rvaiya/keyd
@@ -79,12 +77,7 @@
     quickemu
     keepassxc
 
-    # 7zip Support
-    p7zip
-
     libguestfs-with-appliance
-
-
   ];
 
   # Install firefox.
