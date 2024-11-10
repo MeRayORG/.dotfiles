@@ -6,11 +6,10 @@
   cfg = config.myNixOS;
 
 in {
-  myNixOS = {
-    desktops.hyprland.enable = lib.mkIf (cfg.desktop == "hyprland");
-    desktops.kde.enable = lib.mkIf (cfg.desktop == "kde");
-    desktops.cosmic.enable = lib.mkIf (cfg.desktop == "cosmic");
-  };
+  imports = [
+    ./hyprland
+    ./kde.nix
+  ];
 
   options.myNixOS = {
     desktop = lib.mkOption {

@@ -1,13 +1,20 @@
 {
   inputs,
+  config,
   pkgs,
+  lib,
   ...
 }: let
   inherit (inputs) nixpkgs hyprpanel;
-in {
-  nixpkgs.overlays = [hyprpanel.overlay];
-  environment.systemPackages = [
-    #pkgs.hyprpanel
-    pkgs.cowsay
-  ];
-}
+  cfg = config.myNixOS;
+
+  hyprlandmodule = lib.mkIf (cfg.desktop == "hyprland") {
+    import = [
+    ./hyprpanel
+    ];
+    environment.systemPackages = [pkgs.hyprland];
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  };
+
+in hyprlandmodule
