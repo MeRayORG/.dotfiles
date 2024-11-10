@@ -10,18 +10,8 @@
 
 
   cfg = config.myNixOS;
+  
 
-
-  desktops =
-    myLib.extendModules
-    (name: {
-      extraOptions = {
-        myNixOS.desktops.${name}.enable = lib.mkEnableOption "enable my ${name} desktop";
-      };
-
-      configExtension = config: (lib.mkIf cfg.desktops.${name}.enable config);
-    })
-    (myLib.filesIn ./desktops);
 
   # Taking all users in ./users and adding bundle.enables to them
   myUsers =
@@ -66,10 +56,10 @@ in {
   imports =
     [
       # inputs.home.nixosModules.home-manager
+      ./desktops {inherit pkgs config lib inputs outputs myLib;}
     ]
     ++ myUsers
     ++ myPrograms
-    ++ desktops
     ++ shell;
 
   options.myNixOS = {

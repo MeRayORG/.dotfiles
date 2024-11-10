@@ -14,12 +14,13 @@
       neovim.enable = true;
       starship.enable = true;
       git.enable = true;
-      windisk.enable = true;
       discord.enable = true;
-      asianLangSupport.enable = true;
     };
-    desktops.kde.enable = true;
-    desktops.hyprland.enable = true;
+    # services = {
+    #   windisk.enable = true;
+    #   asianLangSupport.enable = true;
+    # };
+    desktop = "hyprland";
     shell.nush.enable = true;
 
   };
