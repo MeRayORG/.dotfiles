@@ -74,10 +74,14 @@
     nix-ld
     #nix-alien
     steam-run
+    comma
 
 
     quickemu
     keepassxc
+
+    vscodium
+    drawio
 
   ];
 
