@@ -1,21 +1,27 @@
-path: attributePathMaybeDef: currentName: inputset: let
-  isNixfile = path: true;
-  isFolder = path: true;
+inputset: dir:
+  let
+    path = dir;
+    itemParser = inputset: {fileODirName, oldPath, oldAttrs}:
+      let
+        #sanitizename
+        name = fileODirName - ".nix";
+        #updatePath
+        currentPath = "${path}/${fileODirName}";
 
-  ifIsNix = import path {inherit attributePath inputset;};
-  ifIsDir = (import ./importer.nix) ("${path}/${name}") attributePathMaybeDef.currentName name inputset;
+        #updateSet
+        attrs =
+          if   name == "default.nix"
+          then oldAttrs
+          else oldAttrs.name;
+        importFile = import path (inputset // {attrs});
+      in
+        if   isDir path
+        then map (name: itemParser inputset {name = fileODirName; oldPath = path; attrs = oldAttrs; })
+        else (
+          if   isNixFile path
+          then importFile
+          else {}
+        );
+  in itemParser inputset {fileODirName = dir; oldPath = ""; oldAttrs = {};}
 
-  ifNixODir = path: ifIsNix: ifIsDir: 
-  if isNixfile path || isFolder path then (
-    if isNixfile path then ifIsNix path
-    else ifIsDir path)
-  else
-    [];
-
-  attributePath =
-    if (currentName == "default") 
-    then attributePathMaybeDef
-    else attributePathMaybeDef.currentName;
-in 
-  flatten (map (ifNixODir) dir)
 
