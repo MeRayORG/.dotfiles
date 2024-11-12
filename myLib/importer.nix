@@ -6,7 +6,7 @@ inputset: dir:
         #sanitizename
         name = fileODirName - ".nix";
         #updatePath
-        currentPath = "${path}/${fileODirName}";
+        path = "${path}/${fileODirName}";
 
         #updateSet
         attrs =
