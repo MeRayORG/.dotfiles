@@ -10,8 +10,9 @@
   ## Usage:
   # services.keyd = {
   #   overloads = [
-  #     { key = "a"; tap = "a"; hold = "leftcontrol"; }
-  #     { key = "s"; hold = "leftshift"; }
+  #     { key = "a";  tap = "a";  hold = "leftcontrol"; }
+  #     { key = "s";              hold = "leftshift"; }
+  #     { key = "space";          hold = "enter"; }
 
   #     wrong:
   #       [ "d" "leftalt" ]
@@ -36,6 +37,7 @@
       description = "List of home row mod definitions with keys and modifiers.";
       default = [];
     };
+    
     remaps = lib.mkOption {
       type = lib.types.listOf lib.types.attrsOf lib.types.str;
       description = "List of home row mod definitions with keys and remaps.";

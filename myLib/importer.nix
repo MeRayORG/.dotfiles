@@ -1,57 +1,59 @@
 dir: importFunction: lib:
   let
 
-    inherit (builtins) attrNames readDir readFileType isPath baseNameOf toString;
+    inherit (builtins) attrNames readDir readFileType isPath baseNameOf toString concatStringsSep;
     inherit (lib.strings) hasSuffix removeSuffix;
 
-    itemParser = importFunction: {fileODirName, oldPath, oldAttrs}:
+    itemParser = importFunction: {fileODirName, oldPath, oldAPath}:
       let
         path = oldPath + "/${fileODirName}";
 
         isDir = (readFileType path) == "directory";
-        isNix = hasSuffix (toString path) ".nix";
+        isNix = hasSuffix ".nix" (toString path);
         isDef = fileODirName == "default.nix";
 
         parseNix = 
           let
             name = removeSuffix ".nix" fileODirName;
             #updateSet
-            attrs = oldAttrs.name;
+            aPath = oldAPath ++ [name];
           in
-            importFunction path attrs;
+            importFunction path aPath;
 
-        parseDef = importFunction path oldAttrs;
+        parseDef = importFunction path oldAPath; # "path: ${path} aPath: ${aPath} @deffile"; 
 
         doLoop = 
           let
             name = fileODirName;
             #updateSet
-            attrs = oldAttrs.name;
+            aPath = oldAPath ++ [name];
           in
             map (item:
                 itemParser importFunction { 
                   fileODirName = item;
                   oldPath = path;
-                  oldAttrs = attrs; 
+                  oldAPath = aPath; 
                 }
               ) (attrNames (readDir path));
       in
-        if !(isPath dir) 
-        then throw "importer needs a nix path"
+        if isDir
+        then doLoop
         else (
-          if isDir
-          then doLoop
+          if isDef
+          then parseDef
           else (
-            if isDef
-            then parseDef
-            else (
-              if isNix
-              then parseNix
-              else {}
-            )
+            if isNix
+            then parseNix
+            else {}
           )
         );
   in
-    itemParser importFunction { fileODirName = baseNameOf dir; oldPath = ./.; oldAttrs = {};}
+    if !(isPath dir) 
+    then throw "importer needs a nix path"
+    else (
+      itemParser importFunction { fileODirName = baseNameOf dir; oldPath = ./.; oldAPath = [];}
+    )
 
-# (import ./importer.nix) ./modules (path: attrs: import path ({a = 2;} // {inherit attrs;})) (import <nixpkgs/lib>) 
+# (import ./importer.nix) ./modules (path: aPath: import path ({a = 2;} // {inherit aPath;})) (import <nixpkgs/lib>)
+# (import ./importer.nix) ./modules (path: aPath: import path {a = 2;}) (import <nixpkgs/lib>)
+# a pathlist to attrset concatStringsSep
