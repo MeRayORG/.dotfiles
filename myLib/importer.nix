@@ -1,27 +1,59 @@
-inputset: dir:
+dir: importFunction:
   let
-    path = dir;
-    itemParser = inputset: {fileODirName, oldPath, oldAttrs}:
+
+    inherit (builtins) hasSuffix attrNames readDir readFileType isPath;
+
+    itemParser = importFunction: {fileODirName, oldPath, oldAttrs}:
       let
-        #sanitizename
-        name = fileODirName - ".nix";
-        #updatePath
-        path = "${path}/${fileODirName}";
+        path = ./. + "${oldPath}/${fileODirName}";
 
-        #updateSet
-        attrs =
-          if   name == "default.nix"
-          then oldAttrs
-          else oldAttrs.name;
-        importFile = import path (inputset // {attrs});
+        isDir = (readFileType path) == "directory";
+        isNix = hasSuffix path ".nix";
+        isDef = fileODirName == "default.nix";
+
+        
+
+
+        parseNix = 
+          let
+            name = fileODirName - ".nix";
+            #updateSet
+            attrs = oldAttrs.name;
+          in
+            importFunction path attrs;
+
+        parseDef = importFunction path oldAttrs;
+
+        doLoop = 
+          let
+            name = fileODirName;
+            #updateSet
+            attrs = oldAttrs.name;
+          in
+            map (item:
+                itemParser importFunction { 
+                  fileODirName = item;
+                  oldPath = path;
+                  oldAttrs = attrs; 
+                }
+              ) (attrNames readDir);
       in
-        if   isDir path
-        then map (name: itemParser inputset {name = fileODirName; oldPath = path; attrs = oldAttrs; })
+        if !(isPath dir) 
+        then throw "importer needs a nix path"
         else (
-          if   isNixFile path
-          then importFile
-          else {}
+          if isDir
+          then doLoop
+          else (
+            if isDef
+            then parseDef
+            else (
+              if isNix
+              then parseNix
+              else {}
+            )
+          )
         );
-  in itemParser inputset {fileODirName = dir; oldPath = ""; oldAttrs = {};}
+  in
+    itemParser importFunction { fileODirName = dir; oldPath = ./.; oldAttrs = {};}
 
-
+# (import ./importer.nix) ./modules (path: attrs: import path ({a = 2;} // {inherit attrs;}))
