@@ -35,18 +35,6 @@ in rec {
       ];
     };
 
-  mkSysHome = system: config:
-  inputs.nixpkgs.lib.nixosSystem {
-    inherit system;
-    specialArgs = { inherit inputs outputs myLib system; };
-    modules = [
-      inputs.home-manager.nixosModules.home-manager
-
-      config
-      outputs.nixosModules.default
-    ];
-  };
-
   # =========================== Helpers ============================ #
 
   filesIn = dir: (map (fname: dir + "/${fname}")
@@ -102,17 +90,6 @@ in rec {
       name = fileNameOf f;
     in (extendModule ((extension name) // {path = f;})))
     modules;
-
-  # takeModulesFromDirAddEnable = dirname: dir:
-  #   myLib.extendModules
-  #   (name: {
-  #     extraOptions = {
-  #       myNixOS.${dirname}.${name}.enable = lib.mkEnableOption "enable my ${name} ${dirname}";
-  #     };
-
-  #     configExtension = config: (lib.mkIf cfg.desktops.${name}.enable config);
-  #   })
-  #   (myLib.filesIn dir);
 
 
   # ============================ Shell ============================= #

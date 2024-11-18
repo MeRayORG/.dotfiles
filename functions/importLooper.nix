@@ -1,14 +1,16 @@
-dir: importFunction: lib:
+{lib, ...}: dir: importFunction:
   let
 
-    inherit (builtins) attrNames readDir readFileType isPath baseNameOf toString concatStringsSep;
+    inherit (builtins) attrNames readDir readFileType isPath baseNameOf toString;
     inherit (lib.strings) hasSuffix removeSuffix;
+    inherit (lib.filesystem) pathIsDirectory;
+
 
     itemParser = importFunction: {fileODirName, oldPath, oldAPath}:
       let
-        path = oldPath + "/${fileODirName}";
+        path = lib.path.append oldPath fileODirName;
 
-        isDir = (readFileType path) == "directory";
+        isDir = pathIsDirectory path;
         isNix = hasSuffix ".nix" (toString path);
         isDef = fileODirName == "default.nix";
 
@@ -20,7 +22,7 @@ dir: importFunction: lib:
           in
             importFunction path aPath;
 
-        parseDef = importFunction path oldAPath; # "path: ${path} aPath: ${aPath} @deffile"; 
+        parseDef = importFunction path oldAPath;
 
         doLoop = 
           let
@@ -28,13 +30,19 @@ dir: importFunction: lib:
             #updateSet
             aPath = oldAPath ++ [name];
           in
-            map (item:
-                itemParser importFunction { 
-                  fileODirName = item;
-                  oldPath = path;
-                  oldAPath = aPath; 
-                }
-              ) (attrNames (readDir path));
+            builtins.foldl'
+              ( set: item:
+                lib.recursiveUpdate # https://nix.dev/guides/best-practices.html#updating-nested-attribute-sets
+                  (itemParser importFunction { 
+                    fileODirName = item;
+                    oldPath = path;
+                    oldAPath = aPath; 
+                  })
+                  set
+              ) 
+              {} 
+              (attrNames (readDir path))
+            ;
       in
         if isDir
         then doLoop
@@ -53,7 +61,3 @@ dir: importFunction: lib:
     else (
       itemParser importFunction { fileODirName = baseNameOf dir; oldPath = ./.; oldAPath = [];}
     )
-
-# (import ./importer.nix) ./modules (path: aPath: import path ({a = 2;} // {inherit aPath;})) (import <nixpkgs/lib>)
-# (import ./importer.nix) ./modules (path: aPath: import path {a = 2;}) (import <nixpkgs/lib>)
-# a pathlist to attrset concatStringsSep
