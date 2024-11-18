@@ -14,5 +14,6 @@ rec {
   mkHome           = mkFun ./mkHome.nix;
   mkSys            = mkFun ./mkSys.nix;
   mkUser           = mkFun ./mkUser.nix;
-  importer         = mkFun ./defImporter.nix
+  importer         = mkFun ./defImporter.nix;
+  mkShellScript    = mkFun ./mkShellScript.nix;
 }

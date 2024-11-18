@@ -1,4 +1,4 @@
-lib: aPath:
+{lib,...}: aPath:
 let
   inherit (lib) mkEnableOption;
   inherit (lib.attrsets) setAttrByPath;
