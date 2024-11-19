@@ -1,15 +1,12 @@
-{ config, lib, pkgs, ... }: with lib;
-
-{
+{ 
+  pkgs, 
+  ... 
+}: {
   environment.systemPackages = with pkgs; [
     libsecret
     gitFull
   ];
 
-  programs.git = {
-    enable = true;
-
-
-  };
+  programs.git.enable = true;
 }
 

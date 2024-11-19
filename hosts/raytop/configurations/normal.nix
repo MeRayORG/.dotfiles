@@ -8,17 +8,20 @@
 
   myNixOS = {
     myUsers.meray.enable = true;
+    users.hmUser = "meray";
     
     myPrograms = {
       neovim.enable = true;
-      zsh.enable = false;
       starship.enable = true;
       git.enable = true;
-      fish.enable = true;
       windisk.enable = true;
-      #discord.enable = true;
+      discord.enable = true;
+      asianLangSupport.enable = true;
     };
     desktops.kde.enable = true;
+    desktops.hyprland.enable = true;
+    shell.nush.enable = true;
+
   };
 
 
@@ -69,19 +72,18 @@
     bottles
     steam
 
-
     libGL
-    nix-ld
-    #nix-alien
     steam-run
-    comma
 
 
     quickemu
     keepassxc
 
-    vscodium
-    drawio
+    # 7zip Support
+    p7zip
+
+    libguestfs-with-appliance
+
 
   ];
 
@@ -98,6 +100,8 @@
     hostName = "raynix"; # Define your hostname.
     networkmanager.enable = true; # Enable networking
   };
+
+
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
