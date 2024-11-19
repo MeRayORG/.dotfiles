@@ -16,4 +16,5 @@ rec {
   mkUser           = mkFun ./mkUser.nix;
   importer         = mkFun ./defImporter.nix;
   mkShellScript    = mkFun ./mkShellScript.nix;
+  mkEnableFun      = mkFun ./mkEnableFun.nix;
 }
