@@ -6,7 +6,7 @@
     inherit (lib.filesystem) pathIsDirectory;
 
 
-    itemParser = importFunction: {fileODirName, oldPath, oldAPath}:
+    itemParser = importFunction: {fileODirName, oldPath, oldImporterPath}:
       let
         path = lib.path.append oldPath fileODirName;
 
@@ -18,17 +18,17 @@
           let
             name = removeSuffix ".nix" fileODirName;
             #updateSet
-            aPath = oldAPath ++ [name];
+            importerPath = oldImporterPath ++ [name];
           in
-            importFunction path aPath;
+            importFunction path importerPath;
 
-        parseDef = importFunction path oldAPath;
+        parseDef = importFunction path oldImporterPath;
 
         doLoop = 
           let
             name = fileODirName;
             #updateSet
-            aPath = oldAPath ++ [name];
+            importerPath = oldImporterPath ++ [name];
           in
             builtins.foldl'
               ( set: item:
@@ -36,7 +36,7 @@
                   (itemParser importFunction { 
                     fileODirName = item;
                     oldPath = path;
-                    oldAPath = aPath; 
+                    oldImporterPath = importerPath; 
                   })
                   set
               ) 
@@ -59,5 +59,5 @@
     if !(isPath dir) 
     then throw "importer needs a nix path"
     else (
-      itemParser importFunction { fileODirName = baseNameOf dir; oldPath = ./.; oldAPath = [];}
+      itemParser importFunction { fileODirName = baseNameOf dir; oldPath = ./.; oldImporterPath = [];}
     )
