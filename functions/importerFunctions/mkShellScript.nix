@@ -1,7 +1,17 @@
-{lib, options, config, pkgs, ...}: aPath: script:
+{
+  lib, 
+  options, 
+  config, 
+  pkgs, 
+  importerAPath,
+  ...
+}@importerSet:
+
+script:
+
 let
   inherit (lib.attrsets) optionalAttrs;
-  scriptName = lib.lists.last aPath;
+  scriptName = importerAPath.last;
   shebang = "#!/bin/sh\n";
 in
   optionalAttrs 
