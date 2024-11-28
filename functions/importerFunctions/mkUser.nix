@@ -1,12 +1,18 @@
-{lib, ...}:
 {
+  lib, 
+  fun, 
+  importerAPath, 
+  ...
+}@importerSet:
+{
+  customAPath ? {},
   hmUser ? false,
   homeDir ? /home/userName,
 }:
-aPath:
 extraSettings:
 let
-  userName = lib.lists.last aPath;
+  aPath = importerAPath // customAPath;
+  userName = aPath.last;
 in
 {
   users.users.userName = {

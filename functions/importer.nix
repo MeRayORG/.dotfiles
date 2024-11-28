@@ -1,4 +1,4 @@
-{lib, ...}@inputset: dir:
+{lib, fun, ...}@inputset: dir:
 
 let
   importer = (import ./importLooper.nix) inputset;
@@ -6,10 +6,10 @@ let
 
   importFunction = path: importerPath:
     import path ({
-      importerAPath = mkAPath importerPath;
-      
-
-      inherit (inputset.fun) mkSys mkHome mkUser;
-    } // inputset);
+      importerAPath = fun.mkAPath importerPath;
+    } 
+    // inputset // 
+    ((import ./importerFunctions) inputset//{importerAPath})  
+    );
 in
   importer dir importFunction
