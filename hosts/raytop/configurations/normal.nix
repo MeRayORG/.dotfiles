@@ -16,11 +16,10 @@
       windisk.enable = true;
       discord.enable = true;
       asianLangSupport.enable = true;
+      nixd.enable = true;
     };
     desktops.kde.enable = true;
-    desktops.hyprland.enable = true;
     shell.nush.enable = true;
-
   };
 
 
