@@ -1,15 +1,21 @@
-{lib, fun, ...}@inputset: dir:
+{fun, ...}@inputset: dir:
 
 let
-  importer = (import ./importLooper.nix) inputset;
+  importLooper = (import ./importLooper.nix) inputset;
 
 
   importFunction = path: importerPath:
-    import path ({
+    let
       importerAPath = fun.mkAPath importerPath;
-    } 
-    // inputset // 
-    ((import ./importerFunctions) inputset//{importerAPath})  
+    in 
+    import path (
+      {
+        inherit importerAPath modules;
+      } 
+      // inputset // 
+      ((import ./importerFunctions) inputset//{inherit importerAPath modules;})  
     );
+
+  modules = importLooper dir importFunction;
 in
-  importer dir importFunction
+  modules
