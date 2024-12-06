@@ -1,6 +1,4 @@
 {
-  lib, 
-  fun, 
   importerAPath, 
   ...
 }@importerSet:
@@ -15,8 +13,8 @@ let
   userName = aPath.last;
 in
 {
-  users.users.userName = {
+  users.users.${userName} = {
     home = homeDir;
 
-  } // extraSettings
+  } // extraSettings;
 }
