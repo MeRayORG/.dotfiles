@@ -15,6 +15,6 @@ set:
     aPath = importerAPath // customAPath;
     enableOpt = fun.aPathToEnableOpt aPath;
   in
-    optionalAttrs 
+    lib.optionalAttrs 
       aPath.enable 
       set // {inherit aPath;} // enableOpt
