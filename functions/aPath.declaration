@@ -1,9 +1,0 @@
-mkAPath = list:
-{
-
-}
-
-aPath :: attribute Path set
-aPath = {
-  
-}
