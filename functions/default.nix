@@ -6,7 +6,7 @@ let
   };
 
   fun   = (import ./default.nix) inputset;
-  mkFun = (import ./mkFun.nix  ) inputset//{ inherit fun;};
+  mkFun = (import ./mkFun.nix  ) inputset // { inherit fun;};
 
 
   aPathToEnableOpt = mkFun ./aPathToEnableOpt.nix;
