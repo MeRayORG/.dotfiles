@@ -1,9 +1,7 @@
 {
-  lib, 
-  options, 
-  config, 
-  pkgs, 
+  lib,
   importerAPath,
+  pkgs,
   ...
 }@importerSet:
 
@@ -15,10 +13,10 @@ let
   shebang = "#!/bin/sh\n";
 in
   optionalAttrs 
-    aPath.enable 
+    importerAPath.enable 
     {
       environment.systemPackages = [
-        (writeShellScriptBin
+        (pkgs.writeShellScriptBin
           scriptName 
           (shebang + script)
         )
