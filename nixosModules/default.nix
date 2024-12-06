@@ -69,7 +69,8 @@ in {
     ]
     ++ myUsers
     ++ myPrograms
-    ++ desktops;
+    ++ desktops
+    ++ shell;
 
   options.myNixOS = {
     
