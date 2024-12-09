@@ -2,9 +2,8 @@
 {
   config,
   lib,
-  myLib,
   pkgs,
-  inputs,
+  mkHome,
   ...
 }: let
   inherit (builtins) hasAttr;

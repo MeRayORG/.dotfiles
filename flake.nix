@@ -43,20 +43,8 @@
         # ===================== NixOS Configurations ===================== #
 
         raynix = mkSysHome "x86_64-linux" ./hosts/raytop/configurations/normal.nix;
-        # work = mkSystem ./hosts/work/configuration.nix;
-        # vps = mkSystem ./hosts/vps/configuration.nix;
-        # liveiso = mkSystem ./hosts/liveiso/configuration.nix;
+        
       };
-      homeConfigurations = {
-        # ================ Maintained home configurations ================ #
-
-        "yurii@laptop" = mkHome "x86_64-linux" ./hosts/laptop/home.nix;
-        "yurii@work" = mkHome "x86_64-linux" ./hosts/work/home.nix;
-      };
-
-
-      homeManagerModules.default = ./homeManagerModules;
-      nixosModules.default = ./nixosModules;
     };
   
 }
