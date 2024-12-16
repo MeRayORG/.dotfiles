@@ -1,20 +1,19 @@
 {
-  importerAPath, 
+  importerAPath,
   ...
 }@importerSet:
 {
-  customAPath ? {},
   hmUser ? false,
-  homeDir ? /home/userName,
+  homeDir ? null,
 }:
 extraSettings:
 let
-  aPath = importerAPath // customAPath;
+  aPath = importerAPath;
   userName = aPath.last;
-in
-{
+  finalHomeDir = if homeDir == null then "/home/${userName}" else homeDir;
+in {
   users.users.${userName} = {
-    home = homeDir;
-
+    home = finalHomeDir;
+    hmUser = hmUser;
   } // extraSettings;
 }

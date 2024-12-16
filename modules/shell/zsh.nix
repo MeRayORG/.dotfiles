@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }: with lib;
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    zsh 
+  environment.systemPackages = [
+    pkgs.zsh 
   ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;

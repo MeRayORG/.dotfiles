@@ -1,35 +1,45 @@
-{lib, ...}@inputset: dir:
+inputs: dir:
 
 let
+  configuration = import ../hosts/raytop/normal.nix;
 
-  inherit (lib.attrsets) setAttrByPath hasAttrByPath;
-  importLooper = (import ./importLooper.nix) inputset;
+  pkgs  = import inputs.nixpkgs {inherit (configuration) system;};
+  upkgs = import inputs.upkgs   {inherit (configuration) system;};
+  inherit (pkgs) lib;
 
-  mkAPath = list:
-    {
-      inherit list;
-      last = lib.lists.last list;
-      setVal = setAttrByPath list;
-      readAttr = attr: defval: hasAttrByPath (list ++ [attr]) defval modules; 
-      readEnable = hasAttrByPath (list ++ ["enable"]) false modules; 
+  importLooper = (import ./importLooper.nix) lib;
 
+  sets = aPath: 
+  let
+    cfg = lib.attrsets.attrByPath aPath {} configuration.mods;
 
-      #addOption = # eg. mkHome {...} |> addOption 
-    # optionPath =
-    # configPath = 
+  in {
+    forFunc = { # set to import to each importerFunction
+      inherit
+        lib # for library functions 
+        cfg # check in mkSysFunc if modules.programs.firefox.enable = true
+        inputs # get HomeManager in mkHome
+        ;
     };
 
 
-  importFunction = path: importerPath:
-    let
-      importerAPath = mkAPath importerPath;
-    in 
+    forMods = { # set to import to each module
+      inherit lib inputs pkgs upkgs cfg;
+    };
+  };
+
+
+
+
+  importFunction = path: aPath:
+  let
+    setForMods = (sets aPath).forMods;
+    setForFunc = (sets aPath).forFunc;
+
+  in
     import path (
-      {
-        inherit importerAPath modules mkAPath;
-      } 
-      // inputset // 
-      ((import ./importerFunctions) inputset//{inherit importerAPath modules mkAPath;})  
+      setForMods
+      ((import ./importerFunctions) setForFunc)  
     );
 
   modules = importLooper dir importFunction;

@@ -29,7 +29,7 @@
 
   
 
-  environment.systemPackages = [ keyd ];
+  environment.systemPackages = [ pkgs.keyd ];
 
   options.services.keyd = {
     overloads = lib.mkOption {
