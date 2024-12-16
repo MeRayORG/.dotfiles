@@ -1,4 +1,4 @@
-{lib, ...}: dir: importFunction:
+lib: dir: importFunction:
   let
 
     inherit (builtins) attrNames readDir readFileType isPath baseNameOf toString;

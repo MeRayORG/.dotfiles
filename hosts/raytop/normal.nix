@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../hardware-configuration.nix
-    ../nvidia.nix
+    ./mods/hardware-configuration.nix
+    ./mods/nvidia.nix
   ];
 
   myNixOS = {
