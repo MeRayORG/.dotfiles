@@ -2,7 +2,7 @@
   pkgs,
   ... 
 }: {
-  fonts.fonts = [
+  fonts.packages = [
     pkgs.noto-fonts
     pkgs.noto-fonts-extra
     pkgs.noto-fonts-cjk-sans
