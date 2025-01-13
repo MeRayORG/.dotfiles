@@ -27,4 +27,4 @@ let
   enableOpt = fun.aPathToEnableOpt aPath;
   finalSet = baseSet // enableOpt;
 in
-  optionalAttrs finalSet.enable finalSet
+  finalSet
