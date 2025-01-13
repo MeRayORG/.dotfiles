@@ -1,7 +1,7 @@
 lib: dir: importFunction:
   let
 
-    inherit (builtins) attrNames readDir readFileType isPath baseNameOf toString;
+    inherit (builtins) attrNames readDir isPath baseNameOf toString;
     inherit (lib.strings) hasSuffix removeSuffix;
     inherit (lib.filesystem) pathIsDirectory;
 
