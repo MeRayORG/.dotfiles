@@ -1,6 +1,6 @@
 {config, pkgs, ...}:
 {
-  environment= {
+  environment = {
     systemPackages = with pkgs; [
       neovim
       wl-clipboard-rs
