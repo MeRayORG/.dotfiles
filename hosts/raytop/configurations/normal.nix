@@ -82,6 +82,12 @@
 
     libguestfs-with-appliance
 
+    cemu
+
+    #tinydistro
+    make
+    genisoimage
+
 
   ];
 
