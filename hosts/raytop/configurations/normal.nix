@@ -82,12 +82,8 @@
 
     libguestfs-with-appliance
 
-    cemu
-
-    #tinydistro
-    make
-    genisoimage
-
+    sshfs
+    tailscale
 
   ];
 
