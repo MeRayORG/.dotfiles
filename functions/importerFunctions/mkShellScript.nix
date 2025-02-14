@@ -1,24 +1,22 @@
 {
-  lib,
   importerAPath,
   pkgs,
   ...
-}@importerSet:
+}:
+
+name:
 
 script:
 
 let
-  inherit (lib.attrsets) optionalAttrs;
   scriptName = importerAPath.last;
   shebang = "#!/bin/sh\n";
 in
-  optionalAttrs 
-    importerAPath.enable 
-    {
-      environment.systemPackages = [
-        (pkgs.writeShellScriptBin
-          scriptName 
-          (shebang + script)
-        )
-      ];
-    }
+  {
+    environment.systemPackages = [
+      (pkgs.writeShellScriptBin
+        scriptName 
+        (shebang + script)
+      )
+    ];
+  }

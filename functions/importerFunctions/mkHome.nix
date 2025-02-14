@@ -1,30 +1,19 @@
 {
-  lib, 
-  fun, 
-  importerAPath,
+  lib,
   modules,
   ...
-}@importerSet:
-
-{
-  customAPath ? {}
 }:
 
 homeOptSet:
 let
-  aPath = importerAPath // customAPath;
 
-  inherit (lib.attrsets) filterAttrs mapAttrs optionalAttrs;
+  inherit (lib.attrsets) filterAttrs;
 
   # filterAttrs takes (name: val: bool) arguments
   hmUsers = builtins.attrNames (filterAttrs (name: user: user.hmUser == true) modules.users);
 
-  forAllHMUsers = set: {
-    home-manager.users = lib.genAttrs hmUsers (_: set);
+  genSet = set: {
+    home-manager.users = lib.genAttrs hmUsers (_: homeOptSet);
   };
-
-  baseSet = forAllHMUsers (homeOptSet // { inherit aPath; });
-  enableOpt = fun.aPathToEnableOpt aPath;
-  finalSet = baseSet // enableOpt;
 in
-  finalSet
+  genSet

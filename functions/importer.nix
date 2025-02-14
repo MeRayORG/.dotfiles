@@ -18,7 +18,8 @@ let
       inherit
         lib # for library functions 
         cfg # check in mkSysFunc if modules.programs.firefox.enable = true
-        inputs # get HomeManager in mkHome
+        inputs # get HomeManager in mkHomes
+        aPath
         ;
     };
 
