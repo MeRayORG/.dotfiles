@@ -11,7 +11,9 @@ let
 
   sets = aPath: 
   let
-    cfg = lib.attrsets.attrByPath aPath {} configuration.mods;
+
+    config = configuration.mods;
+    cfg = lib.attrsets.attrByPath aPath {} config;
     
   in {
     forFunc = { # set to import to each importerFunction
@@ -25,7 +27,7 @@ let
 
 
     forMods = { # set to import to each module
-      inherit lib inputs pkgs upkgs cfg;
+      inherit lib inputs pkgs upkgs cfg config;
     };
   };
 

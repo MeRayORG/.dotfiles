@@ -1,6 +1,7 @@
 {
   lib,
   cfg,
+  aPath,
   ...
 }:
-lib.optionalAttrs cfg.enable
+{opt.enable = lib.mkEnableOption (lib.last aPath);} // lib.optionalAttrs cfg.enable
