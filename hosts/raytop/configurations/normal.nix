@@ -85,7 +85,7 @@
     sshfs
     tailscale
 
-    freerdp
+    remmina
 
     waypipe
 
