@@ -1,5 +1,5 @@
 {
-  importerAPath,
+  aPath,
   pkgs,
   lib,
   ...
@@ -8,7 +8,7 @@
 script:
 
 let
-  scriptName = lib.last importerAPath;
+  scriptName = lib.last aPath;
   shebang = "#!/bin/sh\n";
 in
   {

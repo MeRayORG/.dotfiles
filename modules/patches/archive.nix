@@ -1,7 +1,9 @@
 {
   pkgs,
+  aPath,
   ...
 }: {
+
 
   environment.systemPackages = with pkgs; [
     # 7zip support
