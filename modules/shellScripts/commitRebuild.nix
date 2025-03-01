@@ -6,4 +6,4 @@ mkShellScript
   git add $nixconf
   sudo nixos-rebuild switch --flake $nixconf
   git commit --allow-empty -m ($message + "{generation: " + (readlink /nix/var/nix/profiles/system | grep -o "[0-9]*") + "}") $nixconf
-'''
+''

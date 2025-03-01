@@ -1,5 +1,6 @@
 {
-  importerAPath,
+  aPath,
+  lib,
   ...
 }:
 {
@@ -8,7 +9,7 @@
 }:
 
 let
-  userName = importerAPath.last;
+  userName = lib.last aPath;
   finalHomeDir = if homeDir == null then "/home/${userName}" else homeDir;
 in {
   users.users.${userName} = {
