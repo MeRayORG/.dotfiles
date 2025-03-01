@@ -85,6 +85,12 @@
     sshfs
     tailscale
 
+    freerdp
+
+    waypipe
+
+    whatsapp-for-linux
+
   ];
 
   # Install firefox.
