@@ -91,6 +91,8 @@
 
     whatsapp-for-linux
 
+    texliveFull
+
   ];
 
   # Install firefox.
