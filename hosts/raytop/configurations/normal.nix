@@ -92,12 +92,16 @@
     whatsapp-for-linux
 
     texliveFull
+    btop
+
+
 
   ];
 
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam.enable = true;
+  services.tailscale.enable = true;
 
 
   boot.loader = {
