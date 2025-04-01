@@ -22,7 +22,10 @@
     shell.nush.enable = true;
   };
 
-
+   swapDevices = [ {
+    device = "/swapfile";
+    size = 128*1024;
+  } ];
 
   environment.systemPackages = with pkgs; [
 
@@ -94,6 +97,8 @@
     texliveFull
     btop
 
+
+    bookworm
 
 
   ];
