@@ -7,17 +7,17 @@ let
   importModules = dir: basePath:
     let
       contents = builtins.readDir dir;
-      processEntry = name: type:
+      processEntry = fileName: type:
         if type == "directory" then
-          importModules (dir + "/${name}") (basePath ++ [name])
-        else if type == "regular" && lib.strings.hasSuffix ".nix" name then
+          importModules (dir + "/${fileName}") (basePath ++ [fileName])
+        else if type == "regular" && lib.strings.hasSuffix ".nix" fileName then
           let
+            name = lib.strings.removeSuffix ".nix" fileName;
             # Compute the relative path as a list (e.g., ["patches" "fix"])
-            aPath = basePath ++ [lib.strings.removeSuffix ".nix" name];
+            aPath = basePath ++ [name];
             # Import the module as a function, passing the path as an argument
-            module = importFunction (dir + "/${name}") aPath;
           in
-            [ module ]
+            [(importFunction (dir + "/${fileName}") aPath)]
         else
           [];
     in
@@ -25,11 +25,11 @@ let
 
 
   # Import all modules and pass their paths as lists
-  modules = importModules path [];
+  moduleslist = importModules path ["modules"];
 
   # Merge all modules into a single top-level set
-  mergedModules = builtins.foldl' (acc: module: acc // module) {} modules;
+  #mergedModules = builtins.foldl' (acc: module: acc // module) {} modules;
 
-in {
-  inherit mergedModules;
-}
+  mergedModules = lib.evalModules {modules = moduleslist;};
+
+in  mergedModules

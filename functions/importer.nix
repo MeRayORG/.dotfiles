@@ -1,55 +1,28 @@
-inputs: dir:
+config: lib: dir:
 
 let
-  configuration = import ../hosts/raytop/normal.nix;
 
-  pkgs  = import inputs.nixpkgs {inherit (configuration) system;};
-  upkgs = import inputs.upkgs   {inherit (configuration) system;};
-  inherit (inputs.nixpkgs) lib;
+  # pkgs  = import inputs.nixpkgs {inherit (configuration) system;};
+  # upkgs = import inputs.upkgs   {inherit (configuration) system;};
+  # inherit (inputs.nixpkgs) lib;
 
   importLooper = (import ./importLooper.nix);
   importerFunctions = import ./importerFunctions;
 
 
-
-
-  sets = aPath: 
-  let
-    config = configuration.mods;
-    cfg = lib.attrsets.attrByPath aPath {} config;
-  in {
-    forFunctions = { # set to import to each importerFunction
-      inherit
-        lib # for library functions 
-        cfg # check in mkEnable if modules.programs.firefox.enable = true
-        aPath
-        ;
-    };
-    forModules = { # set to import to each module
-      inherit 
-        lib 
-        inputs 
-        pkgs 
-        upkgs 
-        cfg 
-        config
-        aPath
-        
-        ;
-    };
-  };
-
-
-
-
   importFunction = path: aPath:
   let
-    setForModules   = (sets aPath).forModules;
-    setForFunctions = (sets aPath).forFunctions;
-
+    set = { # set to import to each importerFunction
+      inherit
+        lib # for library functions 
+        aPath
+        config
+        ;
+    };
+    
   in
     import path (
-      (importerFunctions setForFunctions) // setForModules
+      (importerFunctions set) // set
     );
 in
-  importLooper dir importFunction
+  importLooper lib dir importFunction
