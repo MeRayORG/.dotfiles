@@ -5,18 +5,20 @@ let
 
   pkgs  = import inputs.nixpkgs {inherit (configuration) system;};
   upkgs = import inputs.upkgs   {inherit (configuration) system;};
-  inherit (pkgs) lib;
+  inherit (inputs.nixpkgs) lib;
 
-  importLooper = (import ./importLooper.nix) lib;
+  importLooper = (import ./importLooper.nix);
+  importerFunctions = import ./importerFunctions;
+
+
+
 
   sets = aPath: 
   let
-
     config = configuration.mods;
     cfg = lib.attrsets.attrByPath aPath {} config;
-    
   in {
-    forFunc = { # set to import to each importerFunction
+    forFunctions = { # set to import to each importerFunction
       inherit
         lib # for library functions 
         cfg # check in mkSysFunc if modules.programs.firefox.enable = true
@@ -24,10 +26,17 @@ let
         aPath
         ;
     };
-
-
-    forMods = { # set to import to each module
-      inherit lib inputs pkgs upkgs cfg config;
+    forModules = { # set to import to each module
+      inherit 
+        lib 
+        inputs 
+        pkgs 
+        upkgs 
+        cfg 
+        config
+        aPath
+        
+        ;
     };
   };
 
@@ -36,15 +45,12 @@ let
 
   importFunction = path: aPath:
   let
-    setForMods = (sets aPath).forMods;
-    setForFunc = (sets aPath).forFunc;
+    setForModules   = (sets aPath).forModules;
+    setForFunctions = (sets aPath).forFunctions;
 
   in
     import path (
-      setForMods
-      ((import ./importerFunctions) setForFunc)  
+      ((import ./importerFunctions) setForFunctions)  
     );
-
-  modules = importLooper dir importFunction;
 in
-  modules
+  importLooper dir importFunction
