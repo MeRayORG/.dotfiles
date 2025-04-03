@@ -6,7 +6,7 @@
 let
   files = builtins.attrNames (builtins.readDir ./.);
   nixFiles = builtins.filter (file:
-    file != "default.nix" && lib.strings.hasSuffix ".nix" file
+    file != "default.nix" && lib.strings.hasSuffix ".nix" file 
   ) files;
 in
   builtins.listToAttrs (map (file: {
