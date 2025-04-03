@@ -6,4 +6,4 @@ let
     config = { modules.enable = false;};
   };
 in
-  ((import ./modules/testEnable.nix) funs)
+  ((import ./modules/enabler.nix) funs)
