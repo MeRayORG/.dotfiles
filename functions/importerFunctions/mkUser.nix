@@ -6,6 +6,10 @@
 {
   hmUser ? false,
   homeDir ? null,
+  extraConfig ? {},
+  description ? "",
+  
+
 }:
 
 let
@@ -13,7 +17,9 @@ let
   finalHomeDir = if homeDir == null then "/home/${userName}" else homeDir;
 in {
   users.users.${userName} = {
+    inherit description;
+    isNormalUser = true;
     home = finalHomeDir;
     hmUser = hmUser;
-  };
+  } // extraConfig;
 }

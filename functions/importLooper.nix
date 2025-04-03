@@ -24,7 +24,7 @@ let
       builtins.concatLists (builtins.attrValues (builtins.mapAttrs processEntry contents));
 
   # Directory containing the modules
-  modulesDir = ./modules;
+  modulesDir = ../modules;
 
   # Import all modules and pass their paths as lists
   modules = importModules modulesDir [];
