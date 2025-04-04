@@ -42,7 +42,7 @@
     mkSystem = config:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
-        (importConfig config)
+        config
       ];
     };
   in
@@ -54,6 +54,7 @@
         
         
       };
+      nixosModules.default = importConfig;
     };
   
 }
