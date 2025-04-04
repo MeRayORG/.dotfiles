@@ -1,10 +1,10 @@
-config: lib: dir:
+inputs: dir: config:
 
 let
 
-  # pkgs  = import inputs.nixpkgs {inherit (configuration) system;};
-  # upkgs = import inputs.upkgs   {inherit (configuration) system;};
-  # inherit (inputs.nixpkgs) lib;
+  pkgs  = import inputs.nixpkgs { system = config.systemArchitecture; };
+  upkgs = import inputs.upkgs   { system = config.systemArchitecture; };
+  inherit (inputs.nixpkgs) lib;
 
   importLooper = (import ./importLooper.nix);
   importerFunctions = import ./importerFunctions;
@@ -17,6 +17,8 @@ let
         lib # for library functions 
         aPath
         config
+        pkgs
+        upkgs
         ;
     };
     

@@ -37,26 +37,21 @@
 
   outputs = {... }@inputs :
   let
-    # super simple boilerplate-reducing
-    # lib with a bunch of functions
-    myLib = import ./myLib/default.nix {inherit inputs;};
+    importConfig = (import ./functions/importer.nix) inputs ./modules;
 
     mkSystem = config:
     inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs outputs myLib;
-      };
       modules = [
-        config
-        outputs.nixosModules.default
+        (importConfig config)
       ];
     };
   in
-    with myLib; {
+    {
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        raynix = mkSysHome "x86_64-linux" ./hosts/raytop/configurations/normal.nix;
+        raynix = mkSystem ./normal.nix;
+        
         
       };
     };

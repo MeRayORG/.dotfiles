@@ -10,9 +10,13 @@
     test.firefox.enable = true;
   };
 
+  systemArchitecture = "x86_64-linux";
 
-  environment.systemPackages = [
-  ];
+  users.users.meray = {
+    isNormalUser = true;
+    description = "Merlin Raymond";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
 
 
 
