@@ -5,84 +5,15 @@
     ./mods/hardware-configuration.nix
     ./mods/nvidia.nix
   ];
-
-  myNixOS = {
-    myUsers.meray.enable = true;
-    users.hmUser = "meray";
-    
-    myPrograms = {
-      neovim.enable = true;
-      starship.enable = true;
-      git.enable = true;
-      discord.enable = true;
-    };
-    # services = {
-    #   windisk.enable = true;
-    #   asianLangSupport.enable = true;
-    # };
-    desktop = "hyprland";
-    shell.nush.enable = true;
-
+  
+  modules = {
+    test.firefox.enable = true;
   };
 
 
-
-  environment.systemPackages = with pkgs; [
-
-    wget
-    brave
-
-    gparted
-    btrfs-progs
-
-    git
-    python3
-
-
-    kate
-    polkit
-
-    teams-for-linux
-
-    vscodium
-
-
-    rclone
-    kitty
-    tree
-
-    ## create options like: mapESCtoCAPS.enable = true
-    # https://github.com/rvaiya/keyd
-    keyd
-    ###
-
-    prismlauncher
-
-    ## Office
-    #mkif env = hyperland or Sway
-    #onlyoffice-bin
-    #else
-    onlyoffice-bin_latest
-
-    gimp
-    inkscape
-    ###
-
-    bottles
-    steam
-
-    libGL
-    steam-run
-
-
-    quickemu
-    keepassxc
-
-    libguestfs-with-appliance
+  environment.systemPackages = [
   ];
 
-  # Install firefox.
-  programs.firefox.enable = true;
 
 
   boot.loader = {
