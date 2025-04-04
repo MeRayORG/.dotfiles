@@ -40,6 +40,17 @@
     # super simple boilerplate-reducing
     # lib with a bunch of functions
     myLib = import ./myLib/default.nix {inherit inputs;};
+
+    mkSystem = config:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs outputs myLib;
+      };
+      modules = [
+        config
+        outputs.nixosModules.default
+      ];
+    };
   in
     with myLib; {
       nixosConfigurations = {
