@@ -1,10 +1,11 @@
 {
   pkgs,
   mkEnable,
+  aPath,
   ...
 }:
 
-mkEnable {
+mkEnable (aPath ++ ["wget"]) {
   environment.systemPackages = [
     pkgs.wget
   ];

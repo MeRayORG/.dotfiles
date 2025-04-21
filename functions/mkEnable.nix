@@ -1,9 +1,9 @@
 {
   lib,
   config,
-  aPath,
   ...
 }:
+aPath:
 let
   inherit (lib.attrsets) setAttrByPath attrByPath;
   
