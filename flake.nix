@@ -41,7 +41,7 @@
 
     mkSystem = config:
     inputs.nixpkgs.lib.nixosSystem {
-      modules = [
+      imports = [
         config
       ];
     };
@@ -50,7 +50,12 @@
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        raynix = mkSystem ./normal.nix;
+        raynix = inputs.nixpkgs.lib.nixosSystem {
+          modules = [
+            ./normal.nix
+            importConfig
+          ];
+        };
         
         
       };
