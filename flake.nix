@@ -37,14 +37,8 @@
 
   outputs = {... }@inputs :
   let
-    importConfig = (import ./functions/importer.nix) inputs ./modules;
-
-    mkSystem = config:
-    inputs.nixpkgs.lib.nixosSystem {
-      imports = [
-        config
-      ];
-    };
+    lib = <nixpkgs/lib>;
+    functions = (import ./functions) lib;
   in
     {
       nixosConfigurations = {
@@ -53,13 +47,10 @@
         raynix = inputs.nixpkgs.lib.nixosSystem {
           modules = [
             ./normal.nix
-            importConfig
           ];
+          specialArgs = functions;
         };
-        
-        
       };
-      nixosModules.default = importConfig;
     };
   
 }
