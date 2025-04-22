@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}@setForFunctions:
-
+lib:
 let
   files = builtins.attrNames (builtins.readDir ./.);
   nixFiles = builtins.filter (file:
@@ -11,5 +7,5 @@ let
 in
   builtins.listToAttrs (map (file: {
     name = lib.strings.removeSuffix ".nix" file;
-    value = import (./. + "/${file}") setForFunctions;
+    value = import (./. + "/${file}") lib;
   }) nixFiles)

@@ -1,8 +1,12 @@
 {
-  lib, pkgs, config, defImp, aPath, ...
+  lib, pkgs, config, defImp, aPath, id, ...
 }: 
-
-defImp {
-  name = "modules";
-  inherit aPath;
+id {
+  imports = [./wget.nix];
+  config = {};
+  options = {};
 }
+# defImp {
+#   name = "modules";
+#   inherit aPath;
+# }

@@ -35,20 +35,23 @@
     ags.url = "github:Aylur/ags";
   };
 
-  outputs = {... }@inputs :
+  outputs = {nixpkgs, ... }@inputs :
   let
-    lib = <nixpkgs/lib>;
-    functions = (import ./functions) lib;
+    f = import ./functions nixpkgs.lib;
+
+
+
   in
     {
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        raynix = inputs.nixpkgs.lib.nixosSystem {
+        raynix = nixpkgs.lib.nixosSystem {
           modules = [
             ./normal.nix
+            ./modules
           ];
-          specialArgs = functions;
+          specialArgs = inputs // f;
         };
       };
     };
