@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+lib:
 {
   aPath,
   name,
@@ -21,9 +18,6 @@ let
   );
 in
 {
-  imports = map (name: ./. + "/${name}") validNames;
-  specialArgs = {
-    aPath = aPath ++ ["${name}"];
-  };
+  imports = [({aPath = aPath ++ ["${name}"];})] ++ map (name: ./. + "/${name}") validNames;
   inherit config options;
 }

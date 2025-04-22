@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
   imports = [
@@ -6,11 +6,6 @@
     ./mods/nvidia.nix
   ];
   
-  modules = {
-    test.firefox.enable = true;
-  };
-
-  systemArchitecture = "x86_64-linux";
 
   users.users.meray = {
     isNormalUser = true;
