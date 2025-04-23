@@ -7,5 +7,5 @@ let
 in
   builtins.listToAttrs (map (file: {
     name = lib.strings.removeSuffix ".nix" file;
-    value = import (./. + "/${file}") lib;
+    value = import (./. + "/${file}");
   }) nixFiles)

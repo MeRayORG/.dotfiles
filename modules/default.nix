@@ -1,7 +1,7 @@
 {
   lib, pkgs, config, defImp, aPath, id, ...
-}: 
-id {
+}@set: 
+id set {
   imports = [./wget.nix];
   config = {};
   options = {};
