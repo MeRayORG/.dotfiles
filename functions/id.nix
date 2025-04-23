@@ -1,1 +1,1 @@
-lib: x: lib.trivial.id x
+{lib,...}: x: lib.trivial.id x
