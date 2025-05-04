@@ -1,10 +1,6 @@
-lib:
-{
-  aPath,
-  name,
-  config ? {},
-  options ? {}
-}:
+{lib, aPath, ...}:
+
+dir: name:
 let
   # Filter to get all directories and .nix files except default.nix
   validNames = builtins.attrNames (
@@ -14,10 +10,11 @@ let
         (type == "regular" && lib.hasSuffix ".nix" name && name != "default.nix")
       )
 
-      (builtins.readDir ./.)
+      (builtins.readDir dir)
   );
 in
 {
-  imports = [({aPath = aPath ++ ["${name}"];})] ++ map (name: ./. + "/${name}") validNames;
-  inherit config options;
+  imports = [ ] ++ map (name: dir + "/${name}") validNames;
+  specialArgs = {aPath = aPath ++ ["${name}"];};
 }
+ # {aPath = aPath ++ ["${name}"];}

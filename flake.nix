@@ -19,7 +19,7 @@
             ./normal.nix
             ./modules
           ];
-          specialArgs = inputs // f;
+          specialArgs = inputs // f // {aPath =[];};
         };
       };
     };
