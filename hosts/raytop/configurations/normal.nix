@@ -100,12 +100,12 @@
 
     
     clang
-    clangd
     ccls
 
     typst
     typst-lsp
 
+    spotify
 
 
   ];
