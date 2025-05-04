@@ -93,12 +93,18 @@
     waypipe
 
     whatsapp-for-linux
-
-    texliveFull
     btop
 
 
     bookworm
+
+    
+    clang
+    ccls
+
+    typst
+    typst-lsp
+
 
 
   ];
