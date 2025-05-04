@@ -100,6 +100,7 @@
 
     
     clang
+    clangd
     ccls
 
     typst
