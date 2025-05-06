@@ -1,4 +1,4 @@
-{lib, aPath, ...}:
+{lib, ...}:
 
 dir: name:
 let

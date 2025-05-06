@@ -8,7 +8,7 @@
 
   outputs = {nixpkgs, ... }@inputs :
   let
-    f = import ./functions nixpkgs.lib;
+    f = import ./functions/modFunctions nixpkgs.lib;
   in
     {
       nixosConfigurations = {
@@ -16,10 +16,10 @@
 
         raynix = nixpkgs.lib.nixosSystem {
           modules = [
-            ./normal.nix
+            ./hosts/raytop
             ./modules
           ];
-          specialArgs = inputs // f // {aPath =[];};
+          specialArgs = inputs // f;
         };
       };
     };
