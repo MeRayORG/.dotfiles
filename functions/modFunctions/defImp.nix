@@ -14,7 +14,6 @@ let
   );
 in
 {
-  imports = [ ] ++ map (name: dir + "/${name}") validNames;
-  specialArgs = {aPath = aPath ++ ["${name}"];};
+  imports = map (name: dir + "/${name}") validNames;
 }
  # {aPath = aPath ++ ["${name}"];}
