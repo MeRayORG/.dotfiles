@@ -1,6 +1,6 @@
 # https://github.com/CallMeCaleb94/KyniFlakes/blob/main/modules/nvidia.nix
 
-{ pkgs, config, libs, ... }:
+{ config, ... }:
 
 {
 
@@ -39,17 +39,10 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-#     prime = {
-# 		# Make sure to use the correct Bus ID values for your system!
-# 		  intelBusId \= "PCI:00:02.0";
-# 		  nvidiaBusId \== "PCI:01:00.0";
-      # Dont enable. check first
-# 	};
-
   };
 
   hardware.nvidia.prime = {
-    sync.enable = true;
+    offload.enable = true;
 		# Make sure to use the correct Bus ID values for your system!
 		nvidiaBusId = "PCI:1:0:0";
     amdgpuBusId = "PCI:4:0:0";

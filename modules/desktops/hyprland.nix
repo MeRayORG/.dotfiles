@@ -8,10 +8,10 @@
     # HYPRLAND
     hyprland = {
       enable = true;
-      package = hyprland.packages.${pkgs.system}.hyprland;
+      # package = hyprland.packages.${pkgs.system}.hyprland;
     };
     # HYPRLOCK
-    hyprlock.enable = true;
+    # hyprlock.enable = true;
   };
 
   # wayland.windowManager.hyprland = {
