@@ -18,13 +18,14 @@
       asianLangSupport.enable = true;
       nixd.enable = true;
     };
-    desktops.kde.enable = true;
+    #desktops.kde.enable = true;
+    desktops.hyprland.enable = true; 
     shell.nush.enable = true;
   };
 
-   swapDevices = [ {
+  swapDevices = [ {
     device = "/swapfile";
-    size = 128*1024;
+    size = 128*1024; 
   } ];
 
   environment.systemPackages = with pkgs; [
@@ -107,7 +108,7 @@
 
     spotify
 
-
+    SDL2
   ];
 
   # Install firefox.
