@@ -1,5 +1,4 @@
 {
-  hyprland,
   pkgs,
   ...
 }: 
@@ -11,7 +10,11 @@
       # package = hyprland.packages.${pkgs.system}.hyprland;
     };
     # HYPRLOCK
-    # hyprlock.enable = true;
+    hyprlock.enable = true;
+  };
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
   };
 
   # wayland.windowManager.hyprland = {
