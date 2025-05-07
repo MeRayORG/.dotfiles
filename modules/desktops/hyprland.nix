@@ -16,7 +16,7 @@
       enable = true;
       wayland.enable = true;
   };
-  environment.systemPackages = [ pkgs.hyprpanel ];
+  environment.systemPackages = [ pkgs.hyprpanel pkgs.foot ];
 
   # wayland.windowManager.hyprland = {
   #   enable = true;
