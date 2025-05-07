@@ -37,18 +37,21 @@
 
   outputs = {nixpkgs, ... }@inputs :
   let
-    f = import ./functions/modFunctions nixpkgs.lib;
+    f = import ./functions/funs inputs;
+    moduleFunctions = import ./functions/modFunctions nixpkgs.lib;
   in
     {
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
+        # raynix = f.mkSystem ./hosts/raytop;
         raynix = nixpkgs.lib.nixosSystem {
           modules = [
+            {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             ./hosts/raytop
             ./modules
           ];
-          specialArgs = inputs // f;
+          specialArgs = inputs // moduleFunctions;
         };
       };
     };

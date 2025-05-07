@@ -3,11 +3,11 @@
   ...
 }: 
 {
+  fonts.packages = with pkgs; [ nerdfonts ];
   programs = {
     # HYPRLAND
     hyprland = {
       enable = true;
-      # package = hyprland.packages.${pkgs.system}.hyprland;
     };
     # HYPRLOCK
     hyprlock.enable = true;
@@ -16,6 +16,7 @@
       enable = true;
       wayland.enable = true;
   };
+  environment.systemPackages = [ pkgs.hyprpanel ];
 
   # wayland.windowManager.hyprland = {
   #   enable = true;
