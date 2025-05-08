@@ -6,23 +6,6 @@
     ./nvidia.nix
   ];
 
-  # myNixOS = {
-  #   myUsers.meray.enable = true;
-    
-  #   myPrograms = {
-  #     neovim.enable = true;
-  #     starship.enable = true;
-  #     git.enable = true;
-  #     windisk.enable = true;
-  #     discord.enable = true;
-  #     asianLangSupport.enable = true;
-  #     nixd.enable = true;
-  #   };
-  #   #desktops.kde.enable = true;
-  #   desktops.hyprland.enable = true; 
-  #   shell.nush.enable = true;
-  # };
-
   swapDevices = [ {
     device = "/swapfile";
     size = 128*1024; 
@@ -49,7 +32,6 @@
 
 
     rclone
-    kitty
     tree
     eza
     unrar
@@ -110,6 +92,17 @@
 
     SDL2
   ];
+
+  services.keyd = {
+    overloads = [
+      { key = "a";  tap = "a";  hold = "leftcontrol"; }
+      { key = "s";              hold = "leftshift"; }
+      { key = "space";          hold = "enter"; }
+    ];
+    remaps = [
+      { key = "capslock"; target = "esc"; }
+    ];
+  };
 
   # Install firefox.
   programs.firefox.enable = true;

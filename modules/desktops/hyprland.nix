@@ -20,6 +20,7 @@
     pkgs.hyprpanel
     pkgs.foot
     pkgs.wofi
+    pkgs.yazi
 
 
 
