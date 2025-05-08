@@ -44,7 +44,7 @@
       generateRemaps = remaps: lib.concatStringsSep "\n" 
         (map (
           remap:
-            "${remap.key} = ${remap.target})"
+            "${remap.key} = ${remap.target}"
         ) remaps);
     in
       ''
