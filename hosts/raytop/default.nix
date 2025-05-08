@@ -95,8 +95,19 @@
 
   services.keyd = {
     overloads = [
-      { key = "a";  tap = "a";  hold = "control"; }
-      { key = "s";              hold = "shift"; }
+      { key = "a"; hold = "control"; }
+      { key = "s"; hold = "shift";   }
+      { key = "d"; hold = "alt";     }
+      { key = "f"; hold = "meta";    }
+
+      { key = "j"; hold = "meta";    }
+      { key = "k"; hold = "alt";     }
+      { key = "l"; hold = "shift";   }
+      { key = ";"; hold = "control"; }
+      
+      
+      
+
       { key = "space";          hold = "enter"; }
     ];
     remaps = [
