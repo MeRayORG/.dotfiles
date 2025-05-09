@@ -74,6 +74,7 @@
 
   ];
   services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # wayland.windowManager.hyprland = {
   #   enable = true;
