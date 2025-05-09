@@ -73,6 +73,7 @@
     pkgs.swww
 
   ];
+  services.upower.enable = true;
 
   # wayland.windowManager.hyprland = {
   #   enable = true;
