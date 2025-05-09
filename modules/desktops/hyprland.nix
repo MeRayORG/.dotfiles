@@ -75,6 +75,7 @@
   ];
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
+  hardware.bluetooth.enable = true;
 
   # wayland.windowManager.hyprland = {
   #   enable = true;
