@@ -91,7 +91,11 @@
     spotify
 
     SDL2
+
+    calibre
   ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.keyd = {
     overloads = [
