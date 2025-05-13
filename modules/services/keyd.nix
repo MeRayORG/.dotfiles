@@ -113,7 +113,7 @@
       v = oneshot(shift)
 
       # After pressing v + a, this triggers shift+a and attempts to reapply shift
-      q = left
+      q = left oneshot(shift)
 
       # Fallback: normal key to see when shift is NOT applied
       x = x
