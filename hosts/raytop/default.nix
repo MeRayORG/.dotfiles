@@ -99,6 +99,7 @@
 
   services.keyd = {
     overloads = [
+      ## HOMEROW MODS
       { key = "a"; hold = "control"; }
       { key = "s"; hold = "shift";   }
       { key = "d"; hold = "alt";     }
@@ -108,11 +109,9 @@
       { key = "k"; hold = "alt";     }
       { key = "l"; hold = "shift";   }
       { key = ";"; hold = "control"; }
-      
-      
-      
 
-      { key = "space";          hold = "enter"; }
+      ## SHIFT TAP -> Next
+      { key = "leftshift"; tap = "right"; hold = "shift";}
     ];
     remaps = [
       { key = "capslock"; target = "esc"; }
