@@ -110,7 +110,7 @@
       { key = "leftshift"; tap = "right"; hold = "shift";}
     ];
     remaps = [
-      { key = "capslock"; target = "esc"; }
+      #{ key = "capslock"; target = "esc"; }
     ];
   };
 
