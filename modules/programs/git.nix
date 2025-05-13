@@ -1,18 +1,36 @@
 set @ { 
-  mkHome,
-  pkgs, 
-  ... 
+    mkHome,
+    pkgs, 
+    ... 
 }: {
-  environment.systemPackages = with pkgs; [
-    libsecret
-    gitFull
-  ];
+    environment.systemPackages = with pkgs; [
+        libsecret
+        gitFull
+    ];
 
-  programs.git.enable = true;
+    programs.git.enable = true;
 } // mkHome set {
-  programs.git = {
-    enable = true;
-    userName = "MeRay";
-  };
+    programs.git = {
+        enable = true;
+        userName = "MeRay";
+        userEmail = "git@meray.org";
+
+        extraConfig = {
+            credential = {
+                helper = "${pkgs.libsecret}/bin/git-credential-libsecret";
+            };
+            pull = {
+                ff = "only";
+                rebase = "true";
+            };
+            push = {
+                autoSetupRemote = "true";
+                default = "current";
+            };
+            init = {
+                defaultBranch = "main";
+            };
+        };
+    };
 }
 
