@@ -1,8 +1,9 @@
 {
   pkgs,
   ...
-}: 
+}:
 {
+  nixpkgs.overlays = [inputs.hyprpanel.overlay];
   fonts.packages = with pkgs; [ nerdfonts ];
   programs = {
     # HYPRLAND

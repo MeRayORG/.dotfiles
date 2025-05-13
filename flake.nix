@@ -49,7 +49,6 @@
         # raynix = f.mkSystem ./hosts/raytop;
         raynix = nixpkgs.lib.nixosSystem {
           modules = [
-            {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
             ./hosts/raytop
             ./modules
           ];
