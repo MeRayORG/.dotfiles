@@ -19,7 +19,7 @@
             home = {
               username = "${user}";
               homeDirectory = "/home/${user}";
-              stateVersion = "24.05";  # Specify the NixOS version
+              stateVersion = "24.11";  # Specify the NixOS version
             };
             programs.home-manager.enable = true;
           }
