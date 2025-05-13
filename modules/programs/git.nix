@@ -1,4 +1,5 @@
-{ 
+set @ { 
+  mkHome,
   pkgs, 
   ... 
 }: {
@@ -8,5 +9,10 @@
   ];
 
   programs.git.enable = true;
+} // mkHome set {
+  programs.git = {
+    enable = true;
+    userName = "MeRay";
+  };
 }
 
