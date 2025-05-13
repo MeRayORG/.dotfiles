@@ -61,7 +61,6 @@
 
 
     quickemu
-    keepassxc
 
     # 7zip Support
     p7zip
@@ -77,10 +76,6 @@
 
     whatsapp-for-linux
     btop
-
-
-    bookworm
-
     
     clang
     ccls
@@ -93,6 +88,7 @@
     SDL2
 
     calibre
+    koreader
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
