@@ -17,7 +17,7 @@ set @ {
 
         extraConfig = {
             credential = {
-                helper = "${pkgs.libsecret}/bin/git-credential-libsecret";
+                helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
             };
             pull = {
                 ff = "only";
