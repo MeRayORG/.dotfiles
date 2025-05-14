@@ -51,75 +51,112 @@
         ) remaps);
 
       capsenable =
+      let 
+        editmodespecs = ''
+        o = noop
+        p = noop
+        g = noop
+        z = noop
+
+        h = left
+        j = up
+        k = down
+        l = right
+        m = end
+        n = home
+        i = insert
+
+        # Copy Paste Cut
+        c = C-c
+        v = C-v
+        x = C-x
+
+        # Undo Redo
+        u = C-z
+        r = C-y
+
+        # terminal
+        t = M-t
+        # explorer
+        e = M-e
+        # browser
+        b = M-b
+        # kill app
+        q = M-q
+
+        space = M-space
+
+        a = overload(control, C-a)
+        s = overload(shift, C-s)
+        d = overload(alt, C-d)
+        f = overload(meta, C-f)
+        
+        
+        y = escape
+        
+        ; = backspace
+        ' = delete
+
+        1 = !
+        2 = @
+        3 = #
+        4 = €
+        5 = %
+        6 = ^
+        7 = &
+        8 = *
+        9 = (
+        0 = )
+        '';
+      in 
       # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
       ''
-      capslock = toggle(editMode)
+      # if capslock is tapped enable edit mode
+      # while held enable edit mode and window mode
+
+      capslock = overload(windowMode, toggle(editMode))
       
       [editMode]
-      capslock = toggle(editMode)
+      ${editmodespecs}
 
-      a = oneshot(control)
-      s = oneshot(shift)
-      d = oneshot(alt)
-      f = oneshot(meta)
+      [windowMode]
+      ${editmodespecs}
 
-      h = left
-      j = up
-      k = down
-      l = right
-      m = end
-      n = home
+      h = M-left
+      j = M-up
+      k = M-down
+      l = M-right
 
-      c = C-S-c
-      v = C-S-v
-      w = C-s
-      q = esc
-      x = C-c
+      left = M-left
+      down = M-down
+      up = M-up
+      right = M-right
 
-      u = C-z
-      r = C-y
-
-      e = none
-      t = none
-      y = none
-      i = none
-      o = none
-      p = none
-      g = none
-      h = none
-      z = none
-      x = none
-      b = none
       
-      1 = !
-      2 = @
-      3 = #
-      4 = €
-      5 = %
-      6 = ^
-      7 = &
-      8 = *
-      9 = (
-      0 = )
 
-      space = toggle(select)
-      
-      [select]
-      space = toggle(select)
-      capslock = macro(toggle(editMode)+toggle(select))
+      [main]
 
-      h = S-left
-      j = S-up
-      k = S-down
-      l = S-right
-      m = S-end
-      n = S-home
+      '';
+      accents = 
+      ''
+      [main]
+      # Hold ’ to enter the squote layer; tap ’ to send an apostrophe
+      ' = overload(squote, apostrophe)
 
+
+      [squote]
+      e = "é"
+      E = "É"
+      i = "í"
+      I = "Í"
+
+
+      [main]
       '';
     in
       ''
       [global]
-      # layer_indicator = 1
+      layer_indicator = 1
 
       [ids]
       * = *
@@ -131,6 +168,8 @@
       ${generateRemaps config.services.keyd.remaps}
 
       ${if config.services.keyd.capsEditMode then capsenable else ""}
+
+      ${if config.services.keyd.addAccents then accents else ""}
       '';
   };
   
@@ -154,5 +193,6 @@
     };
 
     capsEditMode = mkEnableOption "the use of [caps] as a toggle for edit mode";
+    addAccents = mkEnableOption "display keys with accents";
   };
 }
