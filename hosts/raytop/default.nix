@@ -109,9 +109,7 @@
       ## SHIFT TAP -> Next
       { key = "leftshift"; tap = "right"; hold = "shift";}
     ];
-    remaps = [
-      #{ key = "capslock"; target = "esc"; }
-    ];
+    capsEditMode = true;
   };
 
   homemanager.users = ["meray"];

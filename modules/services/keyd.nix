@@ -53,37 +53,43 @@
       capsenable =
       # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
       ''
-      capslock = toggle(editMode, capslock)
+      capslock = toggle(editMode)
       
       [editMode]
-      
-      a = none
-      b = none
-      c = none
-      d = none
+      capslock = toggle(editMode)
+
+      a = oneshot(control)
+      s = oneshot(shift)
+      d = oneshot(alt)
+      f = oneshot(meta)
+
+      h = left
+      j = up
+      k = down
+      l = right
+      m = end
+      n = home
+
+      c = C-S-c
+      v = C-S-v
+      w = C-s
+      q = A-f4
+
+      u = C-z
+      r = C-y
+
       e = none
-      f = none
-      g = none
-      h = none
+      t = none
+      y = none
       i = none
-      j = none
-      k = none
-      l = none
-      m = none
-      n = none
       o = none
       p = none
-      q = none
-      r = none
-      s = none
-      t = none
-      u = none
-      v = none
-      w = none
-      x = none
-      y = none
+      g = none
+      h = none
       z = none
-
+      x = none
+      b = none
+      
       1 = !
       2 = @
       3 = #
@@ -95,32 +101,35 @@
       9 = (
       0 = )
 
-      v = oneshot(shift)
-      h = left
+      space = toggle(select)
+      
+      [select]
+      space = toggle(select)
+      capslock = macro(toggle(editMode)+toggle(select))
 
+      h = S-left
+      j = S-up
+      k = S-down
+      l = S-right
+      m = S-end
+      n = S-home
 
       '';
     in
       ''
+      [global]
+      layer_indicator = 1
+
       [ids]
       * = *
 
       [main]
+      
       ${generateOverloads config.services.keyd.overloads}
+
       ${generateRemaps config.services.keyd.remaps}
 
-      # Pressing v triggers oneshot(shift)
-      v = oneshot(shift)
-
-      # After pressing v + a, this triggers shift+a and attempts to reapply shift
-      q = left oneshot(shift)
-
-      # Fallback: normal key to see when shift is NOT applied
-      x = x
-
-      #$\{lib.mkIf config.services.keyd.capsEditMode capsenable}
-
-
+      ${if config.services.keyd.capsEditMode then capsenable else ""}
       '';
   };
   
