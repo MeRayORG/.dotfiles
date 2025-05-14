@@ -73,7 +73,7 @@
       c = C-S-c
       v = C-S-v
       w = C-s
-      q = A-f4
+      q = C-c
 
       u = C-z
       r = C-y
@@ -101,18 +101,18 @@
       9 = (
       0 = )
 
-      space = toggle(select)
+      # space = toggle(select)
       
-      [select]
-      space = toggle(select)
-      capslock = macro(toggle(editMode)+toggle(select))
+      # [select]
+      # space = toggle(select)
+      # capslock = macro(toggle(editMode)+toggle(select))
 
-      h = S-left
-      j = S-up
-      k = S-down
-      l = S-right
-      m = S-end
-      n = S-home
+      # h = S-left
+      # j = S-up
+      # k = S-down
+      # l = S-right
+      # m = S-end
+      # n = S-home
 
       '';
     in
