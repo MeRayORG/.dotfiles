@@ -115,6 +115,8 @@
       # while held enable edit mode and window mode
 
       capslock = overload(windowMode, toggle(editMode))
+      space = overload(editMode, space)
+      
       
       [editMode]
       ${editmodespecs}
