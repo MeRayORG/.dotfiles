@@ -94,22 +94,15 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.keyd = {
-    overloads = [
-      ## HOMEROW MODS
-      { key = "a"; hold = "control"; }
-      { key = "s"; hold = "shift";   }
-      { key = "d"; hold = "alt";     }
-      { key = "f"; hold = "meta";    }
-
-      { key = "j"; hold = "meta";    }
-      { key = "k"; hold = "alt";     }
-      { key = "l"; hold = "shift";   }
-      { key = ";"; hold = "control"; }
-
-      ## SHIFT TAP -> Next
-      { key = "leftshift"; tap = "right"; hold = "shift";}
-    ];
-    capsEditMode = true;
+    mode.edit = {
+      enable = true;
+      space = true;
+    };
+    mod = {
+      homeRow = true;
+      spaceNext = true;
+    };
+    navigation.ijkl = true;
   };
 
   homemanager.users = ["meray"];
