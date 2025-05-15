@@ -1,65 +1,41 @@
 {
-
-  description = "NixOS Flake";
+  description = "Ryan's NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    pkgs2411.url = "github:NixOS/nixpkgs/nixos-24.11";
-    pkgs2405.url = "github:NixOS/nixpkgs/nixos-24.05";
-    upkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
-    home-manager = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # home-manager, used for managing user configuration
+    home = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
+    haumea = {
+      url = "github:nix-community/haumea/v0.2.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stylix.url = "github:danth/stylix";
-
-    ags.url = "github:Aylur/ags";
   };
 
-  outputs = {... }@inputs :
-  let
-    importConfig = (import ./functions/importer.nix) inputs ./modules;
-
-    mkSystem = config:
-    inputs.nixpkgs.lib.nixosSystem {
-      imports = [
-        config
-      ];
-    };
-  in
-    {
+  outputs = { self, nixpkgs, ... }@inputs:
+    #let
+    #  mods = haumea.lib.load {
+    #    src = ./modules;
+    #    inputs = {
+    #       pkgs = nixpkgs;
+    #      inherit home;
+    #  };
+    #}
+        
+    #in
+      {
       nixosConfigurations = {
-        # ===================== NixOS Configurations ===================== #
-
-        raynix = inputs.nixpkgs.lib.nixosSystem {
+        "raynix" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
-            ./normal.nix
-            importConfig
+            # Import the configuration.nix here, so that the
+            # old configuration file can still take effect.
+            # Note: configuration.nix itself is also a Nix Module,
+            ./configuration.nix
           ];
         };
-        
-        
       };
-      nixosModules.default = importConfig;
-    };
-  
+  };
 }
