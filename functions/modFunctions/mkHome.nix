@@ -7,7 +7,7 @@ homeOptions:
 {
 home-manager.users =
   lib.genAttrs
-    config.homemanager.users
+    config.mods.homemanager.users
     (user: homeOptions)
     ;
 }
