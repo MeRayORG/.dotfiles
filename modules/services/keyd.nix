@@ -15,7 +15,7 @@
       # include text if option == true
       ifs = option: text: if option then text else "";
 
-      cfg = config.services.keyd;
+      cfg = config.mods.services.keyd;
       left  = if cfg.navigation.vim then "h" else "j";
       up    = if cfg.navigation.vim then "j" else "i";
       down  = "k";
@@ -160,7 +160,7 @@
   };
   
 
-  options.services.keyd =
+  options.mods.services.keyd =
   let
     inherit (lib) mkOption mkEnableOption;
     inherit (lib.types) bool; 

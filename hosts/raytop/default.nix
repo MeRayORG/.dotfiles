@@ -87,21 +87,23 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  mods = {
+    shellScripts.commitRebuild.flakeDir = "~/nixconf/.";
 
-  services.keyd = {
-    mode.edit = {
-      enable = true;
-      space = true;
+    services.keyd = {
+      mode.edit = {
+        enable = true;
+        space = true;
+      };
+      mod = {
+        homeRow = true;
+        spaceNext = true;
+      };
+      navigation.vim = false;
     };
-    mod = {
-      homeRow = true;
-      spaceNext = true;
-    };
-    navigation.vim = false;
+
+    homemanager.users = ["meray"];
   };
-
-  homemanager.users = ["meray"];
-
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam.enable = true;

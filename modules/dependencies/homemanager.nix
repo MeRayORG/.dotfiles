@@ -13,7 +13,7 @@
   {
     home-manager.users =
       lib.genAttrs
-        config.homemanager.users
+        config.mods.homemanager.users
         (user:
           {
             home = {
@@ -26,7 +26,7 @@
         );
   };
 
-  options.homemanager = {
+  options.mods.homemanager = {
     users = lib.mkOption {
       default = lib.warn "No HomeManager Users set." [];
       description = "List of users that the hm config should be applied to.";
