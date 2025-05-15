@@ -1,0 +1,1 @@
+{lib,...}: x: lib.trivial.id x
