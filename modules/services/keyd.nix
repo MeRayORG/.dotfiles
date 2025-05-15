@@ -53,11 +53,11 @@
 
         # edit in new line below / above
         o = macro(end enter)
-        S-o = macro(home enter up)
+        shift+o = macro(home enter up)
         # delete line
         p = macro(end S-home backspace backspace)
         # vscode
-        S-p = macro(end S-home backspace S-home backspace backspace)
+        shift+p = macro(end S-home backspace S-home backspace backspace)
 
 
         
@@ -194,7 +194,7 @@
     };
     navigation = {
       vim = mkOption {
-          description = "Whether to navigate using vim keys instead of ijkl(wasd on RH).";
+          description = "Whether to navigate using vim keys instead of ijkl(RH-wasd).";
           default = true;
           type = bool;
         };
