@@ -5,7 +5,7 @@
   ...
 }:
 
-script: scriptName:
+scriptName: script:
 
 let
   # scriptName = lib.last aPath;
@@ -13,7 +13,7 @@ let
 in
   {
     environment.systemPackages = [
-      
+
       (pkgs.writeShellScriptBin
         scriptName 
         (shebang + script)

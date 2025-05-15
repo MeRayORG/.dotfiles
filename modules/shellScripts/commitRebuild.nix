@@ -1,9 +1,9 @@
 set@{mkShellScript, pkgs, ...}:
 mkShellScript set "commitRebuild"
 ''
-set message = $1
-set nixconf = ~/.nixconf/.
-git add $nixconf
-sudo nixos-rebuild switch --flake $nixconf
-git commit --allow-empty -m ($message + "{generation: " + (readlink /nix/var/nix/profiles/system | grep -o "[0-9]*") + "}") $nixconf
+message=$1
+cd ~/nixconf/.
+git add -A
+sudo nixos-rebuild switch --flake . --option warn-dirty false
+git commit --allow-empty -m '{$(readlink /nix/var/nix/profiles/system | grep -o "[0-9]*")}'
 ''
