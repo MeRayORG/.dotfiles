@@ -13,6 +13,7 @@ let
 in
   {
     environment.systemPackages = [
+      
       (pkgs.writeShellScriptBin
         scriptName 
         (shebang + script)
