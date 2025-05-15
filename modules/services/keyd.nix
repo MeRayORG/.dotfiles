@@ -4,28 +4,6 @@
   config,
   ...
 }: {
-
-  ## Usage:
-  # services.keyd = {
-  #   overloads = [
-  #     { key = "a";  tap = "a";  hold = "leftcontrol"; }
-  #     { key = "s";              hold = "leftshift"; }
-  #     { key = "space";          hold = "enter"; }
-
-  #     wrong:
-  #       [ "d" "leftalt" ]
-  #       [ "f" "leftmeta" ]
-  #       [ "j" "rightmeta" ]
-  #       [ "k" "rightalt" ]
-  #       [ "l" "rightshift" ]
-  #       [ ";" "rightcontrol" ]
-  #   ];
-  #   remaps = [
-  #     { key = "capslock"; target = "esc"; }
-  #   ];
-  # };
-
-
   config = {
     services.keyd.enable = true;
 
@@ -34,26 +12,27 @@
     # This creates the configuration text to be used in /etc/keyd/default.conf
     environment.etc."keyd/default.conf".text = let
 
+      # include text if option == true
       ifs = option: text: if option then text else "";
 
       cfg = config.services.keyd;
-      up    = if cfg.navigation.ijkl then "i" else "j";
-      down  = if cfg.navigation.ijkl then "k" else "k";
-      left  = if cfg.navigation.ijkl then "j" else "h";
-      right = if cfg.navigation.ijkl then "l" else "l";
-      home  = if cfg.navigation.ijkl then "g" else "n";
-      end   = if cfg.navigation.ijkl then "h" else "m";
+      left  = if cfg.navigation.vim then "h" else "j";
+      up    = if cfg.navigation.vim then "j" else "i";
+      down  = "k";
+      right = "l";
+      home  = if cfg.navigation.vim then "n" else "g";
+      end   = if cfg.navigation.vim then "m" else "h";
       
 
       editmodespecs = ''
-        ${if cfg.navigation.ijkl then
+        ${if cfg.navigation.vim then
         ''
-        m = noop
-        n = noop
-        '' else ''
         g = noop
         h = noop
         i = noop
+        '' else ''
+        m = noop
+        n = noop
         ''}
 
         z = noop
@@ -64,7 +43,7 @@
         q = noop
         y = noop 
 
-        ${home} = home
+        ${home} = overload(S-home, home)
         ${end}  = end
 
         ${left}  = left
@@ -72,12 +51,13 @@
         ${down}  = down
         ${right} = right
 
-        # edit in new line below
+        # edit in new line below / above
         o = macro(end enter)
-        #delete line
-        p = macro(end S-home backspace)
+        S-o = macro(home enter up)
+        # delete line
+        p = macro(end S-home backspace backspace)
         # vscode
-        shift+p = macro(end S-home backspace S-home backspace)
+        S-p = macro(end S-home backspace S-home backspace backspace)
 
 
         
@@ -200,7 +180,7 @@
       edit = {
         enable = mkEnableOption "an editmode on capslock.";
         space = mkOption {
-          description = "the layer while holding space";
+          description = "Whether to enable the layer while holding space";
           default = true;
           type = bool;
         };
@@ -213,7 +193,11 @@
       spaceNext = mkEnableOption "going left on tapping shift";
     };
     navigation = {
-      ijkl = mkEnableOption "navigate using ijkl(wasd on right) instead of hjkl";
+      vim = mkOption {
+          description = "Whether to navigate using vim keys instead of ijkl(wasd on RH).";
+          default = true;
+          type = bool;
+        };
     };
   };
 }

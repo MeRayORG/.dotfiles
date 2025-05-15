@@ -36,11 +36,6 @@
     eza
     unrar
 
-    ## create options like: mapESCtoCAPS.enable = true
-    # https://github.com/rvaiya/keyd
-    keyd
-    ###
-
     prismlauncher
 
     ## Office
@@ -102,7 +97,7 @@
       homeRow = true;
       spaceNext = true;
     };
-    navigation.ijkl = true;
+    navigation.vim = false;
   };
 
   homemanager.users = ["meray"];
