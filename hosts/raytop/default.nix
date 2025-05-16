@@ -88,7 +88,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   mods = {
-    shellScripts.commitRebuild.flakeDir = "~/nixconf/.";
+    flakeDir = "~/nixconf/.";
 
     services.keyd = {
       mode.edit = {
