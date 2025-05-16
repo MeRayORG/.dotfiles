@@ -73,7 +73,7 @@
 
 
         a = overload(control, C-a)
-        s = overload(shift, C-s)
+        s = overload(shift, oneshot(shift))
         d = overload(alt, C-d)
         f = overload(meta, C-f)
         

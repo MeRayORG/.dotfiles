@@ -4,6 +4,7 @@ set @ {
   ...
 }:
 {
+  xdg.mime.enable = true;
   environment.systemPackages = [ pkgs.vscodium ];
 } // mkHome set {
   programs.git = {
