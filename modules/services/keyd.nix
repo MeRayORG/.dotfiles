@@ -25,6 +25,20 @@
       
 
       editmodespecs = ''
+
+        '';
+
+      capsenable =
+      # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
+      ''
+      # if capslock is tapped enable edit mode
+      # while held enable edit mode and window mode
+
+      capslock = overload(editMode, toggle(editMode))
+      ${ifs cfg.mode.edit.space "space = overload(editMode, space)"}
+      
+      
+      [editMode]
         ${if cfg.navigation.vim then
         ''
         g = noop
@@ -41,7 +55,7 @@
         e = noop
         b = noop
         q = noop
-        y = noop 
+        y = noop  
 
         ${home} = home
         ${end}  = end
@@ -82,34 +96,6 @@
         
         ; = backspace
         ' = delete
-
-        '';
-
-      capsenable =
-      # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
-      ''
-      # if capslock is tapped enable edit mode
-      # while held enable edit mode and window mode
-
-      capslock = overload(windowMode, toggle(editMode))
-      ${ifs cfg.mode.edit.space "space = overload(editMode, space)"}
-      
-      
-      [editMode]
-      ${editmodespecs}
-
-      [windowMode]
-      ${editmodespecs}
-
-      ${left}  = M-left
-      ${up}    = M-up
-      ${down}  = M-down
-      ${right} = M-right
-
-      left = M-left
-      down = M-down
-      up = M-up
-      right = M-right
 
       [main]
 
