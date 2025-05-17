@@ -99,7 +99,7 @@
         homeRow = true;
         spaceNext = true;
       };
-      navigation.vim = false;
+      nav.vim = false;
     };
 
     homemanager.users = ["meray"];

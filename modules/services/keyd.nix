@@ -16,12 +16,12 @@
       ifs = option: text: if option then text else "";
 
       cfg = config.mods.services.keyd;
-      left  = if cfg.navigation.vim then "h" else "j";
-      up    = if cfg.navigation.vim then "j" else "i";
+      left  = if cfg.nav.vim then "h" else "j";
+      up    = if cfg.nav.vim then "j" else "i";
       down  = "k";
       right = "l";
-      home  = if cfg.navigation.vim then "n" else "g";
-      end   = if cfg.navigation.vim then "m" else "h";
+      home  = if cfg.nav.vim then "n" else "g";
+      end   = if cfg.nav.vim then "m" else "h";
 
       capsenable =
       # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
@@ -34,7 +34,7 @@
       
       
       [editMode]
-        ${if cfg.navigation.vim then
+        ${if cfg.nav.vim then
         ''
         g = noop
         h = noop
@@ -82,7 +82,7 @@
 
 
         a = overload(control, C-a)
-        s = overload(shift, toggle(shift))
+        s = ${if cfg.nav.shiftToggle then "overload(shift, toggle(shift))" else "overload(shift, C-s)" }
         d = overload(alt, C-d)
         f = overload(meta, C-f)
         
@@ -163,12 +163,17 @@
       homeRow = mkEnableOption "HomeRowMods";
       spaceNext = mkEnableOption "going left on tapping shift";
     };
-    navigation = {
+    nav = {
       vim = mkOption {
           description = "Whether to navigate using vim keys instead of ijkl(RH-wasd).";
           default = true;
           type = bool;
         };
+      shiftToggle = mkOption {
+          description = "Whether to have s toggle shift in edit mode.";
+          default = true;
+          type = bool;
+      };
     };
   };
 }
