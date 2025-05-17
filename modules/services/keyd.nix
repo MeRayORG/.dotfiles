@@ -22,11 +22,6 @@
       right = "l";
       home  = if cfg.navigation.vim then "n" else "g";
       end   = if cfg.navigation.vim then "m" else "h";
-      
-
-      editmodespecs = ''
-
-        '';
 
       capsenable =
       # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
@@ -87,7 +82,7 @@
 
 
         a = overload(control, C-a)
-        s = overload(shift, oneshot(shift))
+        s = overload(shift, toggle(shift))
         d = overload(alt, C-d)
         f = overload(meta, C-f)
         
