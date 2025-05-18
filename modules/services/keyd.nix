@@ -145,7 +145,8 @@
         rightalt = noop
         rightcontrol = noop
         rightshift = noop
-        enter = noop
+        # enter = noop
+        backspace = noop
         ''}
 
       '';
