@@ -134,9 +134,20 @@
       l = overload(shift, l)
       ; = overload(control, ;)
       ''}
-      ${ifs cfg.mod.spaceNext "leftshift = overload(shift, right)"}
+      ${ifs cfg.mod.spaceNext "leftshift = overload(${if cfg.mode.training then "shift" else "noop"} right)"}
       ${ifs cfg.mode.edit.enable capsenable}
       ${ifs cfg.mode.accents accents}
+        ${ifs cfg.mode.training ''
+        leftshift = noop
+        leftcontrol = noop
+        leftmeta = noop
+        leftalt = noop
+        rightalt = noop
+        rightcontrol = noop
+        rightshift = noop
+        enter = noop
+        ''}
+
       '';
   };
   
@@ -144,10 +155,12 @@
   options.mods.services.keyd =
   let
     inherit (lib) mkOption mkEnableOption;
-    inherit (lib.types) bool; 
+    inherit (lib.types) bool;
   in
   {
+    
     mode = {
+      training = mkEnableOption "Disable most normal modifier keys inluding bsp.";
       edit = {
         enable = mkEnableOption "an editmode on capslock.";
         space = mkOption {

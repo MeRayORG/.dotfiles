@@ -8,9 +8,7 @@ set @ {
   # disable gnome keyring to enable keepass as SecretService
   services.gnome.gnome-keyring.enable = lib.mkForce false;
 } // mkHome set {
-  home.packages = with pkgs; [
-    keepassxc
-  ];
+  home.packages = with pkgs; [keepassxc];
   systemd.user.services.keepassxc = {
     Unit = {
       Description = "KeePassXC Tray Autostart with Secret Service";

@@ -91,6 +91,7 @@
     flakeDir = "~/nixconf/.";
 
     services.keyd = {
+      mode.training = true;
       mode.edit = {
         enable = true;
         space = true;
