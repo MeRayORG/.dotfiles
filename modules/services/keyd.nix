@@ -138,7 +138,6 @@
       ${ifs cfg.mode.edit.enable capsenable}
       ${ifs cfg.mode.accents accents}
         ${ifs cfg.mode.training ''
-        leftshift = noop
         leftcontrol = noop
         leftmeta = noop
         leftalt = noop
@@ -147,6 +146,10 @@
         rightshift = noop
         # enter = noop
         backspace = noop
+        left = noop 
+        right = noop
+        up = noop 
+        down = noop
         ''}
 
       '';
