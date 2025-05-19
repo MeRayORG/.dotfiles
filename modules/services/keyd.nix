@@ -134,7 +134,7 @@
       l = overload(shift, l)
       ; = overload(control, ;)
       ''}
-      ${ifs cfg.mod.spaceNext "leftshift = overload(${if cfg.mode.training then "shift" else "noop"} right)"}
+      ${ifs cfg.mod.spaceNext "leftshift = overload(${if cfg.mode.training then "noop" else "shift"}, right)"}
       ${ifs cfg.mode.edit.enable capsenable}
       ${ifs cfg.mode.accents accents}
         ${ifs cfg.mode.training ''
