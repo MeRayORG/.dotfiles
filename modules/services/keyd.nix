@@ -34,6 +34,7 @@
       
       
       [editMode]
+        ${ifs cfg.mode.edit.space "space = overload(main, space)"}
         ${if cfg.nav.vim then
         ''
         g = noop
