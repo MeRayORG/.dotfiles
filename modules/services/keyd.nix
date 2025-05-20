@@ -52,8 +52,8 @@
         q = noop
         y = noop  
 
-        ${home} = home
-        ${end}  = end
+        ${home} = overload(S-home, home)
+        ${end}  = overload(S-end, end)
 
         ${left}  = left
         ${up}    = up
