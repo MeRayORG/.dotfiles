@@ -1,7 +1,5 @@
 {
   "nodes": {
-<<<<<<< HEAD
-=======
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -20,7 +18,6 @@
         "type": "github"
       }
     },
->>>>>>> 4371c03 (added dev flake)
     "nixpkgs": {
       "locked": {
         "lastModified": 1747744144,
@@ -39,10 +36,6 @@
     },
     "root": {
       "inputs": {
-<<<<<<< HEAD
-        "nixpkgs": "nixpkgs"
-      }
-=======
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"
       }
@@ -61,7 +54,6 @@
         "repo": "default",
         "type": "github"
       }
->>>>>>> 4371c03 (added dev flake)
     }
   },
   "root": "root",
