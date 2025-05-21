@@ -5,3 +5,5 @@
 add enable function to each module
 
 add some devshells for easy development
+
+Codellama 7B
