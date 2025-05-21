@@ -17,8 +17,7 @@ haskell = mkShell {
       pkgs.haskell-language-server
       pkgs.cabal-install
       pkgs.hlint
-      pkgs.ghci
-      
+
   ];
 };
 
