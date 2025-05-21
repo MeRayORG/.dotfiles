@@ -6,7 +6,7 @@ set@{
   ...
   }:
 {
-  config = mkShellScript set "rebuild"
+  config = mkShellScript set "systemrebuild"
     ''
     message=$1
     cd ${config.mods.flakeDir}

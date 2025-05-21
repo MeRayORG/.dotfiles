@@ -6,10 +6,10 @@ set@{
   ...
   }:
 {
-  config = mkShellScript set "update"
+  config = mkShellScript set "systemupdate"
     ''
     cd ${config.mods.flakeDir}
-    if git diff --quiet && git diff --cached --quiet; then
+    if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
       echo "Updating..."
       git add -A .
       nix flake update
