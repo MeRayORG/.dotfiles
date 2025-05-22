@@ -83,7 +83,6 @@
     SDL2
 
     calibre
-    koreader
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
