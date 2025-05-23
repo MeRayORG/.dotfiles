@@ -1,16 +1,17 @@
 {
   pkgs,
+  hyprpanel,
   ...
 }:
 {
-  nixpkgs.overlays = [inputs.hyprpanel.overlay];
+  nixpkgs.overlays = [hyprpanel.overlay];
   fonts.packages = with pkgs; [ nerdfonts ];
   programs = {
     # HYPRLAND
     hyprland = {
       enable = true;
     };
-    # HYPRLOCK
+    # HYPRLOCKs
     hyprlock.enable = true;
   };
   services.displayManager.sddm = {
