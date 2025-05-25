@@ -5,7 +5,5 @@
     starship
     
   ];
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraMono" ]; })
-  ];
+  fonts.packages = [pkgs.nerd-fonts.fira-mono];
 }

@@ -1,9 +1,7 @@
 {
-  nixos-cosmic, 
   ...
 }:
 {
-  imports = [nixos-cosmic.nixosModules.default];
   config = {
     services = {
       desktopManager.cosmic.enable = true;

@@ -23,9 +23,6 @@
     python3
 
 
-    kate
-    polkit
-
     teams-for-linux
 
     vscodium
@@ -76,7 +73,7 @@
     ccls
 
     typst
-    typst-lsp
+    tinymist
 
     spotify
 

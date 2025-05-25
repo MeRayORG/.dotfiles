@@ -3,13 +3,13 @@
   description = "NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     pkgs2411.url = "github:NixOS/nixpkgs/nixos-24.11";
     pkgs2405.url = "github:NixOS/nixpkgs/nixos-24.05";
     upkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
@@ -19,8 +19,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
