@@ -6,7 +6,7 @@
     services = {
       desktopManager.cosmic = {
         enable = true;
-        xwayland.enable = false;
+        xwayland.enable = true; # for steam :(
       };
       displayManager.cosmic-greeter.enable = true;
     };
