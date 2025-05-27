@@ -98,11 +98,11 @@
         
         [editMode+alt]
         ${up} = pageup
-        ${down} = pagedclear()shiftk
+        ${down} = pagedown
 
         [editMode+shift]
         # quit selection when leaving edit mode and enter capslock
-        capslock = overload(editMode, clear() shift k)
+        capslock = overload(editMode, clear()+shift+k)
         o = macro(home enter up)
 
 
