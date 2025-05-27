@@ -30,7 +30,7 @@
       # while held enable edit mode and window mode
 
       capslock = overload(editMode, toggle(editMode))
-      ${ifs cfg.mode.edit.space "space = overload(editMode, space)"}
+      ${ifs cfg.mode.edit.space "space = overload(toggle(editMode), space)"}
       
       
       [editMode]
