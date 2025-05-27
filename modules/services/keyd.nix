@@ -94,7 +94,9 @@
         
         ; = backspace
         ' = delete
-
+        [editMode+alt]
+        ${up} = pageup
+        ${down} = pagedown
       [main]
 
       '';
