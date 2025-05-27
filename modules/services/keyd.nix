@@ -34,7 +34,7 @@
       
       [editMode]
         # quit selection when leaving edit mode
-        capslock = overload(editMode, togglem(editMode, shift))
+        capslock = overload(editMode, toggle(editMode))
         ${ifs cfg.mode.edit.space "space = overload(main, space)"}
         ${if cfg.nav.vim then
         ''
@@ -101,6 +101,8 @@
         ${down} = pagedown
 
         [editMode+shift]
+        # quit selection when leaving edit mode and enter capslock
+        capslock = overload(editMode, macro(clear() shift k))
         o = macro(home enter up)
 
 
