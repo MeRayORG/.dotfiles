@@ -71,18 +71,14 @@
         # vscode
         shift+p = macro(end S-home backspace S-home backspace backspace)
 
-
-        
-
         # Copy Paste Cut
         c = C-c
         v = C-v
         x = C-x
 
-        # Undo Redo
-        u = C-z
-        r = C-y
-
+        # Tabs
+        u = C-u
+        n = C-n
 
         a = overload(control, C-a)
         s = ${if cfg.nav.shiftToggle then "overload(shift, toggle(shift))" else "overload(shift, C-s)" }
@@ -92,11 +88,17 @@
         
         q = escape
         
-        ; = backspace
+        ; = overload(control, backspace)
         ' = delete
+        
         [editMode+alt]
         ${up} = pageup
         ${down} = pagedown
+
+        [editMode+shift]
+        o = macro(home enter up)
+
+
       [main]
 
       '';
@@ -104,15 +106,18 @@
       accents = 
       ''
       [main]
-      # Hold ’ to enter the squote layer; tap ’ to send an apostrophe
-      ' = overload(squote, apostrophe)
+      # Hold ' to enter the squote layer; tap ' to send an apostrophe
+      ' = overload(quote, apostrophe)
 
 
-      [squote]
+      [quote]
       e = "é"
       E = "É"
       i = "í"
       I = "Í"
+
+      [qoute+alt]
+      e = ë
 
 
       [main]
