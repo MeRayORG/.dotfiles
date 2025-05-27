@@ -102,7 +102,7 @@
 
         [editMode+shift]
         # quit selection when leaving edit mode
-        capslock = overload(editMode, clear m(escape))
+        capslock = overload(editMode, clearm(escape))
         o = macro(home enter up)
 
 
