@@ -33,6 +33,8 @@
       ${ifs cfg.mode.edit.space "space = overload(editMode, space)"}
       
       [editMode]
+        # quit selection when leaving edit mode
+        capslock = overload(editMode, togglem(editMode, shift))
         ${ifs cfg.mode.edit.space "space = overload(main, space)"}
         ${if cfg.nav.vim then
         ''
@@ -74,6 +76,10 @@
         c = C-c
         v = C-v
         x = C-x
+
+        # undo redo
+        z = C-z
+        y = C-y
 
         # Tabs
         u = C-u
