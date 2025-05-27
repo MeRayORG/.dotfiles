@@ -30,8 +30,7 @@
       # while held enable edit mode and window mode
 
       capslock = overload(editMode, toggle(editMode))
-      ${ifs cfg.mode.edit.space "space = overload(toggle(editMode), space)"}
-      
+      ${ifs cfg.mode.edit.space "space = overload(editMode, space)"}
       
       [editMode]
         ${ifs cfg.mode.edit.space "space = overload(main, space)"}
@@ -147,7 +146,7 @@
       ${ifs cfg.mod.spaceNext "leftshift = overload(shift, right)"}
       ${ifs cfg.mode.edit.enable capsenable}
       ${ifs cfg.mode.accents accents}
-        ${ifs cfg.mode.training ''
+      ${ifs cfg.mode.training ''
         leftcontrol = noop
         leftmeta = noop
         leftalt = noop
@@ -160,6 +159,32 @@
         right = noop
         up = noop 
         down = noop
+        ''}
+      ${ifs cfg.mod.invertNumbers ''
+        [main]
+        1 = !
+        2 = @
+        3 = #
+        4 = $
+        5 = %
+        6 = ^
+        7 = &
+        8 = *
+        9 = (
+        0 = )
+        ` = ~
+        [shift]
+        0 = 0
+        1 = 1
+        2 = 2
+        3 = 3
+        4 = 4
+        5 = 5
+        6 = 6
+        7 = 7
+        8 = 8
+        9 = 9
+        ` = `
         ''}
 
       '';
@@ -189,6 +214,7 @@
     mod = {
       homeRow = mkEnableOption "HomeRowMods";
       spaceNext = mkEnableOption "going left on tapping shift";
+      invertNumbers = mkEnableOption "inverting the symbols and numbers + tilde.";
     };
     nav = {
       vim = mkOption {

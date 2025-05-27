@@ -95,6 +95,7 @@
       mod = {
         homeRow = true;
         spaceNext = true;
+        invertNumbers = true;
       };
       nav.vim = false;
     };
