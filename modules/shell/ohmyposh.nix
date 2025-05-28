@@ -7,6 +7,7 @@
   environment.systemPackages = [ pkgs.oh-my-posh ];
 } //
 mkHome set {
+  home.shell.enableNushellIntegration = true;
   programs.oh-my-posh = 
     { 
       enable = true;
