@@ -1,5 +1,6 @@
 { pkgs
 , mkHome
+, config
 , ...  
 }@set:
 {
@@ -111,7 +112,7 @@ mkHome set {
                     "background": "#29519A",
                     "foreground": "#ffffff",
                     "style": "diamond",
-                    "template": " {{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>",
+                    "template": "{{ if or (eq .UserName \"${config.home.UserName}\") (eq .HostName \"${config.HostName}\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>",
                     "type": "session"
                 },
                 {
