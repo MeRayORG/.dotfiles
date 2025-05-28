@@ -9,6 +9,7 @@
 mkHome set {
   programs.oh-my-posh = 
     { 
+      enable = true;
       enableNushellIntegration = true;
       
       settings = ''
@@ -112,7 +113,7 @@ mkHome set {
                     "background": "#29519A",
                     "foreground": "#ffffff",
                     "style": "diamond",
-
+                    "template": "{{ if or (eq .UserName \"meray\") (eq .HostName \"${config.networking.hostName}\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>{{end}}",
                     "type": "session"
                 },
                 {
