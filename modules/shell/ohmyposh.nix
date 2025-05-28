@@ -112,7 +112,7 @@ mkHome set {
                     "background": "#29519A",
                     "foreground": "#ffffff",
                     "style": "diamond",
-                    "template": "{{ if or (eq .UserName \"${config.home.username}\") (eq .HostName \"${config.networking.hostName}\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>",
+                    "template": "{{ if or (eq .UserName \"${config.home.username}\") (eq .HostName \"${config.networking.hostName}\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>{{end}}",
                     "type": "session"
                 },
                 {
