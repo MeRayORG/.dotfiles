@@ -5,7 +5,14 @@ set @ {
 }:
 {
   xdg.mime.enable = true;
-  environment.systemPackages = [ pkgs.vscodium ];
+  environment = {
+    systemPackages = [ pkgs.vscodium ];
+    variables = {
+      SYSTEMD_EDITOR = "codium";
+      EDITOR = "codium";
+      VISUAL = "codium";
+    };
+  };
 } // mkHome set {
   programs.git = {
     extraConfig = {
