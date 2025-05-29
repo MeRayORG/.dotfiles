@@ -65,7 +65,7 @@ in
         # find using fc-list | grep -i jetbrains
         main = mkOption {
           type = str;
-          default = "JetBrainsMono Nerd Font";
+          default = "Atkinson Hyperlegible Next Medium";
         };
         ligatures = mkOption {
           type = bool;
@@ -73,7 +73,7 @@ in
         };
         size = mkOption {
           type = int;
-          default = 11;
+          default = 12;
         };
       };
 
