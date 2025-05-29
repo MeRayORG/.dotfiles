@@ -144,10 +144,13 @@
           ${up} = pageup
           ${down} = pagedown
 
+          [editMode+alt+meta]
+
           [editMode+shift]
           # quit selection when leaving edit mode
           capslock = overload(editMode, clearm(escape))
           o = macro(home enter up)
+          # c = clearm(C-c)-toggle(editMode)
 
 
         [main]
@@ -160,15 +163,14 @@
         # Hold ' to enter the squote layer; tap ' to send an apostrophe
         ' = overload(quote, apostrophe)
 
-
         [quote]
-        e = "é"
-        E = "É"
-        i = "í"
-        I = "Í"
+        e = macro(compose e ')
+        E = É
+        i = í 
+        I = Í
 
         [qoute+alt]
-        e = ë
+        e = macro(compose e ")
 
 
         [main]
