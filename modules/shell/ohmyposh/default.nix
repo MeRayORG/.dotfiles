@@ -1,6 +1,6 @@
 { pkgs
 , mkHome
-, config
+, lib
 , ...  
 }@set:
 mkHome set {
@@ -12,6 +12,6 @@ mkHome set {
       enable = true;
       enableNushellIntegration = true;
       
-      settings = ''${builtins.readFile ./style.json}'';
+      settings = lib.importJSON ./style.json;
   };
 }
