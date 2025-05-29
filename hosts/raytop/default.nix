@@ -87,10 +87,13 @@
     flakeDir = "~/nixconf/.";
 
     services.keyd = {
-      mode.training = true;
-      mode.edit = {
-        enable = true;
-        space = true;
+      mode = {
+        training = true;
+        edit = {
+          enable = true;
+          space = true;
+        };
+        accents = true;
       };
       mod = {
         homeRow = true;
