@@ -102,6 +102,7 @@
       };
       nav.vim = false;
     };
+    shell.nush.enable = true;
 
     homemanager.users = ["meray"];
   };
