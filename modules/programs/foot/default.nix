@@ -11,11 +11,9 @@ mkHome set {
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono Nerd Font:size=11"; # any full Nerd Font is fine
-        pad  = "3x3";                             # kills the grey stripes
-
-        # If you once experimented with these, delete or leave them commented:
-        # "line-height"            = "...";
+        font = "${config.mods.fonts.mono.main}:size=${builtins.toString (config.mods.fonts.mono.size)}";
+        pad  = "3x3";
+        line-height = "${builtins.toString (config.mods.fonts.mono.size + 2)}";
         # "vertical-letter-offset" = "...";
       };
     }; 
