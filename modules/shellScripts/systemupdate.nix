@@ -1,12 +1,12 @@
 set@{
-  mkShellScript,
+  mkBaScript,
   lib,
   config,
   pkgs,
   ...
   }:
 {
-  config = mkShellScript set "systemupdate"
+  config = mkBaScript set "systemupdate"
     ''
     cd ${config.mods.flakeDir}
     if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 

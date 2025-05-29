@@ -1,12 +1,12 @@
 set@{
-  mkShellScript,
+  mkBaScript,
   lib,
   config,
   pkgs,
   ...
   }:
 {
-  config = mkShellScript set "systemrebuild"
+  config = mkBaScript set "systemrebuild"
     ''
     message=$1
     cd ${config.mods.flakeDir}

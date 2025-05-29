@@ -1,6 +1,7 @@
 { pkgs
 , mkHome
 , lib
+, config 
 , ...  
 }@set:
 mkHome set {
@@ -10,8 +11,7 @@ mkHome set {
   programs.oh-my-posh = 
     { 
       enable = true;
-      enableNushellIntegration = true;
-      
+      enableNushellIntegration = config.mods.shell.nush.enable;
       settings = lib.importJSON ./style.json;
   };
 }
