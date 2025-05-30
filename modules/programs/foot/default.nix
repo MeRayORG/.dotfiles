@@ -15,8 +15,10 @@ mkHome set {
         pad  = "3x3";
         line-height = "${builtins.toString (config.mods.fonts.mono.size + 2)}";
         # "vertical-letter-offset" = "...";
-        cursor-shape = "beam";
-        cursor-blink = true;
+      };
+      cursor = {
+        shape = "beam";
+        blink = true;
       };
       bindings = {
         copy = "Control+Shift+c";

@@ -163,7 +163,7 @@
           c = togglem(visualMode, C-c)
           x = togglem(visualMode, C-x)
           v = togglem(visualMode, C-v)
-          ; = togglem(visualMode, backspace)
+          ; = overload(control, togglem(visualMode, backspace))
 
         [main]
 

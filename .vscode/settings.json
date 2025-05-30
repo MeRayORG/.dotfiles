@@ -1,0 +1,15 @@
+{
+  // 1️⃣ Turn the feature on
+  "workbench.editor.customLabels.enabled": true,
+
+  // 2️⃣ Label rules, evaluated from top → bottom
+  "workbench.editor.customLabels.patterns": {
+    // Show the parent directory instead of “default.nix”
+    "**/default.nix": "[${dirname}]",
+
+    // For every other *.nix file, hide the “.nix” extension
+    "**/*.nix": "${filename}"
+  },
+  "window.title": "${activeEditorShort}${separator}${rootName}"
+
+}

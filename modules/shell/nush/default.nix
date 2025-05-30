@@ -8,5 +8,7 @@ mkEnable set ["mods" "shell" "nush"] ({
   users.defaultUserShell = pkgs.nushell;
 } // mkHome set { 
   home.shell.enableNushellIntegration = true;
+  programs.carapace.enableNushellIntegration = true;
   programs.nushell.enable = true;
+  programs.nushell.configFile.source = ./env.nu;
 })
