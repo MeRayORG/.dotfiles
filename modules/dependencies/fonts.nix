@@ -106,26 +106,6 @@ in
           sansSerif = [ reading.main ];
           monospace = [ mono.main ];
           };
-
-        localConf = ''
-<!-- 3. All mono-ish names -> JetBrains Mono (matches Source Code Pro, Cascadia Mono, Ubuntu Mono, etc.)        -->
-<match target="pattern">
-  <!--  “contains” + ignore-case makes it a substring search -->
-  <test name="family" compare="contains" ignore-case="yes">
-    <string>mono</string>
-  </test>
-  <edit name="family" mode="assign" binding="strong">
-    <string>${mono.main}</string>
-  </edit>
-</match>
-
-<match target="pattern">
-  <test name="family" compare="not_eq"><string>${mono.main}</string></test>
-  <edit name="family" mode="assign" binding="strong">
-    <string>${reading.main}</string>
-  </edit>
-</match>
-      '';
         };
         
     };
