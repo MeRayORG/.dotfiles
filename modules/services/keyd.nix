@@ -159,10 +159,10 @@
           # quit selection when leaving edit mode
           capslock = overload(editMode, clear())
 
-          # copy, cut then exit
-          c = clearm(C-c)+toggle(visualMode)
-          x = clearm(C-x)+toggle(visualMode)
-          v = clearm(C-v)+toggle(visualMode)
+          # copy, cut, paste then exit selection mode
+          c = togglem(visualMode, C-c)
+          x = togglem(visualMode, C-x)
+          v = togglem(visualMode, C-v)
 
 
         [main]
