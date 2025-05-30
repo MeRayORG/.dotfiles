@@ -1,12 +1,10 @@
-set@{
-  mkBaScript,
-  lib,
-  config,
-  pkgs,
-  ...
-  }:
-{
-  config = mkBaScript set "systemupdate"
+{ mkBaScript
+, config
+, pkgs
+, aPath
+, ...
+}@set:
+mkBaScript set "systemupdate"
     ''
     cd ${config.mods.flakeDir}
     if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
@@ -19,5 +17,4 @@ set@{
     else
       echo "Uncommitted changes — aborting."
     fi
-    '';
-}
+    ''

@@ -1,5 +1,5 @@
 {
-  #aPath,
+  aPath,
   pkgs,
   lib,
   ...

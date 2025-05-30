@@ -130,10 +130,10 @@
           n = C-n
 
           a = overload(control, C-a)
-          s = ${if cfg.nav.shiftToggle then "overload(shift, toggle(shift))" else "overload(shift, C-s)" }
+          s = ${if cfg.nav.shiftToggle then "overload(shift, toggle(visualMode))" else "overload(shift, C-s)" }
           d = overload(alt, C-d)
           f = overload(meta, C-f)
-          
+        
           
           q = escape
           
@@ -147,9 +147,18 @@
           [editMode+alt+meta]
 
           [editMode+shift]
-          # quit selection when leaving edit mode
-          capslock = overload(editMode, clearm(escape))
           o = macro(home enter up)
+
+          [visualMode] 
+          ${up}    = S-up
+          ${down}  = S-down
+          ${left}  = S-left
+          ${right} = S-down
+          ${home}  = S-home
+          ${end}   = S-end
+          # quit selection when leaving edit mode
+          capslock = overload(editMode, clear())
+
           # c = clearm(C-c)-toggle(editMode)
 
 
@@ -171,7 +180,6 @@
 
         [qoute+alt]
         e = macro(compose e ")
-
 
         [main]
         '';

@@ -1,4 +1,4 @@
-set@{mkBaScript, pkgs, ...}:
+set@{mkBaScript, pkgs, aPath, ...}:
 mkBaScript set "copy"
 ''
 data="$(cat)" + $1
