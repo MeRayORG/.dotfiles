@@ -115,7 +115,7 @@
           p = macro(end S-home backspace backspace)
           # vscode
           shift+p = macro(end S-home backspace S-home backspace backspace)
-
+ 
           # Copy Paste Cut
           c = C-c
           v = C-v
@@ -153,13 +153,16 @@
           ${up}    = S-up
           ${down}  = S-down
           ${left}  = S-left
-          ${right} = S-down
+          ${right} = S-right
           ${home}  = S-home
           ${end}   = S-end
           # quit selection when leaving edit mode
           capslock = overload(editMode, clear())
 
-          # c = clearm(C-c)-toggle(editMode)
+          # copy, cut then exit
+          c = clearm(C-c)+toggle(visualMode)
+          x = clearm(C-x)+toggle(visualMode)
+          v = clearm(C-v)+toggle(visualMode)
 
 
         [main]
