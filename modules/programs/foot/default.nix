@@ -23,7 +23,7 @@ mkHome set {
         beam-thickness = 1;
       };
       text-bindings ={
-        "\"\\x17\"" = "Control+BackSpace";
+        "\\x17" = "Control+BackSpace";
       };
       # key-bindings = {
 
