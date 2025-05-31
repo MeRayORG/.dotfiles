@@ -17,10 +17,10 @@ mkHome set {
         # "vertical-letter-offset" = "...";
       };
       cursor = {
-        shape = "beam";
+        style = "beam";
         blink = true;
         blink-rate = 500;
-        beam-thickness = 1.5;
+        beam-thickness = 1;
       };
       key-bindings = {
         copy  = "Control+Shift+c";
@@ -29,11 +29,12 @@ mkHome set {
       search-bindings = {
         cursor-right-word = "Control+Right";
         cursor-left-word  = "Control+Left";
-        delete-prev-word  = "Control+BackSpace";
+        delete-prev-word  = "Control+Backspace";
         delete-next-word  = "Control+Delete";
         extend-to-word-boundary = "Control+Shift+Right";
         extend-backward-to-word-boundary = "Control+Shift+Left";
-
+        extend-line-up = "Shift+Up"; 
+        extend-line-down = "Shift+Down";
       };
     }; 
   };
