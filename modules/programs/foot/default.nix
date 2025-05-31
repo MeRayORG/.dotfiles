@@ -29,7 +29,7 @@ mkHome set {
       search-bindings = {
         cursor-right-word = "Control+Right";
         cursor-left-word  = "Control+Left";
-        delete-prev-word  = "Control+Backspace";
+        delete-prev-word  = "Control+BackSpace";
         delete-next-word  = "Control+Delete";
         extend-to-word-boundary = "Control+Shift+Right";
         extend-backward-to-word-boundary = "Control+Shift+Left";
