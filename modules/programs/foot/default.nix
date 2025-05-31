@@ -19,10 +19,21 @@ mkHome set {
       cursor = {
         shape = "beam";
         blink = true;
+        blink-rate = 500;
+        beam-thickness = 1.5;
       };
-      bindings = {
-        copy = "Control+Shift+c";
+      key-bindings = {
+        copy  = "Control+Shift+c";
         paste = "Control+Shift+v";
+      };
+      search-bindings = {
+        cursor-right-word = "Control+Right";
+        cursor-left-word  = "Control+Left";
+        delete-prev-word  = "Control+BackSpace";
+        delete-next-word  = "Control+Delete";
+        extend-to-word-boundary = "Control+Shift+Right";
+        extend-backward-to-word-boundary = "Control+Shift+Left";
+
       };
     }; 
   };
