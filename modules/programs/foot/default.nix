@@ -22,7 +22,7 @@ mkHome set {
         blink-rate = 600;
         beam-thickness = 1;
       };
-      key-mappings ={
+      text-bindings ={
         "\x17" = "Control+BackSpace";
       };
       # key-bindings = {
