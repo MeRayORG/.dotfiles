@@ -140,6 +140,21 @@
           ; = overload(control, backspace)
           ' = delete
           
+          # use symbols in editMode
+          1 = !
+          2 = @
+          3 = #
+          4 = $
+          5 = %
+          6 = ^
+          7 = &
+          8 = *
+          9 = (
+          0 = )
+          ` = ~
+
+
+
           [editMode+alt]
           ${up} = pageup
           ${down} = pagedown
@@ -225,32 +240,7 @@
           up = noop 
           down = noop
           ''}
-        ${ifs cfg.mod.invertNumbers ''
-          [main]
-          1 = !
-          2 = @
-          3 = #
-          4 = $
-          5 = %
-          6 = ^
-          7 = &
-          8 = *
-          9 = (
-          0 = )
-          ` = ~
-          [shift]
-          0 = 0
-          1 = 1
-          2 = 2
-          3 = 3
-          4 = 4
-          5 = 5
-          6 = 6
-          7 = 7
-          8 = 8
-          9 = 9
-          ` = `
-          ''}
+        
 
         '';
     };

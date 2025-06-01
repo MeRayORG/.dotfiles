@@ -12,7 +12,7 @@ mkHome set {
     settings = {
       main = {
         font = "${config.mods.fonts.mono.main}:size=${builtins.toString (config.mods.fonts.mono.size)}";
-        pad  = "3x3";
+        pad  = "5x5";
         line-height = "${builtins.toString (config.mods.fonts.mono.size + 2)}";
         # "vertical-letter-offset" = "...";
       };
@@ -24,6 +24,9 @@ mkHome set {
       };
       text-bindings ={
         "\\x17" = "Control+BackSpace";
+      };
+      scrollback = {
+        lines = 32000;
       };
       # key-bindings = {
 
