@@ -130,9 +130,10 @@
           n = C-n
 
           a = overload(control, C-a)
-          s = ${if cfg.nav.shiftToggle then "overload(shift, toggle(visualMode))" else "overload(shift, C-s)" }
+          s = overload(shift, C-s)
           d = overload(alt, C-d)
           f = overload(meta, C-f)
+          m = toggle(visualMode)
         
           
           q = escape
@@ -160,6 +161,9 @@
           ${down} = pagedown
 
           [editMode+alt+meta]
+          ${up} = M-A-up
+          ${down} = M-A-down
+
 
           [editMode+shift]
           o = macro(home enter up)
