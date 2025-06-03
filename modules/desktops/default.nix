@@ -1,4 +1,17 @@
-{ defImp, ... }@set:
+{ defImp
+, lib
+, ... 
+} @set:
+let 
+  inherit (lib) mkOption;
+  inherit (lib.types) enum;
 
-  defImp set ./. "desktops"
+
+in
+  defImp set ./. "desktops" // {
+    options.mods.desktops.de = mkOption {
+      type = enum ["hyprland" "cosmic" "kde" "none"];
+
+    };
+  }
 

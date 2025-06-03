@@ -85,7 +85,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   mods = {
     flakeDir = "~/nixconf/.";
-
+    desktops.de = "kde";
     services.keyd = {
       mode = {
         training = true;

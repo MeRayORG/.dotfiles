@@ -1,8 +1,10 @@
-{
-  ...
+{ config
+, lib
+, ...
 }:
-{
-  config = {
+ 
+{ 
+  config = lib.mkIf (config.mods.desktops.de == "hyprland") {
     services = {
       desktopManager.cosmic = {
         enable = true;

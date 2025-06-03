@@ -161,7 +161,7 @@
           ${down} = pagedown
 
           [editMode+alt+meta]
-          ${up} = M-A-up
+          ${up}   = M-A-up
           ${down} = M-A-down
 
 
