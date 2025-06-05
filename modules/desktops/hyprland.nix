@@ -4,14 +4,16 @@
 , lib
 , ...
 }:
+let cfg = config.mods.desktops; in 
 {
-  config = lib.mkIf (config.mods.desktops.de == "hyprland") {
+  config = lib.mkIf (cfg.de == "hyprland") {
     nixpkgs.overlays = [hyprpanel.overlay];
     fonts.packages = with pkgs; [ nerdfonts ];
     programs = {
       # HYPRLAND
       hyprland = {
         enable = true;
+        xwayland.enable = cfg.xway;
       };
       # HYPRLOCKs
       hyprlock.enable = true;

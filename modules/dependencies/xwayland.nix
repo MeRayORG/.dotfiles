@@ -4,11 +4,9 @@
   ...
   }:
 {
-  options.mods.x = lib.mkEnableOption "the xserver.";
+  options.mods.xway = lib.mkEnableOption "xwayland.";
   config =  {
-    services.xserver.enable = if config.mods.x then true else false;
-
-    environment = lib.mkIf (! config.mods.x) {
+    environment = lib.mkIf (! config.services.xserver.enable) {
       sessionVariables = {
         NIXOS_OZONE_WL = "1"; # Enable wayland for chromium-based apps (VSCode Discord Brave)
       };

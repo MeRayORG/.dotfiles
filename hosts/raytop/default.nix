@@ -85,7 +85,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   mods = {
     flakeDir = "~/nixconf/.";
-    desktops.de = "kde";
+    desktops.de = "cosmic";
+    desktops.xway = true; # for steam :( 
     services.keyd = {
       mode = {
         training = true;

@@ -2,13 +2,13 @@
 , lib
 , ...
 }:
- 
+let cfg = config.mods.desktops; in 
 { 
-  config = lib.mkIf (config.mods.desktops.de == "hyprland") {
+  config = lib.mkIf (cfg.de == "cosmic") {
     services = {
       desktopManager.cosmic = {
         enable = true;
-        xwayland.enable = true; # for steam :(
+        xwayland.enable = cfg.xway; # for steam :(
       };
       displayManager.cosmic-greeter.enable = true;
     };
