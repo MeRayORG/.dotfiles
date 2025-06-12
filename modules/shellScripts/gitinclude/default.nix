@@ -6,7 +6,7 @@
 }@set:
 mkBaScript set "gitinclude"
 ''
-TARGET_DIR="${1:-.}"
+TARGET_DIR="''${1:-.}"
 INCLUDE_FILE="$TARGET_DIR/.gitinclude"
 
 if [[ ! -f "$INCLUDE_FILE" ]]; then

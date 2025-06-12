@@ -44,8 +44,8 @@
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        # raynix = f.mkSystem ./hosts/raytop;
-        raynix = nixpkgs.lib.nixosSystem {
+        # raytop = f.mkSystem ./hosts/raytop;
+        raytop = nixpkgs.lib.nixosSystem {
           modules = [
             ./hosts/raytop
             ./modules

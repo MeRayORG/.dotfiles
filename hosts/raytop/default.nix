@@ -85,7 +85,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   mods = {
     flakeDir = "~/nixconf/.";
-    desktops.de = "kde";
+    desktops.de = "cosmic";
     desktops.xway = true; # for steam :( 
     services.keyd = {
       mode = {
@@ -119,7 +119,7 @@
   };
 
   networking = {
-    hostName = "raynix"; # Define your hostname.
+    hostName = "raytop"; # Define your hostname.
     networkmanager.enable = true; # Enable networking
   };
 
@@ -171,5 +171,5 @@
   nixpkgs.config.allowUnfree = true;
 
   ## See extraconfig.nix
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
