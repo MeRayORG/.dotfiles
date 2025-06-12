@@ -53,7 +53,9 @@ in
   } // mkHome set {
     wayland.windowManager.hyprland = {
       enable = true;
-      settings = (import ./config) set;
+      package = null;
+      portalPackage = null;
+      settings = { decoration = {rounding = 3;};}; #(import ./config) set;
     };
   };
 }
