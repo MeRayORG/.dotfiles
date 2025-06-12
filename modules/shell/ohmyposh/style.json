@@ -70,14 +70,13 @@
             "alignment": "right",
             "segments": [
                 {
-                    "background": "#29519A",
-                    "foreground": "#ffffff",
+                    "foreground": "#29519A",
                     "properties": {
                         "style": "houston",
                         "threshold": 200
                     },
                     "style": "powerline",
-                    "template": "\ueba2 {{ .FormattedMs }}<transparent>\ue0ba\ue0bc</>",
+                    "template": "\ueba2 {{ .FormattedMs }}",
                     "type": "executiontime"
                 },
                 {

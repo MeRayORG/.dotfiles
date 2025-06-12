@@ -4,7 +4,11 @@
 , ...
 }@set: 
 mkEnable set ["mods" "shell" "nush"] ({
-  environment.systemPackages = [ pkgs.nushell pkgs.carapace];
+  environment.systemPackages = [ 
+    pkgs.nushell 
+    pkgs.carapace
+    pkgs.fastfetch
+  ];
   users.defaultUserShell = pkgs.nushell;
 } // mkHome set { 
   home.shell.enableNushellIntegration = true;
