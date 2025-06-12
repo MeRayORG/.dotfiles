@@ -6,11 +6,6 @@
     ./nvidia.nix
   ];
 
-  swapDevices = [ {
-    device = "/swapfile";
-    size = 128*1024; 
-  } ];
-
   environment.systemPackages = with pkgs; [
 
     wget
@@ -60,7 +55,6 @@
     libguestfs-with-appliance
 
     sshfs
-    tailscale
 
     remmina
 
@@ -85,7 +79,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   mods = {
     flakeDir = "~/nixconf/.";
-    desktops.de = "cosmic";
+    desktops.de = "hypr";
     desktops.xway = true; # for steam :( 
     services.keyd = {
       mode = {
@@ -110,7 +104,6 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.steam.enable = true;
-  services.tailscale.enable = true;
 
 
   boot.loader = {
@@ -153,7 +146,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
