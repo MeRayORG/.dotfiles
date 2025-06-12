@@ -48,7 +48,7 @@ in
       enable = true;
       package = null;
       portalPackage = null;
-      settings = { decoration = {rounding = 3;};}; #(import ./config) set;
+      settings = ((import ./config) set); # /decoration.nix
     };
   });
 }
