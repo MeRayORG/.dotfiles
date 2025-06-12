@@ -1,8 +1,9 @@
 { pkgs
 , config
 , lib
+, mkHome
 , ...
-}:
+} @set:
 let 
 
 cfg = config.mods.desktops; 
@@ -49,5 +50,7 @@ in
     #     # ...
     #   ];
     # };
+  } // mkHome set {
+    wayland.windowManager.hyprland.settings = (import ./config) set;
   };
 }
