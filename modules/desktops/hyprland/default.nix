@@ -51,6 +51,9 @@ in
     #   ];
     # };
   } // mkHome set {
-    wayland.windowManager.hyprland.settings = (import ./config) set;
+    wayland.windowManager.hyprland = {
+      enable = true;
+      settings = (import ./config) set;
+    };
   };
 }
