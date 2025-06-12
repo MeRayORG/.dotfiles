@@ -16,7 +16,7 @@ in
   #   ./hyprlock.nix
   #   ./hyprpolkit.nix
   # ];
-  config = lib.mkIf enable {
+  config = lib.mkIf enable ({
     programs = {
       # HYPRLAND
       hyprland = {
@@ -43,13 +43,6 @@ in
     services.power-profiles-daemon.enable = true;
     hardware.bluetooth.enable = true;
 
-    # wayland.windowManager.hyprland = {
-    #   enable = true;
-    #   plugins = [
-    #     #inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-    #     # ...
-    #   ];
-    # };
   } // mkHome set {
     wayland.windowManager.hyprland = {
       enable = true;
@@ -57,5 +50,5 @@ in
       portalPackage = null;
       settings = { decoration = {rounding = 3;};}; #(import ./config) set;
     };
-  };
+  });
 }
