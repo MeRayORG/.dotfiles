@@ -1,4 +1,9 @@
-{...}: 
+{...}:
+let 
+  menu = "wofi --show drun";
+  mod = "SUPER";
+in
 [
-"SUPER, r, exec, wofi --show drun"
+"${mod}, space, exec, ${menu}"
+"${mod}, q, killactive,"
 ]
