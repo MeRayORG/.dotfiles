@@ -16,3 +16,5 @@ eww for bluetoothectl and stuff or quickshells
 
 find detacher? nushell builtin?
 
+cursor customization as seperate module
+

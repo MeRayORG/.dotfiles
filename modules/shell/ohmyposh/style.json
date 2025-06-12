@@ -6,8 +6,7 @@
             "segments": [
 
                 {
-                    "background": "#29519A",
-                    "foreground": "#ffffff",
+                    "foreground": "#3c75df",
                     "leading_diamond": "\ue0b6",
                     "trailing_diamond": "\ue0b0",
                     "style": "diamond",
@@ -16,8 +15,6 @@
                 },
 
                 {
-                    "background": "#FFA500",
-                    "foreground": "#2E3440",
                     "properties": {
                         "folder_icon": "\uea7c",
                         "folder_separator_icon": " \u276f ",
@@ -25,6 +22,12 @@
                         "style": "agnoster_short",
                         "max_depth": 3,
                         "gitdir_format": "<i>%s</i>",
+                        "cycle": [
+                            "#B2B2B2",
+                            "#CCCCCC",
+                            "#E5E5E5",
+                            "#FFFFFF"
+                        ],
                         "cycle_folder_separator": true,
                         "folder_format": "%s",
                         "mapped_locations": {
@@ -37,8 +40,7 @@
                     "type": "path"
                 },
                 {
-                    "background": "#FFDE21",
-                    "foreground": "#2E3440",
+                    "foreground": "#FFDE21",
                     "powerline_symbol": "\ue0b0",
                     "properties": {
                         "fetch_stash_count": true,
@@ -59,22 +61,11 @@
                     "trailing_diamond": "\ue0b0"
                 },
                 {
-                    "background": "#ff0000",
-                    "foreground": "#2E3440",
+                    "foreground": "#ff0000",
                     "style": "diamond",
                     "template": " \u2717{{ .String }} ",
                     "type": "status",
                     "trailing_diamond": "\ue0b0" 
-                },
-                {
-                    "background": "#29519A",
-                    "foreground": "#ffffff",
-                    "style": "diamond",
-                    "template": "​",
-                    "type": "text",
-                    "trailing_diamond": "\ue0b4",
-                    "always_enabled": true 
-                
                 }
 
             ],
