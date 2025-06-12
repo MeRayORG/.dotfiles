@@ -7,9 +7,7 @@
 
                 {
                     "foreground": "#3c75df",
-                    "leading_diamond": "\ue0b6",
-                    "trailing_diamond": "\ue0b0",
-                    "style": "diamond",
+                    "style": "powerline",
                     "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
                     "type": "os"
                 },
@@ -34,9 +32,8 @@
                             "~/nixconf": "\udb84\udd05"
                         }
                     },
-                    "style": "diamond",
+                    "style": "powerline",
                     "template": " {{ .Path }} ",
-                    "trailing_diamond": "\ue0b0",
                     "type": "path"
                 },
                 {
@@ -55,17 +52,15 @@
                             
                         }
                     },
-                    "style": "diamond",
+                    "style": "powerline",
                     "template": "{{ if .Staging.Changed  }}<b>{{ end }}{{ if .Working.Changed }}<i>{{ end }}{{ .HEAD }} \ue729 {{trim (trunc 12 .Commit.Subject)}}{{if gt (len .Commit.Subject) 12 }}\u2026{{end}}</></> ",
-                    "type": "git",
-                    "trailing_diamond": "\ue0b0"
+                    "type": "git"
                 },
                 {
                     "foreground": "#ff0000",
-                    "style": "diamond",
+                    "style": "powerline",
                     "template": " \u2717{{ .String }} ",
-                    "type": "status",
-                    "trailing_diamond": "\ue0b0" 
+                    "type": "status" 
                 }
 
             ],
@@ -81,35 +76,29 @@
                         "style": "houston",
                         "threshold": 200
                     },
-                    "style": "diamond",
+                    "style": "powerline",
                     "template": "\ueba2 {{ .FormattedMs }}<transparent>\ue0ba\ue0bc</>",
                     "type": "executiontime"
                 },
                 {
-                    "background": "#29519A",
-                    "foreground": "#ffffff",
-                    "style": "diamond",
+                    "foreground": "#29519A",
+                    "style": "powerline",
                     "template": "{{ if or (eq .UserName \"meray\") (eq .HostName \"raynix\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>{{end}}",
                     "type": "session"
                 },
                 {
-                    "background": "#29519A",
                     "foreground": "#3EC669",
                     "properties": {
                         "time_format": "15:04:05"
                     },
-                    "style": "diamond",
+                    "style": "powerline",
                     "template": " {{ .CurrentDate | date .Format }}",
-                    "type": "time",
-                    "trailing_diamond": "\ue0b4"
+                    "type": "time"
                 }
             ],
             "type": "prompt",
             "background": "#29519A",
-            "foreground": "#ffffff",
-            "leading_diamond": "",
-            "trailing_diamond": "\ue0b4"
-
+            "foreground": "#ffffff"
         },
         {
             "alignment": "left",
