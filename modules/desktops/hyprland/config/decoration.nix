@@ -3,8 +3,8 @@
 
   blur = {
     enabled = true;
-    size = 8;
-    passes = 2; 
+    size = 100;
+    passes = 20; 
     new_optimizations = true;
     ignore_opacity = false;
   };
