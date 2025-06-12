@@ -1,4 +1,4 @@
 {...}: 
 [
-"$mod, space, exec, $menu"
+"SUPER, r, exec, wofi --show drun"
 ]
