@@ -3,25 +3,53 @@
 # hyprland-watch.sh
 set -euo pipefail
 
-CONFIG_NIX=./config
+ENTRY_FILE=./config
+WATCH_DIR=./config
 OUT_CONF=~/.config/hypr/hyprland.conf
-LOCK=/tmp/hyprland-watch.lock
+CHECK_INTERVAL=1
 
-# Debounce: avoid parallel runs
-exec 200> "$LOCK"
-flock -n 200 || exit 0
+# Build an associative array of file mtimes
+declare -A file_times
 
-while inotifywait -e close_write,moved_to,create "$CONFIG_NIX"; do
-  echo "Detected change. Rebuilding hyprland.conf..."
+function record_times() {
+  for f in "$ENTRY_FILE" "$WATCH_DIR"**/*; do
+    [[ -f "$f" ]] || continue
+    file_times["$f"]=$(stat -c %Y "$f")
+  done
+}
 
-  nix eval --raw --expr "
-    let
-      lib = import <home-manager>/lib;
-      cfg = import $CONFIG_NIX {};
-    in lib.generators.toINI cfg.settings
-  " > "$OUT_CONF.new"
+function changed() {
+  local found_change=1
+  for f in "$ENTRY_FILE" "$WATCH_DIR"**/*; do
+    [[ -f "$f" ]] || continue
+    new_time=$(stat -c %Y "$f")
+    old_time="${file_times["$f"]-}"
+    if [[ "$new_time" != "$old_time" ]]; then
+      found_change=0
+    fi
+    file_times["$f"]="$new_time"
+  done
+  return $found_change
+}
+record_times
 
-  mv "$OUT_CONF.new" "$OUT_CONF"
-  echo "Reloading Hyprland..."
-  hyprctl reload
+while true; do
+  sleep "$CHECK_INTERVAL"
+  if changed; then
+    echo "Change detected. Rebuilding..."
+
+    nix eval --impure --raw --expr "
+      let
+        lib = import <nixpkgs/lib>;
+        attrs = import ${ENTRY_FILE} {inherit lib;};
+        homer = fetchTarball \"https://github.com/nix-community/home-manager/archive/master.tar.gz\";
+        homerlib = (import \"\${homer}/modules/lib\") {inherit lib;};
+      in homerlib.generators.toHyprconf {inherit attrs;}
+    " > "$OUT_CONF.new" && mv "$OUT_CONF.new" "$OUT_CONF"
+
+    echo "Reloading Hyprland..."
+    hyprctl reload
+
+    record_times  # update timestamps
+  fi
 done

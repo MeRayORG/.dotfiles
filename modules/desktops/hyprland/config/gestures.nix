@@ -1,0 +1,5 @@
+{...}:
+{
+  workspace_swipe = true;
+  
+}

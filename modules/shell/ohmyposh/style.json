@@ -8,7 +8,7 @@
                 {
                     "foreground": "#3c75df",
                     "style": "powerline",
-                    "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+                    "template": "{{.Icon}} ",
                     "type": "os"
                 },
 
@@ -37,8 +37,6 @@
                     "type": "path"
                 },
                 {
-                    "foreground": "#FFDE21",
-                    "powerline_symbol": "\ue0b0",
                     "properties": {
                         "fetch_stash_count": true,
                         "fetch_status": true,
@@ -117,6 +115,13 @@
                 }
             ],
             "type": "prompt"
+        },
+        {
+            "transient_prompt": {
+                "background": "transparent",
+                "foreground": "#ffffff",
+                "template": "{{.Segments.Time.Text}}{{ .Segments.Os.Text }}"
+            }
         }
 
     ],
