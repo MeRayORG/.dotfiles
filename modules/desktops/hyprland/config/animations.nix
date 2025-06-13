@@ -9,6 +9,6 @@
 
     animation = [
       "windows, 1, 6, tahoeSpring, popin 90%"
-      "windowsIn, 1, 6, tahoeFade, fadeIn"
+      "windows, 1, 6, tahoeFade, fadeIn"
     ];
 }
