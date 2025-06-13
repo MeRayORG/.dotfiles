@@ -81,7 +81,7 @@
                 {
                     "foreground": "#29519A",
                     "style": "powerline",
-                    "template": "{{ if or (eq .UserName \"meray\") (eq .HostName \"raynix\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>{{end}}",
+                    "template": "{{ if or (eq .UserName \"meray\") (eq .HostName \"raynix\")}}{{else}}{{.UserName}}@{{.HostName}} <transparent>\ue0ba\ue0bc</>{{end}} ",
                     "type": "session"
                 },
                 {
@@ -90,7 +90,7 @@
                         "time_format": "15:04:05"
                     },
                     "style": "powerline",
-                    "template": " {{ .CurrentDate | date .Format }}",
+                    "template": "{{ .CurrentDate | date .Format }}",
                     "type": "time"
                 }
             ],
@@ -121,7 +121,7 @@
     ],
     "transient_prompt": {
         "background": "transparent",
-        "template": "{{.Segments.Time.Text}}{{ .Segments.Os.Text }}"
+        "template": "{{.Segments.Time.Text}} {{ .Segments.Os.Text }}"
     },  
         
     "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.Folder | replace \"~\" \"🏚\" }} @ {{.HostName}}",
