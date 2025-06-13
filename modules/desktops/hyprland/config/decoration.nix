@@ -1,16 +1,17 @@
 {...}:{
-  rounding = 7;
+    rounding = 8;
 
-  blur = {
-     enabled = true;
-    size = 8;
-    passes = 2;
-    new_optimizations = true;
-  };
-  drop_shadow = true;
-  shadow_range = 35;
-  shadow_render_power = 4;
-  shadow_ignore_window = false;
+    blur = {
+      enabled = true;
+      size = 8;
+      passes = 2;
+    };
 
-  
+    shadow = {
+      enabled = true;
+      offset = "0 3";
+      range = 25;
+      render_power = 4;
+      color = "rgba(0,0,0,0.4)";
+    }; 
 }
