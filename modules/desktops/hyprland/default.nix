@@ -48,7 +48,7 @@ in
       enable = true;
       package = null;
       portalPackage = null;
-      #settings = ((import ./config) set;
+      settings = (import ./config) set;
     };
   });
 }

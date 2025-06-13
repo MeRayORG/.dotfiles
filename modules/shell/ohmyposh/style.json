@@ -37,6 +37,7 @@
                     "type": "path"
                 },
                 {
+                    "foreground": "#FFDE21",
                     "properties": {
                         "fetch_stash_count": true,
                         "fetch_status": true,
@@ -115,16 +116,14 @@
                 }
             ],
             "type": "prompt"
-        },
-        {
-            "transient_prompt": {
-                "background": "transparent",
-                "foreground": "#ffffff",
-                "template": "{{.Segments.Time.Text}}{{ .Segments.Os.Text }}"
-            }
-        }
+        }        
 
     ],
+    "transient_prompt": {
+        "background": "transparent",
+        "template": "{{.Segments.Time.Text}}{{ .Segments.Os.Text }}"
+    },  
+        
     "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.Folder | replace \"~\" \"🏚\" }} @ {{.HostName}}",
     "version": 3
 }
