@@ -11,11 +11,12 @@ enable = cfg.de == "hypr";
 
 in 
 {
-  # imports = if !enable then [] else [
-  #   ./hyprsunset.nix
-  #   ./hyprlock.nix
-  #   ./hyprpolkit.nix
-  # ];
+  imports = [
+    ./hyprsunset.nix
+    ./hyprlock.nix
+    ./hyprpolkit.nix
+    ./plugins
+  ];
   config = lib.mkIf enable ({
     programs = {
       # HYPRLAND
