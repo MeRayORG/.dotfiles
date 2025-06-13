@@ -44,12 +44,15 @@ in
     hardware.bluetooth.enable = true;
 
   } // mkHome set {
-    wayland.windowManager.hyprland = {
+    wayland.windowManager.hyprland = 
+      let 
+        plugins = ((import ./plugins) set);
+      in {
       enable = true;
       package = null;
       portalPackage = null;
-      settings = ((import ./config) set);
-      plugins = ((import ./plugins) set);
+      settings = ((import ./config) set) // plugins.settings;
+      plugins = plugins.pkgs;
     };
   });
 }

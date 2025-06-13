@@ -1,11 +1,21 @@
 { getDir
-, mkHome
 , lib
 , pkgs
 , ...
 } @set:
+let dir = (getDir set ./. {}); in
 
-map ({imported,...}: imported set) 
+{
+  
+  pkgs = map ({imported,...}: (imported set).pkg) dir;
 
-(getDir set ./. {})
+settings.plugins = 
+lib.listToAttrs
+  (map
+  ({imported, name,...}: {
+    inherit name;
+    value = (imported set).set;
+  }) dir);
 
+
+}

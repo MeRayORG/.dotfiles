@@ -1,4 +1,7 @@
 { pkgs
 , ...
 } @set:
-pkgs.hyprlandPlugins.hyprexpo
+{
+  pkg = pkgs.hyprlandPlugins.hyprexpo;
+  set = {keep_focused = true;};
+}
