@@ -15,7 +15,6 @@ in
     ./hyprsunset.nix
     ./hyprlock.nix
     ./hyprpolkit.nix
-    ./plugins
   ];
   config = lib.mkIf enable ({
     programs = {
@@ -50,6 +49,7 @@ in
       package = null;
       portalPackage = null;
       settings = ((import ./config) set);
+      plugins = ((import ./plugins) set);
     };
   });
 }

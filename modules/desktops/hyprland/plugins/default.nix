@@ -4,12 +4,8 @@
 , pkgs
 , ...
 } @set:
-mkHome set {
-  wayland.windowManager.hyprland.plugins = 
 
-    map ({imported,...}: imported set) (
-    lib.lists.filter ({isNix,...}: isNix)
-    
-    (getDir set ./. {}));
-}
+map ({imported,...}: imported set) 
+
+(getDir set ./. {})
 

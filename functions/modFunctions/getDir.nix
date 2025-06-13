@@ -1,8 +1,8 @@
 {lib, ...}:
 
 dir:
-{
- default ? false
+{ default ? false # include default.nix
+, notNix ? false # include other files
 }:
 
 let 
@@ -32,9 +32,12 @@ let
   );
 
   filterDefault = attrs: if default then attrs else lib.filterAttrs (f: _: f != "default.nix") attrs;
+  # filterNotNix = attrs: if notNix then attrs else lib.filterAttrs (f: t: lib.hasSuffix ".nix" f || t == "directory" ) attrs;
   
+  filterNotNix = ls: if notNix then ls else lib.filter ({isNix,...}: isNix) ls;
   
 in
-  rewrite 
-  ( filterDefault
-  (builtins.readDir dir))
+  filterNotNix (
+  rewrite ( 
+  filterDefault (
+  builtins.readDir dir)))
