@@ -8,14 +8,24 @@
     "linear,0,0,1,1"
     "almostLinear,0.5,0.5,0.75,1.0"
     "quick,0.15,0,0.1,1"
+    # macOS-style spring (overshoot, damped bounce)
+    "macOSSpr,0.175,0.885,0.32,1.275"
+    # Quick fallback
+    "quick,0.15,0,0.1,1"
   ];
 
   animation = [
+    # Main spring-open pop-in (like opening from dock/bar)
+    "windowsIn,1,6,macOSSpr,popin 120%"
+
+    # Closing with spring
+    "windowsOut,1,4,macOSSpr,popin 100%"
+
+    # Resize spring: slide with bounce
+    "windows,1,4,macOSSpr,slide"
+    
     "global,1,10,default"
     "border,1,5.39,easeOutQuint"
-    "windows,1,4.79,easeOutQuint"
-    "windowsIn,1,4.1,easeOutQuint,popin 87%"
-    "windowsOut,1,1.49,linear,popin 87%"
     "fadeIn,1,1.73,almostLinear"
     "fadeOut,1,1.46,almostLinear"
     "fade,1,3.03,quick"
