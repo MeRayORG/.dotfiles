@@ -1,5 +1,7 @@
 {...}:{
     rounding = 8;
+    active_opacity = 0.75;
+    inactive_opacity = 0.7;
 
     blur = {
       enabled = true;

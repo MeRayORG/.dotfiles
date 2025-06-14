@@ -135,6 +135,7 @@
       LC_TIME = "nl_NL.UTF-8";
     };
   };
+  home-manager.backupFileExtension = "hm-backup";
 
 
 

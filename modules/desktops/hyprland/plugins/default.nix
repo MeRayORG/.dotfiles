@@ -3,17 +3,22 @@
 , pkgs
 , ...
 } @set:
-let dir = (getDir set ./. {}); in
+let 
+getSafe = default: set: attr: set.${attr} or default;
+getSafeSet = getSafe {};
+getSafeStr = getSafe "";
+
+dir = (getDir set ./. {}); 
+in
 
 {
-  
-  pkgs = map ({imported,...}: (imported set).pkg) dir;
+  pkgs = map ({imported,...}: (getSafeStr (imported set) "pkg")) dir;
 
   settings.plugin = lib.listToAttrs (
     map
       ({imported, name,...}: {
         inherit name;
-        value = (imported set).set;
+        value = getSafeSet (imported set) "set";
       }) dir
   );
 
