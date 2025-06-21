@@ -111,9 +111,9 @@
         name = "numix";
       };
       cursor = {
-        package = pkgs.hyprcursor;
+        package = pkgs.layan-cursors;
         size = 12;
-        name = "Hypr";
+        name = "Layan Cursors";
       };
     };
 
