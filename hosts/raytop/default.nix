@@ -97,7 +97,7 @@
       };
       nav.vim = false;
     };
-    shell.nush.enable = true;
+    shell.zsh.enable = true;
 
     theme = {
       theme = {
