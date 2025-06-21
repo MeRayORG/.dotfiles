@@ -4,6 +4,7 @@
 , lib
 , ...  
 }@set:
+let mfCfg = config.mods.theme.fonts.mono; in
 { 
   config = lib.mkIf (config.mods.programs.terminal.which == "foot") ({
     environment.systemPackages = [ pkgs.foot];
@@ -13,9 +14,9 @@
       enable = true;
       settings = {
         main = {
-          font = "${config.mods.fonts.mono.main}:size=${builtins.toString (config.mods.fonts.mono.size)}";
+          font = "${mfCfg.main}:size=${builtins.toString (mfCfg.size)}";
           pad  = "5x5";
-          line-height = "${builtins.toString (config.mods.fonts.mono.size + 2)}";
+          line-height = "${builtins.toString (mfCfg.size + 2)}";
           # "vertical-letter-offset" = "...";
         };
         cursor = {

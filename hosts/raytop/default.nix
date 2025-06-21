@@ -99,6 +99,26 @@
     };
     shell.nush.enable = true;
 
+    theme = {
+      theme = {
+        gtk = {
+          name = "matcha";
+          package = pkgs.matcha-gtk-theme;
+        };
+
+      };
+      icon = {
+        package = pkgs.matcha-gtk-theme;
+        name = "numix";
+
+      };
+      cursor = {
+        package = pkgs.hyprcursor;
+        size = 12;
+        name = "hyprcursor";
+      };
+    };
+
     homemanager.users = ["meray"];
   };
   # Install firefox.

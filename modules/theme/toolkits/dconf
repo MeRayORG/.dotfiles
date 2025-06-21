@@ -1,0 +1,6 @@
+# https://stackoverflow.com/questions/73970536/home-manager-how-to-set-gnome-dark-mode
+
+dconf.settings = {
+  "org/gnome/desktop/interface" = {
+    color-scheme = "prefer-dark";
+  };

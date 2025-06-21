@@ -40,7 +40,10 @@
     };
   };
 
-  outputs = {nixpkgs, ... }@inputs :
+  outputs = { nixpkgs
+            , stylix
+            , ... 
+            } @inputs :
   let
     f = import ./functions/funs inputs;
     moduleFunctions = import ./functions/modFunctions nixpkgs.lib;
@@ -52,6 +55,7 @@
         # raytop = f.mkSystem ./hosts/raytop;
         raytop = nixpkgs.lib.nixosSystem {
           modules = [
+            #inputs.stylix.nixosModules.stylix
             ./hosts/raytop
             ./modules
           ];

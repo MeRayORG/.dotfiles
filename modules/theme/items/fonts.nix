@@ -7,24 +7,26 @@
 let 
   inherit (lib) mkOption;
   inherit (lib.types) package str int bool;
-  cfg = config.mods.fonts;
+  cfg = config.mods.theme.fonts;
   mono = cfg.mono;
   main = cfg.main;
   reading = cfg.reading;
 in 
 {
   options = {
-    mods.fonts ={
+    mods.theme.fonts = {
+      
       mostFonts = mkOption {
         type = bool;
         default = true;
+        description  = "whether most common fonts should be installed";
       };
       mono = {
         package = mkOption { 
           type = package;
           default = pkgs.nerd-fonts.jetbrains-mono;
         };
-        # find using fc-list | grep -i jetbrains
+        # find using fc-list | grep -i [fontName]
         main = mkOption {
           type = str;
           default = "JetBrainsMono Nerd Font";
@@ -43,7 +45,7 @@ in
           type = package;
           default = pkgs.ubuntu-classic;
         };
-        # find using fc-list | grep -i jetbrains
+        # find using fc-list | grep -i [fontName]
         main = mkOption {
           type = str;
           default = "Ubuntu";
@@ -62,7 +64,7 @@ in
           type = package;
           default = pkgs.atkinson-hyperlegible-next;
         };
-        # find using fc-list | grep -i jetbrains
+        # find using fc-list | grep -i [fontName]
         main = mkOption {
           type = str;
           default = "Atkinson Hyperlegible Next Medium";
