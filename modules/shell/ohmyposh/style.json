@@ -52,7 +52,7 @@
                         }
                     },
                     "style": "powerline",
-                    "template": "{{ if .Staging.Changed  }}<b>{{ end }}{{ if .Working.Changed }}<i>{{ end }}{{ .HEAD }} \ue729 {{trim (trunc 12 .Commit.Subject)}}{{if gt (len .Commit.Subject) 12 }}\u2026{{end}}</></> ",
+                    "template": "{{ if .Staging.Changed  }}<b>{{ end }}{{ if .Working.Changed }}<i>{{ end }}{{ .HEAD }} \ue729 {{trim (trunc 22 .Commit.Subject)}}{{if gt (len .Commit.Subject) 22 }}\u2026{{end}}</></> ",
                     "type": "git"
                 },
                 {
