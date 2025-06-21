@@ -4,12 +4,15 @@
 , ...
 } @set:
 let cfg = config.mods.theme; in
-mkHome set {
-  home = {
-    sessionVariables = {
+{
+  environment.sessionVariables = {
       XCURSOR_THEME = cfg.cursor.name;
       XCURSOR_SIZE = cfg.cursor.size;
     };
+} //
+mkHome set {
+  home = {
+    
     pointerCursor = {
       package = cfg.cursor.package;
       name = cfg.cursor.name;
