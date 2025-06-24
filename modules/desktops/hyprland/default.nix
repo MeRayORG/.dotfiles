@@ -37,11 +37,15 @@ in
       pkgs.yazi
       pkgs.eww
       pkgs.kitty
+      pkgs.pipewire
 
     ];
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
 
   } // mkHome set {
     wayland.windowManager.hyprland = 
