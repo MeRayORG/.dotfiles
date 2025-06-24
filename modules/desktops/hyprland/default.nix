@@ -36,7 +36,7 @@ in
       pkgs.wofi
       pkgs.yazi
       pkgs.eww
-      pkgs.kitty
+      pkgs.ghostty
       pkgs.pipewire
 
     ];

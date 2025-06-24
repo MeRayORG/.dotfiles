@@ -14,6 +14,9 @@ mkEnable set ["mods" "shell" "zsh"] ({
 } // mkHome set { 
   home.shell.enableZshIntegration = true;
   programs.carapace.enableZshIntegration = true;
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    syntaxHighlighting.enable = true;
+  };
   # programs.zsh.configFile.source = ./env.nu;
 })

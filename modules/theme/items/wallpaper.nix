@@ -8,9 +8,9 @@ inherit (lib.types) oneOf path enum;
 in
 {
   config = {
-    # stylix = { 
-    #   image = cfg.wallpaper;
-    # };
+    stylix = { 
+      image = cfg.wallpaper;
+    };
     mods.theme.wallpaper = ./../src/neoncity.jpg;
   };
   options.mods.theme.wallpaper = lib.mkOption {

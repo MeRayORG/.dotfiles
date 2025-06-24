@@ -55,7 +55,7 @@
         # raytop = f.mkSystem ./hosts/raytop;
         raytop = nixpkgs.lib.nixosSystem {
           modules = [
-            #inputs.stylix.nixosModules.stylix
+            inputs.stylix.nixosModules.stylix
             ./hosts/raytop
             ./modules
           ];
