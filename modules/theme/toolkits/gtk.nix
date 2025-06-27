@@ -14,10 +14,10 @@ in
 mkHome set {
   gtk = {
     enable = true;
-    theme = {
-      name = t.name;
-      package = t.package;
-    };
+    # theme = {
+    #   name = t.name;
+    #   package = t.package;
+    # };
 
     ## TODO: set colors
      
@@ -30,10 +30,10 @@ mkHome set {
       name = i.name;
       package = i.package;
     };
-    font = {
-      name = f.main;
-      size = f.size;
-      package = f.package;
-    };
+    # font = {
+    #   name = f.main;
+    #   size = f.size;
+    #   package = f.package;
+    # };
   };
 }

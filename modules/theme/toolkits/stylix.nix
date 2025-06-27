@@ -16,6 +16,11 @@ in
     # stylix = { 
     #   #rest of stylix config
     #   enable = true;
+    #   targets = {
+    #     hyprland.enable = false;
+    #     #hyprpaper.enable = false;
+    #   };
+      
     # };
     # // (if (hasAttr "colors" cfg) then (setAttrbypath ["base16scheme"] cfg.colors) else {});
   };

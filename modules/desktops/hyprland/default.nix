@@ -32,13 +32,12 @@ in
         wayland.enable = true;
     };
     environment.systemPackages = [ 
-      pkgs.foot
       pkgs.wofi
       pkgs.yazi
       pkgs.eww
       pkgs.ghostty
       pkgs.pipewire
-
+      pkgs.hyprpaper
     ];
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
