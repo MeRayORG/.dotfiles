@@ -16,6 +16,7 @@ in
     # stylix = { 
     #   #rest of stylix config
     #   enable = true;
-    # } // (if (hasAttr "colors" cfg) then (setAttrbypath ["base16scheme"] cfg.colors) else {});
+    # };
+    # // (if (hasAttr "colors" cfg) then (setAttrbypath ["base16scheme"] cfg.colors) else {});
   };
 }
