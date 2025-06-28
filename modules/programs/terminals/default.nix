@@ -8,9 +8,12 @@ let
   inherit (lib.types) enum;
 in
   defImp set ./. "terminal" // {
-    options.mods.programs.terminal.which = {
-      de = mkOption {
-        type = enum ["foot" "kitty"];
+    options.mods.programs.terminal.which = mkOption {
+        type = enum ["foot" "kitty" "ghostty"];
+      };
+    config = {
+      environment.sessionVariables = {
+        "TERM" = config.mods.programs.terminal.which;
       };
     };
   }

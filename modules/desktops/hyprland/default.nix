@@ -35,7 +35,6 @@ in
       pkgs.wofi
       pkgs.yazi
       pkgs.eww
-      pkgs.ghostty
       pkgs.pipewire
       pkgs.hyprpaper
     ];

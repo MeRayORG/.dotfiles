@@ -78,6 +78,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   mods = {
+    programs = {
+      terminal.which = "ghostty";
+    };
     flakeDir = "~/nixconf/.";
     desktops.de = "hypr";
     desktops.xway = true; # for steam :( 
