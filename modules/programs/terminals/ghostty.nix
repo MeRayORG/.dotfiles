@@ -12,7 +12,7 @@ let mfCfg = config.mods.theme.fonts.mono; in
   mkHome set {
     programs.ghostty = {
       enable = true;
-      enableZshIntegration = true;
+      enableZshIntegration = config.mods.shell.zsh.enable;
     };
   });
 }

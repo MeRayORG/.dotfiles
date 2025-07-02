@@ -82,7 +82,7 @@
       terminal.which = "ghostty";
     };
     flakeDir = "~/nixconf/.";
-    desktops.de = "hypr";
+    desktops.de = "gnome";
     desktops.xway = true; # for steam :( 
     services.keyd = {
       mode = {

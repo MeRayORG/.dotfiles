@@ -12,7 +12,7 @@ in
   defImp set ./. "desktops" // {
     options.mods.desktops = {
       de = mkOption {
-        type = enum ["hypr" "cosmic" "kde" "hyde" "none"];
+        type = enum ["hypr" "cosmic" "gnome" "kde" "hyde" "none"];
       };
       xway = lib.mkEnableOption "xwayland.";
     };
