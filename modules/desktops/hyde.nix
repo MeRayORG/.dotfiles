@@ -8,7 +8,7 @@ let cfg = config.mods.desktops; in
     services = {
       desktopManager.cosmic = {
         enable = true;
-        xwayland.enable = cfg.xway; # for steam :(
+        xwayland.enable = cfg.xway;
       };
       displayManager.cosmic-greeter.enable = true;
     };

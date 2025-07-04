@@ -237,7 +237,6 @@
           rightalt = noop
           rightcontrol = noop
           rightshift = noop
-          # enter = noop
           backspace = noop
           left = noop 
           right = noop

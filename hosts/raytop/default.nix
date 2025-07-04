@@ -41,7 +41,6 @@
     ###
 
     bottles
-    steam
 
     libGL
     steam-run
@@ -83,10 +82,9 @@
     };
     flakeDir = "~/nixconf/.";
     desktops.de = "gnome";
-    desktops.xway = true; # for steam :( 
+
     services.keyd = {
       mode = {
-        training = true;
         edit = {
           enable = true;
           space = true;

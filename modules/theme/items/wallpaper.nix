@@ -11,7 +11,7 @@ in
     stylix = { 
       image = cfg.wallpaper;
     };
-    mods.theme.wallpaper = ./../src/neoncity.jpg;
+    mods.theme.wallpaper = ./../src/weirdpalm.jpg;
   };
   options.mods.theme.wallpaper = lib.mkOption {
     type = path;
