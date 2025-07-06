@@ -31,6 +31,7 @@
         "x" = "yank --cut";    # cut/move
         "v" = "paste";         # paste
         "m" = "visual_mode";   # toggle selection mode
+        "q" = "escape";
       };
   };
 } 
