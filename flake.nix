@@ -12,8 +12,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
     
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
@@ -45,38 +43,37 @@
     };
   };
 
-  
-  outputs = inputs@{ flake-parts, nixpkgs, stylix, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } ({ ... }:
-       {
-        systems = ["x86_64-linux"];
+  outputs = { nixpkgs
+            , stylix
+            , ... 
+            } @inputs:
+    {
+      nixosConfigurations = {
+        # ===================== NixOS Configurations ===================== #
 
-        # perSystem will be invoked once for each system above
-        perSystem = { system, pkgs, lib, ... }:
+        # raytop = f.mkSystem ./hosts/raytop;
+        raytop = 
         let
-          pkg = {
-            pkgs2405 = import inputs.pkgs2405 { inherit system;};
-            upkgs = import inputs.upkgs { inherit system;};
-          };
+          # pkg = {
+          #   pkgs2405 = import inputs.pkgs2405 { inherit system;};
+          #   upkgs = import inputs.upkgs { inherit system;};
+          # };
           # your existing helper imports
-          moduleFunctions = import ./functions { inherit inputs lib pkgs; } // pkg;
-        in {
-          packages = { };
-          devShells = { };
-          nixosConfigurations = {
-            # name it however you like
-            raytop = nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [
-                stylix.nixosModules.stylix
-                ./hosts/raytop
-                ./modules
-              ];
-              specialArgs = inputs // moduleFunctions // pkg;
-            };
+          moduleFunctions = import ./functions {
+            inherit inputs pkgs;
+            inherit (nixpkgs) lib;
           };
+
+        in nixpkgs.lib.nixosSystem {
+          modules = [
+            stylix.nixosModules.stylix
+            ./hosts/raytop
+            ./modules
+          ];
+          specialArgs = inputs // moduleFunctions;
         };
-      }
-    );
+      };
+
+    };
   
 }
