@@ -4,7 +4,7 @@
 , aPath
 , ...
 }@set:
-mkBaScript set "systemrebuild"
+mkBaScript "systemrebuild"
 ''
 message=$1
 cd ${config.mods.flakeDir}

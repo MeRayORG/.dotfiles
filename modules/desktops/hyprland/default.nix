@@ -42,7 +42,7 @@ in
     services.power-profiles-daemon.enable = true;
 
 
-  } // mkHome set {
+  } // mkHome config {
     wayland.windowManager.hyprland = 
       let 
         plugins = ((import ./plugins) set);

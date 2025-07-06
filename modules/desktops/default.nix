@@ -9,7 +9,7 @@ let
 
 
 in
-  defImp set ./. "desktops" // {
+  defImp ./. "desktops" // {
     options.mods.desktops = {
       de = mkOption {
         type = enum ["hypr" "cosmic" "gnome" "kde" "hyde" "none"];

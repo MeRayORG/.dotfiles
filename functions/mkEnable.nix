@@ -1,6 +1,7 @@
-{lib, config, ...}:
-
-aPath: setToEnable:
+{lib, ...}: 
+config:
+aPath:
+setToEnable:
   let
     inherit (lib.attrsets) setAttrByPath attrByPath;
     

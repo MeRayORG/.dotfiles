@@ -1,9 +1,9 @@
-{
-  pkgs,
-  mkEnable,
-  ...
-}@set:
-  mkEnable set ["wget"] {
+{ config
+, pkgs
+, mkEnable
+, ...
+}:
+  mkEnable config ["wget"] {
     environment.systemPackages = [pkgs.wget];
   }
 

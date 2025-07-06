@@ -4,7 +4,7 @@
 , aPath
 , ...
 }@set:
-mkBaScript set "gitinclude"
+mkBaScript "gitinclude"
 ''
 TARGET_DIR="''${1:-.}"
 INCLUDE_FILE="$TARGET_DIR/.gitinclude"

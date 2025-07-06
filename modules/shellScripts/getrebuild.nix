@@ -4,7 +4,7 @@
 , aPath
 , ...
 }@set:
-mkBaScript set "getrebuild"
+mkBaScript "getrebuild"
 ''
 cd ${config.mods.flakeDir}
 git rebase main

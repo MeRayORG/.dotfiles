@@ -1,9 +1,4 @@
-{
-  aPath,
-  pkgs,
-  lib,
-  ...
-}:
+{pkgs, ...}:
 
 scriptName: script:
 

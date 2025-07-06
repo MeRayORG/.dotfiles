@@ -1,7 +1,7 @@
 { getDir
 , lib
 , ...
-} @set:
+}@set:
 
 lib.listToAttrs (
   map
@@ -10,5 +10,5 @@ lib.listToAttrs (
     value = imported set;
   })
 
-(getDir set ./. {}))
+(getDir ./. {}))
 

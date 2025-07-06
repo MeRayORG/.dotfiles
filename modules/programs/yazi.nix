@@ -8,7 +8,7 @@
   environment.systemPackages = [ 
     pkgs.yazi
   ];
-} // mkHome set {
+} // mkHome config {
   programs.yazi = {
     enable = true;
     enableZshIntegration = config.mods.shell.zsh.enable;

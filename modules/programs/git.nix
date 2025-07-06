@@ -1,15 +1,15 @@
-set @ { 
-    mkHome,
-    pkgs, 
-    ... 
-}: {
+{ pkgs
+, config
+, mkHome
+, ...
+}:{
     environment.systemPackages = with pkgs; [
         libsecret
         gitFull
     ];
 
     programs.git.enable = true;
-} // mkHome set {
+} // mkHome config {
     programs.git = {
         enable = true;
         userName = "MeRay";

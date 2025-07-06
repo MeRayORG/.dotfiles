@@ -7,7 +7,7 @@ let
   inherit (lib) mkOption;
   inherit (lib.types) enum;
 in
-  defImp set ./. "terminal" // {
+  defImp ./. "terminal" // {
     options.mods.programs.terminal.which = mkOption {
         type = enum ["foot" "kitty" "ghostty"];
       };

@@ -8,7 +8,7 @@ getSafe = default: set: attr: set.${attr} or default;
 getSafeSet = getSafe {};
 getSafeStr = getSafe "";
 
-dir = (getDir set ./. {}); 
+dir = (getDir ./. {}); 
 in
 
 {

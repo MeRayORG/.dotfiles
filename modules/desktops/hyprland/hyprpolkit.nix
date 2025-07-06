@@ -11,6 +11,6 @@ enable = cfg.de == "hypr";
 
 in 
 
-  lib.mkIf enable (mkHome set {
+  lib.mkIf enable (mkHome config {
     services.hyprpolkitagent.enable = true;
   })

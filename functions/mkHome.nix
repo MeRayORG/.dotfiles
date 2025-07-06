@@ -1,8 +1,5 @@
-{
-  lib,
-  config,
-  ...
-}:
+{lib, ...}:
+config:
 homeOptions:
 {
 home-manager.users =

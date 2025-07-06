@@ -10,7 +10,7 @@ let cfg = config.mods.theme; in
       XCURSOR_SIZE = cfg.cursor.size;
     };
 } //
-mkHome set {
+mkHome config {
   home = {
     
     pointerCursor = {

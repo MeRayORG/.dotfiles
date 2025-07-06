@@ -11,7 +11,7 @@ p = cfg.cursor;
 i = cfg.icon;
 f = cfg.fonts.main;
 in
-mkHome set {
+mkHome config {
   gtk = {
     enable = true;
     # theme = {

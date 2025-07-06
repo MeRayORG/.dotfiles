@@ -4,7 +4,7 @@
 , aPath
 , ...
 }@set:
-mkBaScript set "systemupdate"
+mkBaScript "systemupdate"
     ''
     cd ${config.mods.flakeDir}
     if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 

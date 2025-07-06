@@ -1,13 +1,12 @@
-set @ {
-  pkgs,
-  lib,
-  mkHome,
-  ...
-}:
-{
+{ pkgs
+, config
+, mkHome
+, lib
+, ...
+}:{
   # disable gnome keyring to enable keepass as SecretService
   services.gnome.gnome-keyring.enable = lib.mkForce false;
-} // mkHome set {
+} // mkHome config {
   home.packages = with pkgs; [keepassxc];
   systemd.user.services.keepassxc = {
     Unit = {

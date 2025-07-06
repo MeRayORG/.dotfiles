@@ -2,10 +2,7 @@
 , lib
 , config
 , ... 
-}@set: 
-let
-
-in 
+}:
 {
   environment.sessionVariables = {
     GTK_USE_PORTAL = "1";

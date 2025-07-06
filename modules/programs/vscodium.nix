@@ -1,9 +1,8 @@
-set @ {
-  pkgs,
-  mkHome,
-  ...
-}:
-{
+{ pkgs
+, config
+, mkHome
+, ...
+}:{
   xdg.mime.enable = true;
   environment = {
     systemPackages = [ pkgs.vscodium ];
@@ -13,7 +12,7 @@ set @ {
       VISUAL = "codium";
     };
   };
-} // mkHome set {
+} // mkHome config {
   programs.git = {
     extraConfig = {
       # [diff]

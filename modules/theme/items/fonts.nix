@@ -112,7 +112,7 @@ in
         
     };
 
-  } // mkHome set {
+  } // mkHome config {
     fonts.fontconfig = {
       enable = true;
 

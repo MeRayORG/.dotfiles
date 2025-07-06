@@ -14,7 +14,7 @@ in
   config = lib.mkIf enable ({
     security.pam.services.hyprlock = {};  
   } //
-  mkHome set {
+  mkHome config {
     programs.hyprlock.enable = true;
   }); 
 }

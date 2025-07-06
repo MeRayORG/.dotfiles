@@ -1,4 +1,4 @@
 { defImp, ... }@set:
 
-  defImp set ./. "modules"
+  defImp ./. "modules"
 

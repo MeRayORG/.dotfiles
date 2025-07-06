@@ -1,9 +1,10 @@
 { pkgs
 , mkHome
 , mkEnable
+, config
 , ...
-}@set: 
-mkEnable set ["mods" "shell" "zsh"] ({
+}: 
+mkEnable config ["mods" "shell" "zsh"] ({
   environment.systemPackages = [ 
     pkgs.zsh
     pkgs.carapace
@@ -11,7 +12,7 @@ mkEnable set ["mods" "shell" "zsh"] ({
   ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
-} // mkHome set { 
+} // mkHome config { 
   home.shell.enableZshIntegration = true;
   programs.carapace.enableZshIntegration = true;
   programs.zsh = {

@@ -1,4 +1,4 @@
 { defImp, ... }@set:
 
-  defImp set ./. "shell"
+  defImp ./. "shell"
 

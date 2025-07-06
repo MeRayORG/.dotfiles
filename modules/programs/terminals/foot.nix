@@ -9,7 +9,7 @@ let mfCfg = config.mods.theme.fonts.mono; in
   config = lib.mkIf (config.mods.programs.terminal.which == "foot") ({
     environment.systemPackages = [ pkgs.foot];
   } //
-  mkHome set {
+  mkHome config {
     programs.foot = {
       enable = true;
       settings = {

@@ -4,7 +4,7 @@
 , aPath
 , ...
 }@set:
-mkBaScript set "pkg"
+mkBaScript "pkg"
 ''
 if [ "$#" -eq 0 ]; then
   echo "Usage: pkg <command> [args...]"

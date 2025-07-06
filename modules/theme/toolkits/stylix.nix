@@ -20,7 +20,7 @@ in
       
     };
     # // (if (hasAttr "colors" cfg) then (setAttrbypath ["base16scheme"] cfg.colors) else {});
-  } // mkHome set {
+  } // mkHome config {
     stylix.targets.hyprland.enable = false;
   };
 }
