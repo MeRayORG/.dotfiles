@@ -13,6 +13,7 @@
     enable = true;
     enableZshIntegration = config.mods.shell.zsh.enable;
     enableNushellIntegration = config.mods.shell.nush.enable;
+    shellWrapperName  = "y";
     settings = {
       mgr = {
         show_hidden = true;  # always show dotfiles
