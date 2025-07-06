@@ -59,6 +59,7 @@
           #   upkgs = import inputs.upkgs { inherit system;};
           # };
           # your existing helper imports
+          pkgs = import nixpkgs { system = builtins.currentSystem;};
           moduleFunctions = import ./functions {
             inherit inputs pkgs;
             inherit (nixpkgs) lib;

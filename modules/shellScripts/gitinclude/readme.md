@@ -39,7 +39,7 @@ You try to include just the files you want — simple lines like:
 
 But Git doesn’t care. Because unless you **also** include every single parent directory explicitly — and I mean **every. single. one.** — Git acts like the file was never part of the repo in the first place. It won’t even try to find it unless you lay breadcrumbs all the way from root to leaf.
 
-And if you're in cone mode and you *do* include a folder? Then Git helpfully decides to give you the **entire fucking `.config` directory**.  
+And if you're in cone mode and you *do* include a folder, for example `.config`? Then Git helpfully decides to give you the **entire fucking `.config` directory**.  s
 Not just the folder you specified. Not just the thing you need.
 
 ---
