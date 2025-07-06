@@ -14,11 +14,11 @@
     enableZshIntegration = config.mods.shell.zsh.enable;
     enableNushellIntegration = config.mods.shell.nush.enable;
     settings = {
-      manager = {
+      mgr = {
         show_hidden = true;  # always show dotfiles
       };
     };
-    keymap.manager.prepend_keymap = 
+    keymap.mgr.prepend_keymap = 
       lib.mapAttrsToList (key: cmd: { on = key; run = cmd;})
       {
         "i" = "arrow prev";
@@ -27,10 +27,10 @@
         "l" = "enter";
         "e" = "packing extract";
         "z" = "packing compress";
-        "c" = "copy";
-        "x" = "cut";
-        "v" = "paste";
-        "m" = "select --toggle";
+        "c" = "yank";          # copy
+        "x" = "yank --cut";    # cut/move
+        "v" = "paste";         # paste
+        "m" = "visual_mode";   # toggle selection mode
       };
   };
 } 
