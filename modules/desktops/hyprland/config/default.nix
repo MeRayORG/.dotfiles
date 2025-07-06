@@ -1,7 +1,5 @@
 { getDir
-, mkHome
 , lib
-, pkgs
 , ...
 } @set:
 

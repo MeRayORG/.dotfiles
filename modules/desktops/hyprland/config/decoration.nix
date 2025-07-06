@@ -1,5 +1,4 @@
-{ lib
-, ...
+{ ...
 }:{
     rounding = 8;
     active_opacity = 0.75;
