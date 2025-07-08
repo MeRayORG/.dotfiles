@@ -2,7 +2,7 @@
 , lib
 , pkgs
 , ...
-} @set:
+}@set:
 let 
 getSafe = default: set: attr: set.${attr} or default;
 getSafeSet = getSafe {};

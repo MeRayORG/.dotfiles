@@ -3,7 +3,7 @@
 , pkgs
 , aPath
 , ...
-}@set:
+}:
 mkBaScript "gitinclude"
 ''
 TARGET_DIR="''${1:-.}"

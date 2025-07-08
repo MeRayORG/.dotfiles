@@ -2,7 +2,7 @@
 , lib
 , config
 , ... 
-} @set:
+}:
 let 
   inherit (lib) mkOption;
   inherit (lib.types) enum;

@@ -3,7 +3,7 @@
 , pkgs
 , aPath
 , ...
-}@set:
+}:
 mkBaScript "getrebuild"
 ''
 cd ${config.mods.flakeDir}

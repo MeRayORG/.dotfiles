@@ -3,7 +3,7 @@
 , lib
 , mkHome
 , ...
-} @set:
+}@set:
 let 
 
 cfg = config.mods.desktops; 

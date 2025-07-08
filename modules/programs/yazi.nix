@@ -3,7 +3,7 @@
 , lib
 , mkHome
 , ...
-} @set:
+}:
 {
   environment.systemPackages = [ 
     pkgs.yazi

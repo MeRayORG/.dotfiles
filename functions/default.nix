@@ -1,4 +1,4 @@
-{lib, pkgs, ...} @set:
+{lib, pkgs, ...}@set:
 let
   files = builtins.attrNames (builtins.readDir ./.);
   nixFiles = builtins.filter (file:

@@ -3,7 +3,7 @@
 , config
 , lib
 , ...
-} @set :
+} :
 let 
 
 cfg = config.mods.desktops; 

@@ -3,7 +3,7 @@
 , pkgs
 , aPath
 , ...
-}@set:
+}:
 mkBaScript "pkg"
 ''
 if [ "$#" -eq 0 ]; then

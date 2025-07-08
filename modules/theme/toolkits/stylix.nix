@@ -3,7 +3,7 @@
 , lib
 , mkHome
 , ...
-} @set: 
+}: 
 let 
 inherit (lib) hasAttr setAttrbypath;
 cfg = config.mods.theme; 

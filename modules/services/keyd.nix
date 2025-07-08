@@ -46,6 +46,7 @@
 
   config = {
     services.keyd.enable = true;
+    systemd.services.keyd.restartIfChanged = true;
 
     environment.systemPackages = [ pkgs.keyd ];
 

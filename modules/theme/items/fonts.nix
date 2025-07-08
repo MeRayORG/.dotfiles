@@ -3,7 +3,7 @@
 , mkHome
 , config
 , ... 
-}@set: 
+}: 
 let 
   inherit (lib) mkOption;
   inherit (lib.types) package str int bool;

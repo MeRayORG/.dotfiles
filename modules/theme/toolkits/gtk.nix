@@ -2,7 +2,7 @@
 , pkgs
 , config
 , ...
-} @set:
+}:
 let 
 cfg = config.mods.theme;
 t = cfg.theme.gtk;

@@ -81,7 +81,7 @@
       terminal.which = "ghostty";
     };
     flakeDir = "~/nixconf/.";
-    desktops.de = "gnome";
+    desktops.de = "hypr";
 
     services.keyd = {
       mode = {
@@ -114,7 +114,7 @@
       cursor = {
         package = pkgs.layan-cursors;
         size = 12;
-        name = "Layan Cursors";
+        name = "Layan-Cursors";
       };
     };
 

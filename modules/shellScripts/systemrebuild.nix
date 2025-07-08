@@ -3,7 +3,7 @@
 , pkgs
 , aPath
 , ...
-}@set:
+}:
 mkBaScript "systemrebuild"
 ''
 message=$1

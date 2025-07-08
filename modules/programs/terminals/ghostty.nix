@@ -3,7 +3,7 @@
 , config
 , lib
 , ...  
-}@set:
+}:
 let mfCfg = config.mods.theme.fonts.mono; in
 { 
   config = lib.mkIf (config.mods.programs.terminal.which == "ghostty") ({

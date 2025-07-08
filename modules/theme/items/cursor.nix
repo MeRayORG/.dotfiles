@@ -1,6 +1,6 @@
 { lib
 , ... 
-} @set:
+}:
 let 
   inherit (lib) mkOption;
   inherit (lib.types) str package int;

@@ -3,7 +3,7 @@
 , pkgs
 , aPath
 , ...
-}@set:
+}:
 mkBaScript "systemupdate"
     ''
     cd ${config.mods.flakeDir}

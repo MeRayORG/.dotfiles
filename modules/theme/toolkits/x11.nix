@@ -2,7 +2,7 @@
 , pkgs
 , config
 , ...
-} @set:
+}:
 let cfg = config.mods.theme; in
 {
   environment.sessionVariables = {

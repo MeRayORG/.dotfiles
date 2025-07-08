@@ -11,7 +11,7 @@
 } //
 mkHome config {
   home.packages = [
-    pkgs.libsForQt5.qt5ct
-    pkgs.qt6ct
+    #pkgs.libsForQt5.qt5ct
+    #pkgs.qt6ct
   ];
 }

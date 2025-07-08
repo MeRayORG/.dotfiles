@@ -3,7 +3,7 @@
 , lib
 , config 
 , ...  
-}@set:
+}:
 mkHome config {
   home.packages = [pkgs.oh-my-posh];
   programs.oh-my-posh = 
