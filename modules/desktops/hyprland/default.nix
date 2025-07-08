@@ -33,10 +33,8 @@ in
     };
     environment.systemPackages = [ 
       pkgs.wofi
-      pkgs.yazi
       pkgs.eww
       pkgs.pipewire
-      pkgs.hyprpaper
     ];
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;

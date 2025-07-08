@@ -22,5 +22,6 @@ in
     # // (if (hasAttr "colors" cfg) then (setAttrbypath ["base16scheme"] cfg.colors) else {});
   } // mkHome config {
     stylix.targets.hyprland.enable = false;
+    stylix.targets.hyprpaper.enable = true;
   };
 }
