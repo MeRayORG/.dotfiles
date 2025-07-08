@@ -35,6 +35,7 @@ in
       pkgs.wofi
       pkgs.eww
       pkgs.pipewire
+      pkgs.hyprpaper
     ];
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
