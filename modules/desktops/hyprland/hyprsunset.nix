@@ -1,5 +1,4 @@
-{ pkgs
-, mkHome
+{ mkHome
 , config
 , lib
 , ...
