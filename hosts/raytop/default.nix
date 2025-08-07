@@ -114,7 +114,7 @@
       cursor = {
         package = pkgs.layan-cursors;
         size = 12;
-        name = "Layan-Cursors";
+        name = "layan-cursors";
       };
     };
 
