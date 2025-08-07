@@ -1,4 +1,5 @@
 { lib
+, config
 , ... 
 }:
 let 
@@ -13,4 +14,5 @@ in
       size = mkOption {type = int;};
     };
   };
+  config.environment.systemPackages = [ config.mods.theme.cursor.package ];
 }
