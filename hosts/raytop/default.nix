@@ -12,7 +12,7 @@
     brave
 
     gparted
-    btrfs-progs
+    
 
     git
     python3
@@ -81,7 +81,7 @@
       terminal.which = "ghostty";
     };
     flakeDir = "~/nixconf/.";
-    desktops.de = "gnome";
+    desktops.de = "hypr";
 
     services.keyd = {
       mode = {

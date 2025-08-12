@@ -51,7 +51,7 @@
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
 
-        # raytop = f.mkSystem ./hosts/raytop;
+        #  = f.mkSystem ./hosts/;
         raytop = 
         let
           # pkg = {

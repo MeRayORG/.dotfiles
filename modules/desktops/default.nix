@@ -13,6 +13,7 @@ in
     options.mods.desktops = {
       de = mkOption {
         type = enum ["hypr" "cosmic" "gnome" "kde" "hyde" "none"];
+        description = "Which de to use. Cosmic working but alpha. Hypr working except steam. Kde, gnome working. hyde broken.";
       };
       xway = lib.mkEnableOption "xwayland.";
     };

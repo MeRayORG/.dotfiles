@@ -19,5 +19,4 @@ mkEnable config ["mods" "shell" "zsh"] ({
     enable = true;
     syntaxHighlighting.enable = true;
   };
-  # programs.zsh.configFile.source = ./env.nu;
 })
