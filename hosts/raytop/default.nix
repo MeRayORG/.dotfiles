@@ -114,7 +114,7 @@
       cursor = {
         package = pkgs.posy-cursors;
         size = 20;
-        name = "posy-cursors";
+        name = "Posy_Cursor_Black";
       };
     };
 
