@@ -112,9 +112,9 @@
         name = "numix";
       };
       cursor = {
-        package = pkgs.layan-cursors;
-        size = 16;
-        name = "layan-cursors";
+        package = pkgs.posy-cursors;
+        size = 20;
+        name = "posy-cursors";
       };
     };
 
