@@ -12,8 +12,7 @@ let
     if (filetype == "directory") then {
       type = "/";
       name = filename;
-      import = import dir + filename;
-    } else ((
+    } else (
       
       if ((lib.length parts) < 2) then
         { 
@@ -25,10 +24,9 @@ let
           name = lib.concatStringsSep "." (lib.init parts);
           type = lib.last parts;
         }) 
-          
-      // {imported = import (dir + "/${filename}");}
-    )
+    
     ) // { isNix = (filetype == "directory" || lib.hasSuffix ".nix" filename);} 
+      // {imported = import (dir + "/${filename}");}
   );
 
   filterDefault = attrs: if default then attrs else lib.filterAttrs (f: _: f != "default.nix") attrs;
