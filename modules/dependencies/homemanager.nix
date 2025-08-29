@@ -1,8 +1,8 @@
-{
-  lib,
-  home-manager,
-  config,
-  ...
+{ lib
+, home-manager
+, config
+, mkHome 
+, ...
 }:
 {
   imports = [

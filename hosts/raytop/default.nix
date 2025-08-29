@@ -73,6 +73,7 @@
     SDL2
 
     calibre
+    qxmledit
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -81,7 +82,7 @@
       terminal.which = "ghostty";
     };
     flakeDir = "~/nixconf/.";
-    desktops.de = "hypr"; # "hypr" "cosmic" "gnome" "kde" "hyde" "niri" "none"
+    desktops.de = "cosmic"; # "hypr" "cosmic" "gnome" "kde" "hyde" "niri" "none"
 
     services.keyd = {
       mode = {

@@ -22,7 +22,7 @@ hyprland.stdenv.mkDerivation {
 
   buildPhase = ''
           g++ -std=c++23 -fPIC -shared plugin.cpp -o ${name}.so \
-            -I${pkgs.hyprland}/include
+            -I${hyprland}/include
   '';
 
   installPhase = ''
