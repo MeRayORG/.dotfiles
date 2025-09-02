@@ -8,19 +8,37 @@
     flake-utils.lib.eachDefaultSystem
       (system: let 
           pkgs = import nixpkgs {inherit system;};
-          inherit (pkgs) mkShell;
-        in { devShells = {
+          
+          inherit (pkgs) mkShell lib;
 
-haskell = mkShell {
-  packages = [       
-      pkgs.haskell.compiler.ghc983
-      pkgs.haskell-language-server
-      pkgs.cabal-install
-      pkgs.hlint
-  ];
+# All packages needed for this project
+packageList = [
+
+  
+] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) scripts;
+
+# Define scripts
+scripts = {
+  
+  run = ''
+
+  '';
+  test = ''
+
+  '';
+  build = ''
+
+  '';
+
+};
+
+
+        in { 
+devShell = mkShell {
+  packages = packageList;
 };
 
 
 
 
-};});}
+});}

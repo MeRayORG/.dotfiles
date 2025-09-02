@@ -79,6 +79,11 @@
         };
       };
 
+      defaultTemplate = {
+        description = "DevShells";
+        path = ./flakes/dev;
+      };
+
     };
   
 }

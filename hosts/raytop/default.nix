@@ -74,6 +74,8 @@
 
     calibre
     qxmledit
+    
+    direnv
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
