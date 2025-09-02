@@ -11,6 +11,7 @@
       enable = true;
       enableNushellIntegration = config.mods.shell.nush.enable;
       enableZshIntegration = config.mods.shell.zsh.enable;
+      nix-direnv.enable = true;
     };
 }
 
