@@ -30,11 +30,6 @@
       invertNumbers = mkEnableOption "inverting the symbols and numbers + tilde.";
     };
     nav = {
-      vim = mkOption {
-          description = "Whether to navigate using vim keys instead of ijkl(RH-wasd).";
-          default = true;
-          type = bool;
-        };
       shiftToggle = mkOption {
           description = "Whether to have s toggle shift in edit mode.";
           default = true;
@@ -61,12 +56,12 @@
         ifs = option: text: if option then text else "";
 
         cfg = config.mods.services.keyd;
-        left  = if cfg.nav.vim then "h" else "j";
-        up    = if cfg.nav.vim then "j" else "i";
+        left  = "j";
+        up    = "i";
         down  = "k";
         right = "l";
-        home  = if cfg.nav.vim then "n" else "g";
-        end   = if cfg.nav.vim then "m" else "h";
+        home  = "g";
+        end   = "h";
 
         capsenable =
         # python: print(''. join( map( (lambda c: f"{c} = {c}\n") , list('1234567890')  ) ) )
@@ -81,15 +76,6 @@
           # quit selection when leaving edit mode
           capslock = overload(editMode, toggle(editMode))
           ${ifs cfg.mode.edit.space "space = overload(main, space)"}
-          ${if cfg.nav.vim then
-          ''
-          g = noop
-          h = noop
-          i = noop
-          '' else ''
-          m = noop
-          n = noop
-          ''}
 
           z = noop
           w = noop
@@ -109,9 +95,12 @@
           ${down}  = down
           ${right} = right
 
+          u = pageup
+          o = pagedown
+
           # edit in new line below / above
-          o = macro(end enter)
-          shift+o = macro(home enter up)
+          n = macro(end enter)
+          shift+n = macro(home enter up)
           # delete line
           p = macro(end S-home backspace backspace)
           # vscode
@@ -125,10 +114,6 @@
           # undo redo
           z = C-z
           y = C-y
-
-          # Tabs
-          u = C-u
-          n = C-n
 
           a = overload(control, C-a)
           s = overload(shift, C-s)
@@ -158,8 +143,6 @@
 
 
           [editMode+alt]
-          ${up} = pageup
-          ${down} = pagedown
 
           [editMode+alt+meta]
           ${up}   = M-A-up
