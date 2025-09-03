@@ -14,6 +14,9 @@
 # All packages needed for this project
 packageList = [
 
+(with pkgs; [
+
+])
   
 ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) scripts;
 
@@ -21,6 +24,7 @@ packageList = [
 scripts = {
   
   run = ''
+    build
 
   '';
   test = ''

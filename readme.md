@@ -20,5 +20,5 @@ keyd:
 
 M-b -> toggle blur on focused window (background opaque)
 
-global shortcuts
+global shortcutss
 

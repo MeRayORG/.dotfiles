@@ -99,7 +99,6 @@
         spaceNext = true;
         invertNumbers = true;
       };
-      nav.vim = false;
     };
     shell.zsh.enable = true;
 
