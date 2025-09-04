@@ -16,16 +16,16 @@ let mfCfg = config.mods.theme.fonts.mono; in
       settings = {
           keybind = [
             # Ctrl+Backspace → backward-kill-word (Ctrl+W)
-            "ctrl+backspace=csi:17"
+            "ctrl+backspace=csi:23"
         
             # Ctrl+Delete → kill-word (Alt+D)
-            "ctrl+delete=csi:1bd"
+            "ctrl+delete=csi:445"
         
             # Ctrl+Left → backward-word (Alt+B)
-            "ctrl+left=csi:1bb"
+            "ctrl+left=csi:443"
         
             # Ctrl+Right → forward-word (Alt+F)
-            "ctrl+right=csi:1bf"
+            "ctrl+right=csi:447"
           ];
       };
     };
