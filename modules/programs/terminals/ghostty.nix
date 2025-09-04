@@ -13,6 +13,21 @@ let mfCfg = config.mods.theme.fonts.mono; in
     programs.ghostty = {
       enable = true;
       enableZshIntegration = config.mods.shell.zsh.enable;
+      settings = {
+          keybind = [
+            # Ctrl+Backspace → backward-kill-word (Ctrl+W)
+            "ctrl+backspace=send:\x17"
+        
+            # Ctrl+Delete → kill-word (Alt+D)
+            "ctrl+delete=send:\x1bd"
+        
+            # Ctrl+Left → backward-word (Alt+B)
+            "ctrl+left=send:\x1bb"
+        
+            # Ctrl+Right → forward-word (Alt+F)
+            "ctrl+right=send:\x1bf"
+          ];
+      };
     };
   });
 }
