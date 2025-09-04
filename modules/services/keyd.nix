@@ -100,7 +100,7 @@
 
           # edit in new line below / above
           n = macro(end enter)
-          shift+n = macro(home enter up)
+        
           # delete line
           p = macro(end S-home backspace backspace)
           # vscode
@@ -150,7 +150,7 @@
 
 
           [editMode+shift]
-          o = macro(home enter up)
+          n = macro(home enter up)
 
           [visualMode] 
           ${up}    = S-up

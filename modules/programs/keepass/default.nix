@@ -14,7 +14,7 @@
       After = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.keepassxc}/bin/keepassxc";
+      ExecStart = "${pkgs.keepassxc}/bin/keepassxc --config ${./config.ini}";
       Restart = "on-abort";
     };
     Install = {
