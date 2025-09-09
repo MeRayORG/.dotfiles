@@ -95,7 +95,7 @@
         accents = true;
       };
       mod = {
-        homeRow = true;
+        homeRow.enable = true;
         spaceNext = true;
         invertNumbers = true;
       };

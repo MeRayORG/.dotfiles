@@ -7,7 +7,7 @@
     options.mods.services.keyd =
   let
     inherit (lib) mkOption mkEnableOption;
-    inherit (lib.types) bool;
+    inherit (lib.types) bool int;
   in
   {
     
@@ -25,7 +25,17 @@
       accents = mkEnableOption "display keys with accents";
     };
     mod = {
-      homeRow = mkEnableOption "HomeRowMods";
+      homeRow = {
+        enable = mkEnableOption "HomeRowMods";
+        idle = mkOption {
+          type = int;
+          default = 150;
+        };
+        hold = mkOption {
+          type = int;
+          default = 200;
+        };
+      };
       spaceNext = mkEnableOption "going left on tapping shift";
       invertNumbers = mkEnableOption "inverting the symbols and numbers + tilde.";
     };
@@ -199,17 +209,23 @@
 
         [main]
 
-        ${ifs cfg.mod.homeRow 
+        ${ let 
+        inherit (cfg.mod.homeRow) 
+          enable idle hold; 
+          i = builtins.toString idle;
+          h = builtins.toString hold;
+        in 
+        ifs enable 
         ''
-        a = overload(control, a)
-        s = overload(shift, s)
-        d = overload(alt, d)
-        f = overload(meta, f)
-
-        j = overload(meta, j)
-        k = overload(alt, k)
-        l = overload(shift, l)
-        ; = overload(control, ;)
+        a = lettermod( control, a, ${i}, ${h})
+        s = lettermod( shift  , s, ${i}, ${h})
+        d = lettermod( alt    , d, ${i}, ${h})
+        f = lettermod( meta   , f, ${i}, ${h})
+                                          
+        j = lettermod( meta   , j, ${i}, ${h})
+        k = lettermod( alt    , k, ${i}, ${h})
+        l = lettermod( shift  , l, ${i}, ${h})
+        ; = lettermod( control, ;, ${i}, ${h})
         ''}
         ${ifs cfg.mod.spaceNext "leftshift = overload(shift, right)"}
         ${ifs cfg.mode.edit.enable capsenable}
