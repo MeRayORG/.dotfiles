@@ -217,15 +217,15 @@
         in 
         ifs enable 
         ''
-        a = lettermod( control, a, ${i}, ${h})
-        s = lettermod( shift  , s, ${i}, ${h})
-        d = lettermod( alt    , d, ${i}, ${h})
-        f = lettermod( meta   , f, ${i}, ${h})
-                                          
-        j = lettermod( meta   , j, ${i}, ${h})
-        k = lettermod( alt    , k, ${i}, ${h})
-        l = lettermod( shift  , l, ${i}, ${h})
-        ; = lettermod( control, ;, ${i}, ${h})
+        a = lettermod(control, a, ${i}, ${h})
+        s = lettermod(shift, s, ${i}, ${h})
+        d = lettermod(alt, d, ${i}, ${h})
+        f = lettermod(meta, f, ${i}, ${h})
+                                         
+        j = lettermod(meta, j, ${i}, ${h})
+        k = lettermod(alt, k, ${i}, ${h})
+        l = lettermod(shift, l, ${i}, ${h})
+        ; = lettermod(control, ;, ${i}, ${h})
         ''}
         ${ifs cfg.mod.spaceNext "leftshift = overload(shift, right)"}
         ${ifs cfg.mode.edit.enable capsenable}
