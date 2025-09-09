@@ -14,6 +14,18 @@
     enableZshIntegration = config.mods.shell.zsh.enable;
     enableNushellIntegration = config.mods.shell.nush.enable;
     shellWrapperName  = "y";
+
+    plugins = lib.genAttrs
+        [
+          "git"
+          "ouch"
+          "mount"
+          "mediainfo"
+          "smart-filter"
+          "yatline"
+          "yatline-githead"
+        ] (name: pkgs.yaziPlugins.${name});
+
     settings = {
       mgr = {
         show_hidden = true;  # always show dotfiles
@@ -26,14 +38,29 @@
         "k" = "arrow next";
         "j" = "leave";
         "l" = "enter";
-        "e" = "packing extract";
-        "z" = "packing compress";
+
         "c" = "yank";          # copy
         "x" = "yank --cut";    # cut/move
         "v" = "paste";         # paste
         "m" = "visual_mode";   # toggle selection mode
         "q" = "escape";
-        "t" = "remove";        
+        "t" = "remove";
+      
+
+
+        ###########
+        # Plugins #
+        ###########
+
+        ## smart-filter ##
+
+        "f" = "plugin smart-filter";
+
+           
+
+        ### Not working ######
+        "e" = "packing extract";
+        "z" = "packing compress";
       };
   };
 } 
