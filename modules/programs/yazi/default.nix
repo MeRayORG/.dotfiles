@@ -15,7 +15,7 @@
     enableNushellIntegration = config.mods.shell.nush.enable;
     shellWrapperName  = "y";
 
-    plugins = lib.genAttrs
+    plugins = (lib.genAttrs
         [
           "git"
           "ouch"
@@ -24,12 +24,26 @@
           "smart-filter"
           "yatline"
           "yatline-githead"
-        ] (name: pkgs.yaziPlugins.${name});
+        ] (name: pkgs.yaziPlugins.${name})) // { 
+          smarter-filter = ./smarter-filter;
+        };
 
     settings = {
       mgr = {
         show_hidden = true;  # always show dotfiles
       };
+
+      plugin.prepend_fetchers = [
+        { 
+          id   = "git"; 
+          name = "*"; 
+          run  = "git";
+        } {
+          id   = "git";
+          name = "*/";
+          run  = "git";
+        }
+      ];
     };
     keymap.mgr.prepend_keymap = 
       lib.mapAttrsToList (key: cmd: { on = key; run = cmd;})
@@ -53,10 +67,10 @@
         ###########
 
         ## smart-filter ##
+        #"f" = "plugin smart-filter";
 
-        "f" = "plugin smart-filter";
-
-           
+        ## smarter-filter ##
+        "f" = "plugin smarter-filter";
 
         ### Not working ######
         "e" = "packing extract";
