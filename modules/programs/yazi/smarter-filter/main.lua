@@ -29,10 +29,10 @@ local function entry()
 	while true do
 		local value, event = input:recv()
 
-        -- NEW: detect Left key when input is empty
-		if event == "left" and value == "" then
-			ya.emit("leave", {}) -- go up one folder
-			-- DO NOT escape or break; stay in the prompt
+		if value == "-" then
+			ya.emit("escape", { filter = true }) -- close current input
+			ya.emit("leave", {}) 			     -- go up one folder
+			input = prompt()            		 -- reopen prompt (now empty)
 		end
 
 		if event ~= 1 and event ~= 3 then
