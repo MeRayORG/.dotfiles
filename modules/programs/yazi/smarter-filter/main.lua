@@ -30,9 +30,9 @@ local function entry()
 		local value, event = input:recv()
 
 		if value == "-" then
-			ya.emit("escape", { filter = true }) -- close current input
-			ya.emit("leave", {}) 			     -- go up one folder
-			input = prompt()            		 -- reopen prompt (now empty)
+			ya.emit("escape", {}) -- close current input
+			ya.emit("leave", {})  -- go up one folder
+			input = prompt()      -- reopen prompt (now empty)
 		end
 
 		if event ~= 1 and event ~= 3 then
