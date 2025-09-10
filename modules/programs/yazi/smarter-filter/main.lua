@@ -34,6 +34,7 @@ local function entry()
 			ya.emit("leave", {})  		 -- go up one folder
 			ya.emit("filter_do", { "" }) -- reset filter
 			input = prompt()      		 -- reopen prompt (now empty)
+			break
 		end
 
 		if event ~= 1 and event ~= 3 then
