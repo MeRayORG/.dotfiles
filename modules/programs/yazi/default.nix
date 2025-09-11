@@ -5,8 +5,12 @@
 , ...
 }:
 {
-  environment.systemPackages = [ 
-    pkgs.yazi
+  environment.systemPackages = with pkgs;[ 
+    (yazi.overrideAttrs {buildInputs = pkgs.yazi.buildInputs ++ [
+      git
+      fzf
+      ouch
+    ];})
   ];
 } // mkHome config {
   programs.yazi = {
@@ -73,8 +77,8 @@
         "f" = "plugin smarter-filter";
 
         ### Not working ######
-        "e" = "packing extract";
-        "z" = "packing compress";
+        "e" = "ouch d";
+        "z" = "ouch c";
       };
   };
 } 
