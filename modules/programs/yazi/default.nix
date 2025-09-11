@@ -41,11 +41,11 @@
         { 
           id   = "git"; 
           name = "*"; 
-          run  = "git";
+          run  = "plugin git";
         } {
           id   = "git";
           name = "*/";
-          run  = "git";
+          run  = "plugin git";
         }
       ];
     };
