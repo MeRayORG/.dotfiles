@@ -41,11 +41,11 @@
         { 
           id   = "git"; 
           name = "*"; 
-          run  = "plugin git";
+          run  = "git";
         } {
           id   = "git";
           name = "*/";
-          run  = "plugin git";
+          run  = "git";
         }
       ];
     };
@@ -77,8 +77,8 @@
         "f" = "plugin smarter-filter";
 
         ### Not working ######
-        "e" = "ouch d";
-        "z" = "ouch c";
+        "e" = "plugin ouch d";
+        "z" = "plugin ouch c";
       };
   };
 } 
