@@ -6,7 +6,7 @@
 }:
 {
   environment.systemPackages = with pkgs;[ 
-    (yazi.overrideAttrs {buildInputs = pkgs.yazi.buildInputs ++ [
+    (yazi.overrideAttrs {runtimeDependencies = [
       git
       fzf
       ouch
