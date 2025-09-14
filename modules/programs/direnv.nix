@@ -13,5 +13,9 @@
       enableZshIntegration = config.mods.shell.zsh.enable;
       nix-direnv.enable = true;
     };
+    home.file.".direnvrc".text = ''
+      export DIRENV_LOG_FORMAT=""
+      use flake
+    '';
 }
 
