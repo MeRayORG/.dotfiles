@@ -2,5 +2,5 @@
 mkBaScript "copy"
 ''
 data="$(cat)$1"
-${pkgs.wl-clipboard-rs}/wl-copy "$data"
+${pkgs.wl-clipboard-rs}/bin/wl-copy "$data"
 ''
