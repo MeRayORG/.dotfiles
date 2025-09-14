@@ -12,10 +12,13 @@
       enableNushellIntegration = config.mods.shell.nush.enable;
       enableZshIntegration = config.mods.shell.zsh.enable;
       nix-direnv.enable = true;
+      config = {
+        global = {
+          log_format = "-";
+          log_filter = "^$";
+        };
+      };
     };
-    home.file.".direnvrc".text = ''
-      export DIRENV_LOG_FORMAT=""
-      use flake
-    '';
+
 }
 
