@@ -81,7 +81,13 @@
 
       defaultTemplate = {
         description = "DevShells";
-        path = ./flakes/dev;
+        path = ./flakes/templates/dev;
+      };
+      templates = {
+        haskell = {
+          description = "Haskell Dev Environment";
+          path = ./flakes/templates/haskell;
+        };
       };
 
     };
