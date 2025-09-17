@@ -114,9 +114,9 @@
         name = "numix";
       };
       cursor = {
-        package = pkgs.posy-cursors;
+        package = pkgs.layan-cursors;
         size = 20;
-        name = "Posy_Cursor_Black";
+        name = "layan-cursors";
       };
     };
 
