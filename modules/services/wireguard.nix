@@ -7,15 +7,15 @@
       interfaces = {
         wg0 = {
           ips = [
-            "100.0.0.21/32"
+            "10.100.0.21/32"
           ];
           peers = [
             {
               name = "TX";
               allowedIPs = [
-                "10.0.0.0/16"
+               #"10.0.0.0/16"
                 "10.10.0.0/16"
-                "100.0.0.0/16"
+                "10.100.0.10/32"
               ];
               endpoint = "meray.org:51820";
               publicKey = "uN8kGaqv7Yb6NByTeMGy2a582nPnEA4ZAA3AiLEWaQs=";
