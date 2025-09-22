@@ -11,9 +11,11 @@
           ];
           peers = [
             {
+              name = "TX";
               allowedIPs = [
-                "10.0.0.0/24"
-                "10.10.0.0/24"
+                "10.0.0.0/16"
+                "10.10.0.0/16"
+                "100.0.0.0/16"
               ];
               endpoint = "meray.org:51820";
               publicKey = "uN8kGaqv7Yb6NByTeMGy2a582nPnEA4ZAA3AiLEWaQs=";
