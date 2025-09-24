@@ -1,3 +1,5 @@
+-- https://wiki.haskell.org/GHC/GHCi
+
 :{
 dotGHCI_myPrompt promptString ms _ = do
   -- Determine which is the main module.
@@ -11,7 +13,7 @@ dotGHCI_myPrompt promptString ms _ = do
 :}
 :set prompt-function dotGHCI_myPrompt "\ESC[38;5;129m\STX\xe61f"
 :set prompt-cont-function dotGHCI_myPrompt "∷"
-
+{-
 -- Colourise ghci output (use :nopretty to disable)
 -- Required libraries: pretty-show hscolour
 :set -package pretty-show -package hscolour
@@ -34,3 +36,4 @@ dotGHCI_myPrint a = putStrLn $ HSC.hscolour HSC.TTY myColourPrefs False False ""
 :def! nopretty \_ -> return ":set -interactive-print System.IO.print"
 :m -Language.Haskell.HsColour
 :m -Language.Haskell.HsColour.Colourise
+-}
