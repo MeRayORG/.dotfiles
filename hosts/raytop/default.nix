@@ -18,7 +18,7 @@
     python3
 
 
-    teams-for-linux
+    
 
     vscodium
 
@@ -29,12 +29,6 @@
     unrar
 
     prismlauncher
-
-    ## Office
-    #mkif env = hyperland or Sway
-    #onlyoffice-bin
-    #else
-    onlyoffice-bin_latest
 
     gimp
     inkscape
@@ -74,8 +68,6 @@
 
     calibre
     qxmledit
-    
-    direnv
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
