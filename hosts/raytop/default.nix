@@ -12,13 +12,8 @@
     brave
 
     gparted
-    
-
-    git
+  
     python3
-
-
-    
 
     vscodium
 

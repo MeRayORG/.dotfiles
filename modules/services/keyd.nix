@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  mkHome,
   ...
 }: {
     options.mods.services.keyd =
@@ -54,6 +55,9 @@
     systemd.services.keyd.restartIfChanged = true;
 
     environment.systemPackages = [ pkgs.keyd ];
+        system.activationScripts.text = ''
+      ln -sf ${pkgs.keyd}/share/keyd/keyd.compose /usr/share/X11/locale/${config.i18n.defaultLocale}/Compose
+    '';
 
     # This creates the configuration text to be used in /etc/keyd/default.conf
     environment = {
@@ -247,5 +251,7 @@
 
         '';
     };
+  }// mkHome config {
+    #home.file.".XCompose" = config.lib.file.mkOutOfStoreSymlink "${pkgs.keyd}/share/keyd/keyd.compose";
   };
 }
