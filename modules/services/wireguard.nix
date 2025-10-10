@@ -6,6 +6,7 @@
       enable = true;
       interfaces = {
         wg0 = {
+          
           ips = [
             "10.100.10.21/32"
           ];

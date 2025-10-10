@@ -40,13 +40,6 @@
       spaceNext = mkEnableOption "going left on tapping shift";
       invertNumbers = mkEnableOption "inverting the symbols and numbers + tilde.";
     };
-    nav = {
-      shiftToggle = mkOption {
-          description = "Whether to have s toggle shift in edit mode.";
-          default = true;
-          type = bool;
-      };
-    };
   };
 
 
@@ -55,9 +48,9 @@
     systemd.services.keyd.restartIfChanged = true;
 
     environment.systemPackages = [ pkgs.keyd ];
-        system.activationScripts.text = ''
-      ln -sf ${pkgs.keyd}/share/keyd/keyd.compose /usr/share/X11/locale/${config.i18n.defaultLocale}/Compose
-    '';
+    #    system.activationScripts.text = ''
+    #  ln -sf ${pkgs.keyd}/share/keyd/keyd.compose /usr/share/X11/locale/${config.i18n.defaultLocale}/Compose
+    #'';
 
     # This creates the configuration text to be used in /etc/keyd/default.conf
     environment = {
