@@ -21,24 +21,4 @@
       WantedBy = [ "default.target" ];
     };
   };
-
 }
-
-# keepassxc .ini
-# MinimizeOnOpenUrl=true
-
-# [Browser]
-# CustomProxyLocation=
-# Enabled=true
-# SearchInAllDatabases=true
-
-# [FdoSecrets]
-# Enabled=true
-
-# [GUI]
-# ApplicationTheme=dark
-# MinimizeOnClose=true
-# MinimizeOnStartup=true
-# MinimizeToTray=true
-# ShowExpiredEntriesOnDatabaseUnlockOffsetDays=2
-# ShowTrayIcon=trues
