@@ -27,6 +27,7 @@
 
     gimp
     inkscape
+    rawtherapee
     ###
 
     bottles
