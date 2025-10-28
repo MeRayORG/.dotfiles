@@ -20,6 +20,9 @@
               username = "${user}";
               homeDirectory = "/home/${user}";
               stateVersion = "24.11";  # Specify the NixOS version
+              home.sessionVariables = {
+                CDPATH = ".:/home/${user}/Documents";
+              };
             };
             programs.home-manager.enable = true;
           }
