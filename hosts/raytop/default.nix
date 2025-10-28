@@ -23,8 +23,9 @@
     eza
     unrar
 
-    prismlauncher
+    
 
+    ### imageediting
     gimp
     inkscape
     rawtherapee
@@ -63,7 +64,6 @@
     SDL2
 
     calibre
-    qxmledit
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

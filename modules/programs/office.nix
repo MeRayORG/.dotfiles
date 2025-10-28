@@ -9,5 +9,7 @@
     onlyoffice-bin_latest
     drawio
     teams-for-linux
+
+    obsidian 
   ];
 }
