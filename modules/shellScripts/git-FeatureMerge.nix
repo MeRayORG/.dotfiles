@@ -34,7 +34,7 @@ if ! git diff --quiet "$current_branch" "origin/$current_branch"; then
 fi
 
 # Ask for new commit message
-read -rp "Enter new commit message: " new_message
+read -rp "Feature message: " new_message
 full_message="$new_message [$current_branch]"
 
 # Squash all commits on the current branch into one
@@ -49,6 +49,6 @@ git merge --ff-only "$current_branch"
 git branch -D "$current_branch"
 git push origin --delete "$current_branch"
 
-echo "Done! All changes from '$current_branch' are now in main as a single commit."
+echo "Merged Feature '$current_branch' into main."
 
 ''
