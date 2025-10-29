@@ -15,9 +15,13 @@
 } // mkHome config {
   programs.git = {
     extraConfig = {
+      core = {
+        editor = "codium --wait";
+      };
+
       # [diff]
       diff = {
-        tool = "codium";
+        tool = "codium --wait";
       };
 
       # [difftool]

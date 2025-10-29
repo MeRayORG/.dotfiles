@@ -64,6 +64,15 @@
     SDL2
 
     calibre
+  
+
+    #### send notifications using notify-send 
+    # Note: Wtf have the devs of this tool been smoking??
+    # "It's documented as such but won't fix because ... Reasons?"
+    # > notify-send -u critical -t 0  
+    # sends a sticky notification
+    libnotify
+    
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
