@@ -1,0 +1,131 @@
+;; nix shell nixpkgs#kmonad
+;; kmonad -d /home/meray/nixconf/modules/services/kmonad/config.kbd
+
+(defsrc
+  caps w m c v x i j k l del bspc
+)
+(defcfg 
+  fallthrough true
+  implicit-around true
+)
+;; --- Aliases for navigation keys per mode ---
+(defalias nav-base
+    i up
+    j left
+    k down
+    l right
+  )
+
+(defalias nav-word
+    i (send C-up)
+    j (send C-left)
+    k (send C-down)
+    l (send C-right)
+  )
+
+(defalias nav-mark
+    i (send S-up)
+    j (send S-left)
+    k (send S-down)
+    l (send S-right)
+  )
+
+(defalias nav-wordmark
+  
+    i (send C-S-up)
+    j (send C-S-left)
+    k (send C-S-down)
+    l (send C-S-right)
+  )
+
+(defalias   mark-edit  ;; normal mark and word mark control characters
+    c copy-clear 
+    v paste-clear
+    x cut-clear  
+    ' del-clear  
+    ; bspc-clear 
+  )
+
+;; --- Aliases for clearing submodes ---
+(defalias
+  clear-mods (seq (layer-off word) (layer-off mark))
+  toggle-word (layer-toggle word)
+  toggle-mark (layer-toggle mark)
+
+  copy  (send C-c)
+  paste (send C-v)
+  cut   (send C-x)
+)
+
+;; --- Exit mark mode and clear selection if needed ---
+(defalias
+  exit-mark
+  (seq
+    (layer-off mark)
+    ;; emit plain Right Arrow to clear selection
+    (send right)
+  )
+  off-mark (layer-off mark)
+)
+
+;; --- Aliases for copy/paste/cut/delete/backspace that also clear submodes ---
+(defalias
+  copy-clear   (seq copy        exit-mark)
+  paste-clear  (seq paste       off-mark )
+  cut-clear    (seq cut         off-mark )
+  del-clear    (seq (send del)  off-mark )
+  bspc-clear   (seq (send bspc) off-mark )
+)
+
+;; --- Base edit layer ---
+(deflayer edit
+  w toggle-word
+  m toggle-mark
+  c copy-clear
+  v paste-clear
+  x cut-clear
+  del del-clear
+  bspc bspc-clear
+  @nav-base
+)
+
+;; --- Word mode (Ctrl added) ---
+(deflayer word
+  w toggle-word
+  m toggle-mark
+  c copy-clear
+  v paste-clear
+  x cut-clear
+  del del-clear
+  bspc bspc-clear
+  @nav-word
+)
+
+;; --- Mark mode (Shift added) ---
+(deflayer mark
+  w toggle-word
+  m exit-mark          ;; pressing M again exits mark mode + clears
+  c copy-clear
+  v paste-clear
+  x cut-clear
+  del del-clear
+  bspc bspc-clear
+  @nav-mark
+)
+
+;; --- Word + Mark combined (Ctrl+Shift) ---
+(deflayer wordmark
+  w toggle-word
+  m exit-mark
+  c copy-clear
+  v paste-clear
+  x cut-clear
+  del del-clear
+  bspc bspc-clear
+  @nav-wordmark
+)
+
+;; --- Caps toggles edit mode ---
+(deflayer base
+  caps (layer-toggle edit)
+)
