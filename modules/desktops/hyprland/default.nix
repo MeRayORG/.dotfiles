@@ -2,6 +2,7 @@
 , config
 , lib
 , mkHome
+, mapDir
 , ...
 }@set:
 let 
@@ -15,7 +16,6 @@ in
     ./hyprsunset.nix
     ./hyprlock.nix
     ./hyprpolkit.nix
-    ./scripts
   ];
   config = lib.mkIf enable ({
     programs = {
@@ -37,7 +37,12 @@ in
       pkgs.eww
       pkgs.pipewire
       pkgs.hyprpaper
-    ];
+    ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) 
+              (mapDir ./scripts false (
+                          {name,ext,set,...}: {
+                             k = name; 
+                             v = if (ext == "sh") then ''${set}'' else null; 
+                          }));
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
 

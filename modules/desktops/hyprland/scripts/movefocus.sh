@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Pop Shell / Cosmic style focus move behavior:
 # Attempt to move focus in direction; if no window in that direction, switch workspace instead
 # 
