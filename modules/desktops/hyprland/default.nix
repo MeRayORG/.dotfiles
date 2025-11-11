@@ -15,7 +15,6 @@ in
     ./hyprsunset.nix
     ./hyprlock.nix
     ./hyprpolkit.nix
-    ./scripts
   ];
   config = lib.mkIf enable ({
     programs = {
