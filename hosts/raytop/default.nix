@@ -76,7 +76,7 @@
     
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators"];
   mods = {
     programs = {
       terminal.which = "ghostty";
