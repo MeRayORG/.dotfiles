@@ -37,12 +37,7 @@ in
       pkgs.eww
       pkgs.pipewire
       pkgs.hyprpaper
-    ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) 
-              (mapDir ./scripts false (
-                          {name,ext,set,...}: {
-                             k = name; 
-                             v = if (ext == "sh") then ''${set}'' else null; 
-                          }));
+    ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) (mapDir ./scripts false ({tf,...}: tf.script));
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
 

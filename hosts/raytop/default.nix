@@ -82,7 +82,7 @@
       terminal.which = "ghostty";
     };
     flakeDir = "~/nixconf/.";
-    desktops.de = "cosmic"; # "hypr" "cosmic" "gnome" "kde" "hyde" "niri" "none"
+    desktops.de = "hypr"; # "hypr" "cosmic" "gnome" "kde" "hyde" "niri" "none"
 
     services.keyd = {
       mode = {
@@ -126,7 +126,11 @@
 
 
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 30;
+    };
+    
     efi.canTouchEfiVariables = true;
   };
 
@@ -154,7 +158,6 @@
   #     LC_TIME = "nl_NL.UTF-8";
   #   };
   # };
-  home-manager.backupFileExtension = "hm-backup";
 
 
   # Binary Cache for haskell.nix
