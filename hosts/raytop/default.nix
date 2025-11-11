@@ -51,6 +51,7 @@
     waypipe
 
     whatsapp-for-linux
+    zapzap
     btop
     
     clang
