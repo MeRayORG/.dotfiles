@@ -5,8 +5,7 @@ dir:
 recurse:
 
 transformer: 
-
-        # transformer :: 
+ 
 
 let
   pretransformer = 
@@ -16,30 +15,42 @@ let
       let nameComponents = lib.strings.splitString "." fNameExt; in
     rec {
       inherit fNameExt location;
-      filename  = builtins.concatStringsSep "." (lib.init nameComponents);
-      extension = lib.last nameComponents;
-      filepath  = dir + (builtins.concatStringsSep "." location) + "/"+ fNameExt;
+      name      = builtins.concatStringsSep "." (lib.init nameComponents);
+      ext       = lib.last nameComponents;
+      filepath  = dir + (builtins.concatStringsSep "/" location) + "/"+ fNameExt;
       set       = import filepath;
       file      = type == "regular";
       directory = type == "directory";
-      isNix     = extension == "nix"; 
+      isNix     = ext == "nix"; 
       isDefault = fNameExt  == "default.nix";
     };
 
-    postTransformer =
-      transformed:
-      let inherit (transformed) name value; in 
-      lib.nameValuePair name value;
+    postTransformer = transformed:
+          lib.nameValuePair 
+                  transformed.n 
+                  transformed.v;
 
-    nullFilter = set: lib.filterAttrsRecursive (_:value: value != null);
+    nullFilter = set: lib.filterAttrsRecursive (_:v: v != null);
 
-    transform = set: lib.mapAttrs' (postTransformer . transformer . pretransformer []);
+    transform = lib.mapAttrs' (fn: t: (pretransformer [] fn t) |> transformer |> postTransformer);
+
+
+    # recursor = 
+    #   accumulatedLocation: 
+    #   path:
+    #     let 
+    #       accumulatedLocation
+    #     in
 
     
       
 in
+    (lib.readDir dir) |> transform |> nullFilter
 
-nullFilter (if !recurse then transform (lib.readDir dir) else lib.splitAttrs) 
+
+# nullFilter (if !recurse 
+#             then transform (lib.readDir dir) 
+#             else lib.splitAttrs) 
 
 
 # mapDir :: 
@@ -49,12 +60,12 @@ nullFilter (if !recurse then transform (lib.readDir dir) else lib.splitAttrs)
 #          extension :: string   // no leading dot
 #          location  :: [string] // relative location
 #          filepath  :: path
-#          nix       :: {}       // only if isNix
+#          set       :: any      // the imported file
 #          isNix     :: bool
 #          isDefault :: bool 
 #          } -> {
-#                name     :: string // name of key; defaults to filename 
-#                value    :: any    // if null the key won't be included in the nestedAttrset
+#                k    :: string // name of key; defaults to filename 
+#                v    :: any    // if null the key won't be included in the nestedAttrset
 #                })
 #                   -> {}
 #
