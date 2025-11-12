@@ -7,8 +7,8 @@
 }@set:
 let 
 
-cfg = config.mods.desktops; 
-enable = cfg.de == "hypr";
+    cfg = config.mods.desktops; 
+    enable = cfg.de == "hypr";
 
 in 
 {
@@ -37,7 +37,7 @@ in
       pkgs.eww
       pkgs.pipewire
       pkgs.hyprpaper
-    ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) (mapDir ./scripts false ({tf,...}: tf.script));
+    ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) (mapDir ./scripts ({tf,...}: tf.script));
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
 
