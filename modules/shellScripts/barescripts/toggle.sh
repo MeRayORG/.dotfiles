@@ -1,11 +1,3 @@
-{ mkBaScript
-, config
-, pkgs
-, aPath
-, ...
-}:
-mkBaScript "toggle"
-''
 set -euo pipefail
 
 if [[ $# -ne 1 ]]; then
@@ -22,5 +14,3 @@ else
     echo "Starting $SERVICE..."
     systemctl start "$SERVICE"
 fi
-
-''

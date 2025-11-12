@@ -14,22 +14,18 @@
 #                   tf           :: {}       // transformers for common operations 
 #                   }
 #shortkv :: {
-#             k :: string // name of key
-#             v :: any    // if null the key won't be included in the nestedAttrset; will loop if eval v -> error
+#      k :: string // name of key
+#      v :: any    // if null the key won't be included in the nestedAttrset; will loop if eval v -> error
 #           }
 #
 #This example will map each sh script in ./scripts to it's name on the path
 #      environment.systemPackages = 
 #          lib.mapAttrsToList 
 #               (pkgs.writeShellScriptBin)
-#               (mapDir ./scripts false ({tf,...}: tf.script));
-
-
+#               (mapDir ./scripts ({tf,...}: tf.script));
 
 dir:
-recurse:
 transformer: 
-
 
 let
     inherit (builtins) readDir readFile;
@@ -41,16 +37,7 @@ let
 
 
     # pretransformer :: 
-    # { "fileName.Ext" = ("regular" | "directory");} 
-    #    -> {
-    #        filename  :: string
-    #        extension :: string   // no leading dot
-    #        location  :: [string] // relative location
-    #        filepath  :: path
-    #        import    :: {}       // only if isNix
-    #        isNix     :: bool
-    #        isDefault :: bool 
-    #        }
+    # { "fileName.Ext" = ("regular" | "directory");} -> transformable
   
     pretransformer = 
       location:
@@ -73,6 +60,10 @@ let
             k = name;
             v = if ext == "sh" then ''${data}'' else null;
           };
+          func = value: {
+            k = name;
+            v = if nix then value else null;
+          };
         };
       };
 
@@ -90,15 +81,3 @@ let
                               postTransformer);
 in
     (readDir dir) |> transform |> nullFilter
-
-# TODO: make recursive
-# recursor = 
-#   accumulatedLocation: 
-#   path:
-#     let 
-#       accumulatedLocation
-#     in
-
-# nullFilter (if !recurse 
-#             then transform (lib.readDir dir) 
-#             else lib.splitAttrs) 

@@ -2,8 +2,7 @@
 # Usage:
 # echo "Hello " | copy "world."
 # results in "Hello world." in the clipboard.
-{mkBaScript, pkgs, aPath, ...}:
-mkBaScript "copy"
+{pkgs, ...}:
 ''
 data="$(cat)$1"
 ${pkgs.wl-clipboard}/bin/wl-copy "$data"

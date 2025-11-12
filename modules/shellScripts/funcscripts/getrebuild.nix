@@ -1,10 +1,4 @@
-{ mkBaScript
-, config
-, pkgs
-, aPath
-, ...
-}:
-mkBaScript "getrebuild"
+{ config, ...}:
 ''
 cd ${config.mods.flakeDir}
 git rebase main

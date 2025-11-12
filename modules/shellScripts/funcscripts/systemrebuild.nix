@@ -1,10 +1,4 @@
-{ mkBaScript
-, config
-, pkgs
-, aPath
-, ...
-}:
-mkBaScript "systemrebuild"
+{ config, ...}:
 ''
 # fuck home manager
 # get your shit together 
