@@ -1,1 +1,3 @@
-mkdir -p $@
+dir=$@
+mkdir -p $dir
+cd $dir
