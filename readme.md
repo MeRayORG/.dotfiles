@@ -14,11 +14,7 @@ eww for bluetoothectl and stuff
 
 find detacher? nushell builtin?
 
-keyd: 
-- add macro timeout
-- fix accents
+kMonad: 
+- implement
 
-M-b -> toggle blur on focused window (background opaque)
-
-global shortcutss
 
