@@ -62,7 +62,8 @@
 
     calibre
   
-
+    devtoolbox
+    
     #### send notifications using notify-send 
     # Note: Wtf have the devs of this tool been smoking??
     # "It's documented as such but won't fix because ... Reasons?"
