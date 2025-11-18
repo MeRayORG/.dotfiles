@@ -16,6 +16,7 @@ in
     ./hyprsunset.nix
     ./hyprlock.nix
     ./hyprpolkit.nix
+    ./scripts
   ];
   config = lib.mkIf enable ({
     programs = {
@@ -37,7 +38,7 @@ in
       pkgs.eww
       pkgs.pipewire
       pkgs.hyprpaper
-    ] ++ lib.mapAttrsToList (pkgs.writeShellScriptBin) (mapDir ./scripts ({tf,...}: tf.script));
+    ];
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
 
