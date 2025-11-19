@@ -1,12 +1,12 @@
 { ...
 }:{
     rounding = 8;
-    active_opacity = 0.87;
+    active_opacity = 0.83;
     inactive_opacity = 0.75;
 
     blur = {
       enabled = true;
-      size = 8;
+      size = 12;
       passes = 2;
     };
 
