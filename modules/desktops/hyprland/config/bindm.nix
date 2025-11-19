@@ -1,6 +1,5 @@
 {...}:
-let 
-  menu = "wofi --show drun";
+let
   mod = "SUPER";
 in
 [

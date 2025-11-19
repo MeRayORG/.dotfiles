@@ -79,7 +79,7 @@
       terminal.which = "ghostty";
     };
     flakeDir = "~/nixconf/.";
-    desktops.de = "cosmic"; # "hypr" "cosmic" "gnome" "kde" "hyde" "niri" "none"
+    desktops.de = "hypr"; # "hypr" "cosmic" "gnome" "kde" "hyde" "niri" "none"
 
     services.keyd = {
       mode = {

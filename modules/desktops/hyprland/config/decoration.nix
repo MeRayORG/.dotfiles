@@ -1,8 +1,8 @@
 { ...
 }:{
     rounding = 8;
-    active_opacity = 0.8;
-    inactive_opacity = 0.72;
+    active_opacity = 0.87;
+    inactive_opacity = 0.75;
 
     blur = {
       enabled = true;

@@ -1,7 +1,7 @@
-{config, ...}:
+{...}:
 let 
   menu = "wofi --show drun";
-  term = config.mods.programs.terminal.which;
+  #term = config.mods.programs.terminal.which;
   mod = "SUPER";
 
   moveWindow = "ALT";
@@ -13,18 +13,18 @@ let
 in
 [
 "${mod}, space, exec, ${menu}"
-"${mod}, t, exec, ${term}"
+"${mod}, t, exec, ghostty"
 "${mod}, q, killactive,"
 
-"${mod}, left,  focusplus, l"
-"${mod}, right, focusplus, r"
-"${mod}, up,    focusplus, u"
-"${mod}, down,  focusplus, d"
+"${mod}, left,     movefocus, l"  
+"${mod}, right,    movefocus, r"  
+"${mod}, up,       exec, focusmove u -2"  
+"${mod}, down,     exec, focusmove d +2"  
 
-"${mod}, ${left},  focusmove, l" # "${mod}, ${left},  movefocus, l" 
-"${mod}, ${right}, focusmove, r" # "${mod}, ${right}, movefocus, r"
-"${mod}, ${up},    focusmove, u" # "${mod}, ${up},    movefocus, u"
-"${mod}, ${down},  focusmove, d" # "${mod}, ${down},  movefocus, d"
+"${mod}, ${left},  movefocus, l"  
+"${mod}, ${right}, movefocus, r"  
+"${mod}, ${up},    exec, focusmove u -2"  
+"${mod}, ${down},  exec, focusmove d +2"  
 
 "${mod}_${moveWindow}, LEFT,  movewindow, l"
 "${mod}_${moveWindow}, RIGHT, movewindow, r"

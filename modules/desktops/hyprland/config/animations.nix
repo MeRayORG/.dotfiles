@@ -1,41 +1,45 @@
-{...}:{
+{...}: {
   workspace_wraparound = true;
   enabled = true;
 
+  # Tahoe-style bezier curves (no spring/overshoot)
   bezier = [
-    "easeOutQuint,0.23,1,0.32,1"
-    "easeInOutCubic,0.65,0.05,0.36,1"
-    "linear,0,0,1,1"
-    "almostLinear,0.5,0.5,0.75,1.0"
-    "quick,0.15,0,0.1,1"
-    # macOS-style spring (overshoot, damped bounce)
-    "macOSSpr,0.175,0.885,0.32,1.275"
-    # Quick fallback
-    "quick,0.15,0,0.1,1"
+    "easeOutQuint,0.23,1,0.32,1"         # standard ease-out
+    "easeInOutCubic,0.42,0,0.58,1"       # smooth ease-in-out
+    "linear,0,0,1,1"                      # linear
+    "almostLinear,0.25,0.25,0.75,0.75"   # subtle opacity fade
+    "quick,0.5,0,0.2,1"                   # fast UI response
+    "macOSClassic,0.25,0.1,0.25,1"        # pre-Yosemite macOS curve
   ];
 
+  # Keep your animations structure, only adjusted to Tahoe behavior
   animation = [
-    # Main spring-open pop-in (like opening from dock/bar)
-    "windowsIn,1,6,macOSSpr,popin 120%"
+    # Window open/close — soft pop, no bounce
+    "windowsIn,1,4,easeOutQuint,popin 108%"
+    "windowsOut,1,3.5,easeOutQuint,popin 95%"
 
-    # Closing with spring
-    "windowsOut,1,4,macOSSpr,popin 100%"
+    # Resize/move windows — smooth, no bounce
+    "windows,1,4,easeInOutCubic,slide"
 
-    # Resize spring: slide with bounce
-    "windows,1,4,macOSSpr,slide"
-    
-    "global,1,10,default"
-    "border,1,5.39,easeOutQuint"
-    "fadeIn,1,1.73,almostLinear"
-    "fadeOut,1,1.46,almostLinear"
-    "fade,1,3.03,quick"
-    "layers,1,3.81,easeOutQuint"
-    "layersIn,1,4,easeOutQuint,fade"
-    "layersOut,1,1.5,linear,fade"
-    "fadeLayersIn,1,1.79,almostLinear"
-    "fadeLayersOut,1,1.39,almostLinear"
-    "workspaces,1,1.94,almostLinear,fade"
-    "workspacesIn,1,1.21,almostLinear,fade"
-    "workspacesOut,1,1.94,almostLinear,fade"
+    # Global transitions (menus, popups)
+    "global,1,8,easeOutQuint"
+
+    # Border animations — subtle
+    "border,1,5.3,easeOutQuint"
+
+    # Fades — quick and gentle
+    "fadeIn,1,2,almostLinear"
+    "fadeOut,1,1.8,almostLinear"
+    "fade,1,2.8,quick"
+
+    # Layers — menus, dialogs
+    "layers,1,3.5,easeOutQuint"
+    "layersIn,1,3.8,easeOutQuint,fade"
+    "layersOut,1,2.4,linear,fade"
+
+    # Workspaces — slide with gentle ease, no bounce
+    "workspaces,1,2.4,easeInOutCubic,fade"
+    "workspacesIn,1,2.2,easeInOutCubic,fade"
+    "workspacesOut,1,2.4,easeOutQuint,fade"
   ];
 }

@@ -38,12 +38,15 @@ while true; do
   if changed; then
     echo "Change detected. Rebuilding..."
 
-    nix eval --impure --raw --expr "
+    nix eval --show-trace --impure --raw --expr "
       let
         lib = import <nixpkgs/lib>;
-        attrs = import ${ENTRY_FILE} {inherit lib;};
+        attrs = import ${ENTRY_FILE} ({inherit lib;}//funs);
         homer = fetchTarball \"https://github.com/nix-community/home-manager/archive/master.tar.gz\";
         homerlib = (import \"\${homer}/modules/lib\") {inherit lib;};
+      
+
+        funs = import ./../../../functions/default.nix {inherit lib;};
       in homerlib.generators.toHyprconf {inherit attrs;}
     " > "$OUT_CONF.new" && mv "$OUT_CONF.new" "$OUT_CONF"
 
