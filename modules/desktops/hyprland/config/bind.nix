@@ -15,6 +15,7 @@ in
 "${mod}, space, exec, ${menu}"
 "${mod}, t, exec, ghostty"
 "${mod}, q, killactive,"
+"CTRL ${mod}, q, forcekillactive"
 
 "${mod}, left,     movefocus, l"  
 "${mod}, right,    movefocus, r"  
@@ -35,4 +36,10 @@ in
 "${mod}_${moveWindow}, ${right}, movewindow, r"
 "${mod}_${moveWindow}, ${up},    exec, windowmove u -2"
 "${mod}_${moveWindow}, ${down},  exec, windowmove d +2"
+
+"${mod}, b,  exec, brave"
+"${mod}, c,  exec, codium"
+"${mod}, n,  exec, obsidian"
+"${mod}, v,  exec, ebook-viewer"
+
 ]
