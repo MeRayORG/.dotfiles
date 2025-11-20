@@ -7,7 +7,7 @@ direction=$1 # l/d/r/u
 changeto=$2 # See https://wiki.hypr.land/Configuring/Dispatchers/#workspaces
 
 pre=$(hyprctl -j activewindow | jq -r '.at')
-hyprctl dispatch movefocus $direction
+hyprctl dispatch movewindow $direction
 post=$(hyprctl -j activewindow | jq -r '.at')
 
 if [[ $post = $pre ]]; then

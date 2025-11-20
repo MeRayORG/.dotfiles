@@ -344,5 +344,5 @@ in {
     };
   };
 
-  cfg.colors = lib.mkDefault flavors.${cfg.flavor};
+  config.mods.theme.catppuccin.colors = lib.mkDefault flavors.${cfg.flavor};
 }
