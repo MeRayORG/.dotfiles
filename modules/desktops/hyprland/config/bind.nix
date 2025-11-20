@@ -23,16 +23,16 @@ in
 
 "${mod}, ${left},  movefocus, l"  
 "${mod}, ${right}, movefocus, r"  
-"${mod}, ${up},    exec, focusmove u -2"  
-"${mod}, ${down},  exec, focusmove d +2"  
+"${mod}, ${up},    exec, focusmove u -2"
+"${mod}, ${down},  exec, focusmove d +2"
 
 "${mod}_${moveWindow}, LEFT,  movewindow, l"
 "${mod}_${moveWindow}, RIGHT, movewindow, r"
-"${mod}_${moveWindow}, UP,    movewindow, u"
-"${mod}_${moveWindow}, DOWN,  movewindow, d"
+"${mod}_${moveWindow}, UP,    exec, windowmove u -2"
+"${mod}_${moveWindow}, DOWN,  exec, windowmove d +2"
          
 "${mod}_${moveWindow}, ${left},  movewindow, l"
 "${mod}_${moveWindow}, ${right}, movewindow, r"
-"${mod}_${moveWindow}, ${up},    movewindow, u"
-"${mod}_${moveWindow}, ${down},  movewindow, d"
+"${mod}_${moveWindow}, ${up},    exec, windowmove u -2"
+"${mod}_${moveWindow}, ${down},  exec, windowmove d +2"
 ]
