@@ -10,7 +10,7 @@ pre=$(hyprctl -j activewindow | jq -r '.address')
 hyprctl dispatch movefocus $direction
 post=$(hyprctl -j activewindow | jq -r '.address')
 
-if [[ $post = $pre ]]; then
+if [[ "$post" = "$pre" ]]; then
   hyprctl dispatch workspace $changeto
 fi
 
