@@ -19,10 +19,9 @@ in{
       /* Window */
       window {
         margin: 0px;
-        padding: 10px;
-        border: 3px solid ${colors.lavender};
+        padding: 10px;aa
         border-radius: 10px;
-        background-color: ${builtins.replaceStrings ["rgb" ")"] ["rgba" ", 0.99)"] colors.base-rgb};
+        background-color: ${builtins.replaceStrings ["rgb" ")"] ["rgba" ", 0.8)"] colors.base-rgb};
         /* animation: slideIn 0.5s ease-in-out both; */
       }
 
