@@ -95,7 +95,7 @@ in
       ] ++ (if cfg.mostFonts then [
         pkgs.corefonts
         pkgs.noto-fonts
-        pkgs.noto-fonts-extra
+        pkgs.noto-fonts-lgc-plus
         pkgs.noto-fonts-cjk-sans
         pkgs.noto-fonts-cjk-serif 
       ] else []);

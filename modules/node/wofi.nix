@@ -21,7 +21,7 @@ in{
         margin: 0px;
         padding: 10px;aa
         border-radius: 10px;
-        background-color: ${builtins.replaceStrings ["rgb" ")"] ["rgba" ", 0.8)"] colors.base-rgb};
+        background-color: ${builtins.replaceStrings ["rgb" ")"] ["rgba" ", 0.8f)"] colors.base-rgb};
         /* animation: slideIn 0.5s ease-in-out both; */
       }
 

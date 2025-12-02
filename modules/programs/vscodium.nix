@@ -14,7 +14,7 @@
   };
 } // mkHome config {
   programs.git = {
-    extraConfig = {
+    settings = {
       core = {
         editor = "codium --wait";
       };

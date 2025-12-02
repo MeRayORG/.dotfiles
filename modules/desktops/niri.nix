@@ -9,7 +9,7 @@ let cfg = config.mods.desktops; in
       enable = true;
     };
     services = {
-      xserver.displayManager.gdm.enable = true;
+      displayManager.gdm.enable = true;
       
     };
   };

@@ -6,7 +6,7 @@
     #mkif env = hyperland or Sway
     #onlyoffice-bin
     #else
-    onlyoffice-bin_latest
+    onlyoffice-desktopeditors
     drawio
     teams-for-linux
 

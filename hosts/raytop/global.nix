@@ -46,7 +46,7 @@
 
     waypipe
 
-    whatsapp-for-linux
+    wasistlos
     zapzap
     btop
     
