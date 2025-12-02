@@ -7,7 +7,7 @@
 }@set:
 let 
 
-    cfg = config.mods.desktops; 
+    cfg = config.mods.desktops;
     enable = cfg.de == "hypr";
 
 in 
@@ -38,6 +38,9 @@ in
       pkgs.eww
       pkgs.pipewire
       pkgs.hyprpaper
+
+      pkgs.brightnessctl
+      pkgs.wireplumber
     ];
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
