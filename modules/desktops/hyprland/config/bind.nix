@@ -41,5 +41,5 @@ in
 "${mod}, c,  exec, codium"
 "${mod}, n,  exec, obsidian"
 "${mod}, v,  exec, ebook-viewer"
-
+"${mod}, f, fullscreen"
 ]

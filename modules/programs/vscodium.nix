@@ -2,26 +2,30 @@
 , config
 , mkHome
 , ...
-}:{
+}:
+let
+    codeBin = "${pkgs.vscodium}/bin/codium";
+in
+{
   xdg.mime.enable = true;
   environment = {
     systemPackages = [ pkgs.vscodium ];
     variables = {
-      SYSTEMD_EDITOR = "codium";
-      EDITOR = "codium";
-      VISUAL = "codium";
+      SYSTEMD_EDITOR = codeBin;
+      EDITOR = codeBin;
+      VISUAL = codeBin;
     };
   };
 } // mkHome config {
   programs.git = {
     settings = {
       core = {
-        editor = "codium --wait";
+        editor = codeBin;
       };
 
       # [diff]
       diff = {
-        tool = "codium --wait";
+        tool = "codium";
       };
 
       # [difftool]
@@ -29,7 +33,7 @@
         prompt = false;
         # [difftool "codium"]
         codium = {
-          cmd = "codium --wait --diff \$LOCAL \$REMOTE";
+          cmd = "${codeBin} --wait --diff \$LOCAL \$REMOTE";
         };
       };
     };
