@@ -23,7 +23,7 @@ fi
 
 
 # 2. Build the system without switching
-if ! sudo nixos-rebuild build  --flake . --option warn-dirty false ; then
+if ! sudo nixos-rebuild build --no-link --flake . --option warn-dirty false ; then
     echo "Rebuild failed — aborting."
     exit 1
 fi
@@ -36,14 +36,16 @@ if [ -z "$last_marker_commit" ]; then
 fi
 
 
+# Gather previous commit messages since last marker
+commit_msgs=$(git log --pretty=%B "$last_marker_commit..HEAD" | sed '/^\s*$/d' )
+
+
 # Soft reset to last marker commit
 git reset --soft "$last_marker_commit"
 
-# Gather previous commit messages since last marker
-commit_msgs=$(git log --pretty=%B "$last_marker_commit..HEAD")
-
 # Commit everything
-git commit -m "{$nextgen} $message\n\n$commit_msgs"
+git commit -m "{$nextgen} $message
+$commit_msgs"
 
 # Switch/activate the new system
 sudo nixos-rebuild switch --flake . --option warn-dirty false
